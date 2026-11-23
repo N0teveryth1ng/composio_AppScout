@@ -1,0 +1,69 @@
+{
+  "source": "data\\results.json",
+  "records_counted": 10,
+  "records_excluded": 0,
+  "auth_overall": {
+    "OAuth2": 10,
+    "API key": 6,
+    "Basic": 3,
+    "Token": 2
+  },
+  "auth_by_category": {
+    "CRM and Sales": {
+      "OAuth2": 10,
+      "API key": 6,
+      "Basic": 3,
+      "Token": 2
+    }
+  },
+  "self_serve_overall": {
+    "self_serve": 7,
+    "trial_or_paid": 2
+  },
+  "self_serve_by_category": {
+    "CRM and Sales": {
+      "self_serve": 7,
+      "trial_or_paid": 2
+    }
+  },
+  "buildability_overall": {
+    "yes": 8
+  },
+  "buildability_by_category": {
+    "CRM and Sales": {
+      "yes": 8
+    }
+  },
+  "blockers": {},
+  "mcp": {
+    "official": 8,
+    "unknown": 2
+  },
+  "easy_wins": [
+    "Salesforce",
+    "HubSpot",
+    "Pipedrive",
+    "Twenty",
+    "Podio",
+    "Zoho CRM"
+  ],
+  "needs_outreach": [],
+  "needs_human": [
+    {
+      "app": "HubSpot",
+      "reason": "missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "DealCloud",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    }
+  ],
+  "headlines": [
+    "10 apps counted; 0 API-error records excluded.",
+    "Most common auth: OAuth2 (10), API key (6).",
+    "Access: self_serve (7), trial_or_paid (2).",
+    "6 easy wins, 0 need outreach.",
+    "8 official and 0 community MCP servers found.",
+    "2 apps still need a human."
+  ]
+}

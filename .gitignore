@@ -1,0 +1,22 @@
+# Secrets and local environment
+.env
+.env.txt
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Raw research cache, intermediate passes and runtime logs (not deployment data)
+data/cache/
+data/pass1.json
+data/pass1_frozen.json
+data/pass1_run.log
+data/detached.out
+data/detached.err
+
+# Filled in by the user by hand; not published by default
+data/ground_truth.json

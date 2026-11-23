@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Composio app research</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    h1, h2 { margin-top: 1.8rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: .4rem .6rem; text-align: left; }
+    .warn { background: #fff4e5; }
+    code { background: #f4f4f4; padding: .1rem .3rem; }
+  </style>
+</head>
+<body>
+  <h1>Composio app research</h1>
+  <p>Evidence-backed research on 100 apps: auth, self-serve access, API type, MCP,
+     buildability and blockers. Unknown means exactly that &mdash; no guess was made.</p>
+
+  <h2>Headline patterns</h2>
+  <ul>
+    {% for line in patterns.get('headlines', []) %}
+      <li>{{ line }}</li>
+    {% else %}
+      <li>No patterns computed yet.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Easy wins vs needs outreach</h2>
+  <div>
+    <h3>Easy wins ({{ patterns.get('easy_wins', [])|length }})</h3>
+    <p>{{ patterns.get('easy_wins', [])|join(', ') or 'none yet' }}</p>
+    <h3>Needs outreach ({{ patterns.get('needs_outreach', [])|length }})</h3>
+    <p>{{ patterns.get('needs_outreach', [])|join(', ') or 'none yet' }}</p>
+  </div>
+
+  <h2>The agent</h2>
+  <ol>
+    <li><strong>Step A &mdash; gather:</strong> Composio Instant search/fetch first,
+        free fallback second. Pages are cached; every call is counted.</li>
+    <li><strong>Step B &mdash; pass 1:</strong> three small extraction calls per app
+        (auth/API, access, MCP). Every claim needs a URL and a snippet.</li>
+    <li><strong>Step C &mdash; pass 2:</strong> one batched claim check per app, a
+        code-only snippet-in-page check, and consistency rules.</li>
+  </ol>
+  <p>Backend calls: {{ usage | tojson }}</p>
+  <p>Pass-1 records served: {{ results_count }}; API-error records excluded from
+     stats: {{ error_count }}.</p>
+
+  <h2>Where a human was needed ({{ needs_human|length }})</h2>
+  <ul>
+    {% for row in needs_human %}
+      <li><strong>{{ row.app }}</strong>: {{ row.needs_human_reason }}</li>
+    {% else %}
+      <li>No needs-human records in the current data.</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Verification</h2>
+  {% if verification %}
+    <p>Overall accuracy: pass 1 = {{ verification.overall_accuracy.pass1.accuracy }},
+       pass 2 = {{ verification.overall_accuracy.pass2.accuracy }}.
+       Sample size: {{ verification.sample_size }}.</p>
+    <p>Misses: {{ verification.misses|length }}. See
+       <a href="/verification.json">verification.json</a>.</p>
+  {% else %}
+    <p>Ground truth has not been filled yet, so no accuracy numbers are shown.</p>
+  {% endif %}
+
+  <h2>Limitations and honesty notes</h2>
+  <ul>
+    <li>JavaScript-heavy docs can return empty text; those apps become needs_human.</li>
+    <li>API-error records are retried and never counted as research results.</li>
+    <li>Ground truth is filled by a human from real docs; the agent does not invent it.</li>
+  </ul>
+
+  <p><a href="/results">Full results table</a> &middot;
+     <a href="/results.json">results.json</a> &middot;
+     <a href="/patterns.json">patterns.json</a></p>
+</body>
+</html>

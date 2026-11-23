@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Results</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1.5rem; }
+    table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+    th, td { border: 1px solid #ddd; padding: .35rem .5rem; vertical-align: top; }
+    th { background: #f6f6f6; }
+    .needs_human, .error { background: #fff4e5; }
+    form { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Results ({{ rows|length }})</h1>
+  <form method="get">
+    <label>Category
+      <select name="category">
+        <option value="">all</option>
+        {% for value in categories %}
+          <option value="{{ value }}" {% if filters.category == value %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Auth <input name="auth" value="{{ filters.auth }}" placeholder="OAuth2"></label>
+    <label>Self-serve
+      <select name="self_serve">
+        {% for value in ['', 'self_serve', 'trial_or_paid', 'gated', 'unknown'] %}
+          <option value="{{ value }}" {% if filters.self_serve == value %}selected{% endif %}>{{ value or 'all' }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Buildability
+      <select name="buildability">
+        {% for value in ['', 'yes', 'partial', 'no', 'unknown'] %}
+          <option value="{{ value }}" {% if filters.buildability == value %}selected{% endif %}>{{ value or 'all' }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Status
+      <select name="status">
+        {% for value in ['', 'ok', 'needs_human', 'error'] %}
+          <option value="{{ value }}" {% if filters.status == value %}selected{% endif %}>{{ value or 'all' }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <button type="submit">Apply</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr><th>App</th><th>Category</th><th>Auth</th><th>Self-serve</th>
+          <th>API type</th><th>MCP</th><th>Buildability</th><th>Blocker</th>
+          <th>Evidence</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+      <tr class="{{ row.status }}">
+        <td>{{ row.id }} {{ row.app }}</td>
+        <td>{{ row.category }}</td>
+        <td>{{ row.auth_methods|join(', ') }}</td>
+        <td>{{ row.self_serve }}</td>
+        <td>{{ row.api_surface.type|join(', ') }}</td>
+        <td>{{ row.api_surface.existing_mcp }}</td>
+        <td>{{ row.buildability }}</td>
+        <td>{{ row.main_blocker }}</td>
+        <td>
+          {% for evidence in row.evidence %}
+            <a href="{{ evidence.url }}" title="{{ evidence.snippet }}">{{ evidence.field }}</a>
+          {% else %}&mdash;{% endfor %}
+        </td>
+        <td>{{ row.status }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="10">No rows match these filters.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p><a href="/">Back to explainer</a></p>
+</body>
+</html>

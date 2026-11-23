@@ -1,0 +1,605 @@
+[
+  {
+    "id": 1,
+    "app": "Salesforce",
+    "category": "CRM and Sales",
+    "one_liner": "Salesforce is a cloud-based CRM and sales platform.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "self_serve",
+    "self_serve_note": "Developer Edition provides a free and easy solution so that you can use Salesforce for testing and development.",
+    "api_surface": {
+      "type": [
+        "REST",
+        "SOAP"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "official",
+      "mcp_url": "https://developer.salesforce.com/docs/platform/sfdx-dev/guide/sfdx-dev-mcp.html"
+    },
+    "buildability": "yes",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/intro_using_oauth.html",
+        "snippet": "Connect REST API uses OAuth to securely identify your application before connecting to Salesforce."
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://www.youtube.com/watch?v=ef2dffppLyI",
+        "snippet": "OAuth is the industry standard way to grant limited access without sharing user passwords."
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://www.salesforceben.com/salesforce-to-salesforce-integration-using-oauth-2-0-a-comprehensive-guide",
+        "snippet": "OAuth 2.0 is the recommended authentication mechanism."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.youtube.com/watch?v=ef2dffppLyI",
+        "snippet": "allow broad REST and SOAP access under the signed in user."
+      },
+      {
+        "field": "self_serve",
+        "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart_dev_org.html",
+        "snippet": "Developer Edition provides a free and easy solution so that you can use Salesforce for testing and development."
+      },
+      {
+        "field": "buildability",
+        "url": "https://docs.salesforce.com",
+        "snippet": "Developer: Salesforce APIs, programming guides, SDKs, and reference documentation."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://developer.salesforce.com/docs/platform/sfdx-dev/guide/sfdx-dev-mcp.html",
+        "snippet": "Salesforce DX MCP Server and Tools | Salesforce DX Developer Guide | Salesforce Developers"
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "pass": 2,
+    "llm_model": "gemini-3.5-flash-lite",
+    "error_reason": "none"
+  },
+  {
+    "id": 2,
+    "app": "HubSpot",
+    "category": "CRM and Sales",
+    "one_liner": "HubSpot is a customer platform that offers marketing, sales, customer service, and CRM software to help businesses grow.",
+    "auth_methods": [
+      "OAuth2",
+      "API key"
+    ],
+    "self_serve": "self_serve",
+    "self_serve_note": "No credit card or commitment required.",
+    "api_surface": {
+      "type": [
+        "unknown"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "official",
+      "mcp_url": "https://developers.hubspot.com/ai-tools/mcp"
+    },
+    "buildability": "yes",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://community.hubspot.com/t5/APIs-Integrations/Authentication-credentials-not-found-This-API-supports-both-API/m-p/749561?profile.language=de",
+        "snippet": "\"This API supports both API Key and OAuth 2.0 authentication\""
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://community.hubspot.com/t5/APIs-Integrations/Authentication-credentials-not-found-This-API-supports-both-API/m-p/749561?profile.language=de",
+        "snippet": "\"This API supports both API Key and OAuth 2.0 authentication\""
+      },
+      {
+        "field": "self_serve",
+        "url": "https://hubspot.com/free-trial",
+        "snippet": "No credit card or commitment required."
+      },
+      {
+        "field": "buildability",
+        "url": "https://developers.hubspot.com",
+        "snippet": "Explore our docs to learn more about our APIs, Apps, Developer Tooling, and CMS"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://developers.hubspot.com/ai-tools/mcp",
+        "snippet": "HubSpot offers two distinct MCP (Model Context Protocol) servers — one for connecting any MCP-compatible AI tool or agent to your CRM, and one for building on the HubSpot Developer Platform."
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "needs_human",
+    "needs_human_reason": "missing evidence-backed: api_surface.type",
+    "pass": 2,
+    "llm_model": "gemini-3.5-flash-lite",
+    "error_reason": "none"
+  },
+  {
+    "id": 3,
+    "app": "Pipedrive",
+    "category": "CRM and Sales",
+    "one_liner": "CRM and sales platform with a REST API",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "self_serve",
+    "self_serve_note": "Free 14-day trial. No credit card required.",
+    "api_surface": {
+      "type": [
+        "REST"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "official",
+      "mcp_url": "https://www.pipedrive.com/en/features/mcp-server"
+    },
+    "buildability": "yes",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://developers.pipedrive.com/docs/api/v1/Oauth",
+        "snippet": "OAuth 2.0"
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://developers.pipedrive.com/docs/api/v1/Oauth",
+        "snippet": "\"token_type\":\"Bearer\""
+      },
+      {
+        "field": "self_serve",
+        "url": "https://pipedrive.com/pricing",
+        "snippet": "Free 14-day trial. No credit card required."
+      },
+      {
+        "field": "buildability",
+        "url": "https://pipedrive.com/api",
+        "snippet": "Easily build integrations with our API and developer platform"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.pipedrive.com/en/features/mcp-server",
+        "snippet": "Pipedrive is an official connector in Claude and ChatGPT. Find it in the connector directory and connect your account. No manual server setup required."
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "pass": 2,
+    "llm_model": "gemini-3.5-flash-lite",
+    "error_reason": "none"
+  },
+  {
+    "id": 4,
+    "app": "Attio",
+    "category": "CRM and Sales",
+    "one_liner": "Attio is a CRM platform with a public REST API supporting OAuth 2.0 and API keys.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Basic"
+    ],
+    "self_serve": "trial_or_paid",
+    "self_serve_note": "Start for free with plans for every stage of growth",
+    "api_surface": {
+      "type": [
+        "REST"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "official",
+      "mcp_url": "https://mcp.attio.com/mcp"
+    },
+    "buildability": "yes",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://docs.attio.com/rest-api/guides/authentication",
+        "snippet": "Attio implements the standard OAuth 2.0 specification, using the Authorization Code Grant Flow"
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://docs.attio.com/rest-api/guides/authentication",
+        "snippet": "By generating an API key for your workspace"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.coffee.ai/articles/attio-crm-public-api-docs",
+        "snippet": "Attio’s public documentation lives on Mintlify and splits into five sections: Docs, App SDK, REST API, MCP, and SQL."
+      },
+      {
+        "field": "self_serve",
+        "url": "https://attio.com/pricing",
+        "snippet": "Start for free with plans for every stage of growth"
+      },
+      {
+        "field": "buildability",
+        "url": "https://attio.com/developers",
+        "snippet": "Connect your GTM stack with the REST API, App SDK, or Attio MCP."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://docs.attio.com/mcp/overview",
+        "snippet": "Attio MCP is Attio's hosted MCP server that gives AI tools secure access to your Attio workspace."
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "pass": 2,
+    "llm_model": "gemini-3.5-flash-lite",
+    "error_reason": "none"
+  },
+  {
+    "id": 5,
+    "app": "Twenty",
+    "category": "CRM and Sales",
+    "one_liner": "Open‑source CRM with schema‑per‑tenant REST and GraphQL APIs",
+    "auth_methods": [
+      "API key",
+      "OAuth2"
+    ],
+    "self_serve": "self_serve",
+    "self_serve_note": "Start your free trial today without credit card.",
+    "api_surface": {
+      "type": [
+        "REST",
+        "GraphQL"
+      ],
+      "breadth": "broad",
+      "existing_mcp": "unknown",
+      "mcp_url": null
+    },
+    "buildability": "yes",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://docs.twenty.com/developers/extend/api",
+        "snippet": "Authorization: Bearer YOUR_API_KEY"
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://docs.twenty.com/developers/extend/api",
+        "snippet": "For OAuth-based access (external apps acting on behalf of users), see OAuth."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://docs.twenty.com/developers/extend/api",
+        "snippet": "REST and GraphQL APIs generated from your workspace schema."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://docs.twenty.com/developers/extend/api",
+        "snippet": "REST and GraphQL APIs generated from your workspace schema."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://docs.twenty.com/developers/extend/api",
+        "snippet": "CRUD on records: People, Companies, Opportunities, your custom objects."
+      },
+      {
+        "field": "self_serve",
+        "url": "https://twenty.com/pricing",
+        "snippet": "Start your free trial today without credit card."
+      },
+      {
+        "field": "buildability",
+        "url": "https://twenty.com/developers",
+        "snippet": "Build apps in TypeScript, connect your tools through APIs, and host Twenty yourself."
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "pass": 2,
+    "llm_model": "gemini-3.5-flash-lite",
+    "error_reason": "none"
+  },
+  {
+    "id": 6,
+    "app": "Podio",
+    "category": "CRM and Sales",
+    "one_liner": "Podio is a file sharing and productivity platform with an API that uses OAuth 2.0 for authentication.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "self_serve",
+    "self_serve_note": "Create your free account",
+    "api_surface": {
+      "type": [
+        "REST"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "official",
+      "mcp_url": "https://mcp.podio.com"
+    },
+    "buildability": "yes",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://developers.podio.com/doc/oauth-authorization/get-access-token-22359",
+        "snippet": "OAuth authorization | Get access token - Podio API Documentation"
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://public-api.org/api/428/podio",
+        "snippet": "Authentication via OAuth is required to access the API."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://developers.podio.com/doc/oauth-authorization/get-access-token-22359",
+        "snippet": "POST /oauth/token/v2"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://public-api.org/api/428/podio",
+        "snippet": "GET 'https://developers.podio.com'"
+      },
+      {
+        "field": "self_serve",
+        "url": "https://podio.com/signup",
+        "snippet": "Create your free account and join over 500,000 teams"
+      },
+      {
+        "field": "buildability",
+        "url": "https://developers.podio.com",
+        "snippet": "Get an API key... You'll need a Podio account, first of all"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.progress.com/podio/documentation/using-podio/ai-and-mcp/podio-mcp-server-integration-guide",
+        "snippet": "The server is live at https://mcp.podio.com — just point your AI platform at it"
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
+    "llm_model": "gemini-3.5-flash-lite",
+    "pass": 2
+  },
+  {
+    "id": 7,
+    "app": "Zoho CRM",
+    "category": "CRM and Sales",
+    "one_liner": "Zoho CRM provides a REST API that uses OAuth 2.0 for authentication.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "self_serve",
+    "self_serve_note": "Create custom apps to address your business needs—anything from a to-do-list app to a bot that can access GitHub repositories.",
+    "api_surface": {
+      "type": [
+        "REST"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "official",
+      "mcp_url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html"
+    },
+    "buildability": "yes",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://www.zoho.com/crm/developer/docs/api/v8/oauth-overview.html",
+        "snippet": "The Zoho CRM API uses the OAuth 2.0 protocol for authentication."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.flowpeakconsulting.com/blog/zoho-crm-api-postman",
+        "snippet": "Zoho also publishes an official Zoho CRM REST API collection for Postman on its developer site"
+      },
+      {
+        "field": "self_serve",
+        "url": "https://developers.zoho.com",
+        "snippet": "Create custom apps to address your business needs—anything from a to-do-list app to a bot that can access GitHub repositories."
+      },
+      {
+        "field": "buildability",
+        "url": "https://developers.zoho.com",
+        "snippet": "Zoho Api Zoho APIs"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.zoho.com/crm/developer/docs/mcp/overview.html",
+        "snippet": "Connect your AI tools to Zoho CRM using the Model Context Protocol (MCP) to perform CRM operations using natural language."
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
+    "llm_model": "gemini-3.5-flash-lite",
+    "pass": 2
+  },
+  {
+    "id": 8,
+    "app": "Close",
+    "category": "CRM and Sales",
+    "one_liner": "Close is an inside sales CRM that provides APIs for managing sales processes.",
+    "auth_methods": [
+      "API key",
+      "OAuth2",
+      "Basic"
+    ],
+    "self_serve": "trial_or_paid",
+    "self_serve_note": "Free trial available (e.g., \"Try Close free with Solo\")",
+    "api_surface": {
+      "type": [
+        "REST"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "unknown",
+      "mcp_url": null
+    },
+    "buildability": "yes",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://developer.close.com/api/overview/api-key-authentication",
+        "snippet": "\"API keys are best used for scripts and simple integrations that are internal to your organization.\""
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://developer.close.com/api/overview/api-key-authentication",
+        "snippet": "\"API keys use HTTP Basic client side authentication.\""
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://help.close.com/integrations/api-keys-oauth",
+        "snippet": "\"Create an OAuth app for Close so your integration can securely connect to Close accounts.\""
+      },
+      {
+        "field": "api_surface",
+        "url": "https://developer.close.com/api/overview/api-key-authentication",
+        "snippet": "\"API Base URL: https://api.close.com/api/v1\""
+      },
+      {
+        "field": "self_serve",
+        "url": "https://close.com/pricing",
+        "snippet": "Try Close free with Solo"
+      },
+      {
+        "field": "buildability",
+        "url": "https://close.com/api",
+        "snippet": "With our API and MCP, you can even build your own experiences"
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
+    "llm_model": "gemini-3.5-flash-lite",
+    "pass": 2
+  },
+  {
+    "id": 9,
+    "app": "Copper",
+    "category": "CRM and Sales",
+    "one_liner": "Copper is a CRM platform with a REST API and OAuth2 authentication.",
+    "auth_methods": [
+      "OAuth2",
+      "API key"
+    ],
+    "self_serve": "self_serve",
+    "self_serve_note": "Start free, no credit card required.",
+    "api_surface": {
+      "type": [
+        "REST"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "official",
+      "mcp_url": "https://mcp.getcopper.com/"
+    },
+    "buildability": "unknown",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://developer.copper.com/introduction/authentication.html",
+        "snippet": "There are two ways to access the Copper Developer API: API keys and OAuth2.0."
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://developer.copper.co/api-reference/authentication",
+        "snippet": "Authentication to the API is performed via the Authorization header with an API key."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.lonti.com/integrations/copper-crm",
+        "snippet": "Copper CRM provides a REST API for reading and modifying People, Companies, Leads, Opportunities, Projects, Activities, pipelines, users, and related CRM data."
+      },
+      {
+        "field": "self_serve",
+        "url": "https://copper.com/pricing",
+        "snippet": "Start free, no credit card required."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://apis.io/apis/copper-banking/copper-mcp-server",
+        "snippet": "Copper MCP Server is published by Copper Banking on the APIs.io network. Base URL: https://mcp.getcopper.com/"
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "pass": 2,
+    "llm_model": "gemini-3.5-flash-lite",
+    "error_reason": "none"
+  },
+  {
+    "id": 10,
+    "app": "DealCloud",
+    "category": "CRM and Sales",
+    "one_liner": "DealCloud provides a REST API for CRM and sales data integration.",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Basic",
+      "Token"
+    ],
+    "self_serve": "unknown",
+    "self_serve_note": "unknown",
+    "api_surface": {
+      "type": [
+        "REST"
+      ],
+      "breadth": "unknown",
+      "existing_mcp": "official",
+      "mcp_url": null
+    },
+    "buildability": "unknown",
+    "main_blocker": "unknown",
+    "blocker_note": "unknown",
+    "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://api.docs.dealcloud.com/sdk/intapp-rest-client/configuration/authentication",
+        "snippet": "OAuth2 | Most REST APIs"
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://api.docs.dealcloud.com/sdk/intapp-rest-client/configuration/authentication",
+        "snippet": "API Key | Simple APIs"
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://api.docs.dealcloud.com/sdk/intapp-rest-client/configuration/authentication",
+        "snippet": "Basic Auth | Legacy systems"
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://api.docs.dealcloud.com/sdk/intapp-rest-client/configuration/authentication",
+        "snippet": "JWT | Token-based"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://api.docs.dealcloud.com/mcp/connections",
+        "snippet": "DealCloud MCP can connect with Claude, ChatGPT, Microsoft Copilot Studio, Cursor, local agents such as Claude Code and Codex CLI, and other compatible AI clients."
+      }
+    ],
+    "has_composio_toolkit": "unknown",
+    "status": "needs_human",
+    "needs_human_reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve",
+    "error_reason": "none",
+    "llm_model": "gemini-3.5-flash-lite",
+    "pass": 2
+  }
+]
