@@ -10,6 +10,7 @@
     th, td { border: 1px solid #ddd; padding: .4rem .6rem; text-align: left; }
     .warn { background: #fff4e5; }
     code { background: #f4f4f4; padding: .1rem .3rem; }
+    table.usage { width: auto; }
   </style>
 </head>
 <body>
@@ -43,7 +44,26 @@
     <li><strong>Step C &mdash; pass 2:</strong> one batched claim check per app, a
         code-only snippet-in-page check, and consistency rules.</li>
   </ol>
-  <p>Backend calls: {{ usage | tojson }}</p>
+  <h3>Backend calls</h3>
+  <p>Most failures are guessed official URLs that don't exist; they are logged,
+     never counted as evidence, and do not affect a record's status.</p>
+  <table class="usage">
+    <thead>
+      <tr><th>Operation</th><th>Backend</th><th>OK</th><th>Failed</th></tr>
+    </thead>
+    <tbody>
+      {% for row in usage_rows %}
+        <tr>
+          <td>{{ row.operation }}</td>
+          <td>{{ row.backend }}</td>
+          <td>{{ row.ok }}</td>
+          <td>{{ row.failed }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="4">No backend calls recorded yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
   <p>Pass-1 records served: {{ results_count }}; API-error records excluded from
      stats: {{ error_count }}.</p>
 

@@ -118,6 +118,19 @@ apps are done and is never edited afterwards.
   run modes, data-refresh order, verification flow, web routes, deploy commands
   and honesty notes. Committed and pushed; Railway auto-deploys on the push.
 
+## Backend-calls table and secret scan (2026-11-23)
+
+- [x] `app.py` now builds `usage_rows` and `/` renders backend calls as a small
+  table (operation / backend / OK / Failed) instead of raw JSON. One-line note
+  on the page: most failures are guessed official URLs that don't exist; they
+  are logged, never used as evidence, and do not affect record status. Verified
+  with `TestClient` from the live `tool_usage.json`.
+- [x] Key-like scan (`gsk_`, `ak_`, `AIza`) over the working tree (including
+  gitignored files, excluding `.venv`/`.git`), tracked files at HEAD, all 4
+  commits' contents and all commit messages: only `.env` and `.env.txt` contain
+  matches (1 `gsk_`, 1 `ak_` each); they are gitignored. Zero tracked/history
+  hits, zero `AIza` hits. No values were printed.
+
 ## What is needed from the user before publishing
 
 - GitHub: confirm the remote `https://github.com/N0teveryth1ng/composio_AppScout`

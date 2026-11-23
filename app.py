@@ -34,6 +34,26 @@ def _load(name: str, default):
         return default
 
 
+def _usage_rows(usage: dict) -> list[dict]:
+    """Turn counted backend keys into one row per operation/backend pair."""
+    grouped: dict[tuple[str, str], dict] = {}
+    for key, count in usage.items():
+        parts = str(key).split(".")
+        if len(parts) < 3:
+            continue
+        operation, backend, outcome = parts[0], parts[1], parts[-1]
+        row = grouped.setdefault(
+            (operation, backend),
+            {"operation": operation, "backend": backend, "ok": 0, "failed": 0},
+        )
+        if outcome in ("ok", "failed"):
+            try:
+                row[outcome] += int(count)
+            except (TypeError, ValueError):
+                pass
+    return sorted(grouped.values(), key=lambda r: (r["operation"], r["backend"]))
+
+
 def _json_file(name: str):
     file = _data_path(name)
     if not file.exists():
@@ -53,7 +73,7 @@ def index(request: Request):
         "results_count": len(results),
         "needs_human": [r for r in results if r.get("status") == "needs_human"],
         "error_count": sum(r.get("status") == "error" for r in results),
-        "usage": usage,
+        "usage_rows": _usage_rows(usage),
     })
 
 
