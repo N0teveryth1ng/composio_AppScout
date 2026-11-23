@@ -1,11 +1,11 @@
 {
   "source": "data\\results.json",
-  "records_counted": 87,
-  "records_excluded": 13,
+  "records_counted": 92,
+  "records_excluded": 8,
   "auth_overall": {
-    "OAuth2": 53,
-    "API key": 40,
-    "Token": 30,
+    "OAuth2": 57,
+    "API key": 45,
+    "Token": 32,
     "Basic": 12,
     "Other": 4
   },
@@ -29,15 +29,15 @@
       "Basic": 2
     },
     "Data, SEO and Scraping": {
-      "API key": 4,
-      "OAuth2": 3,
-      "Basic": 1,
-      "Token": 1
+      "API key": 6,
+      "OAuth2": 4,
+      "Token": 2,
+      "Basic": 1
     },
     "Developer, Infra and Data platforms": {
-      "OAuth2": 5,
-      "Token": 5,
-      "API key": 4,
+      "API key": 6,
+      "OAuth2": 6,
+      "Token": 4,
       "Other": 1
     },
     "Ecommerce": {
@@ -58,9 +58,9 @@
       "Basic": 1
     },
     "Productivity and Project Management": {
-      "API key": 5,
-      "OAuth2": 5,
-      "Token": 5,
+      "OAuth2": 7,
+      "Token": 7,
+      "API key": 6,
       "Basic": 1
     },
     "Support and Helpdesk": {
@@ -71,8 +71,8 @@
     }
   },
   "self_serve_overall": {
-    "self_serve": 45,
-    "trial_or_paid": 13,
+    "self_serve": 49,
+    "trial_or_paid": 14,
     "gated": 3
   },
   "self_serve_by_category": {
@@ -89,15 +89,15 @@
       "trial_or_paid": 1
     },
     "Data, SEO and Scraping": {
-      "self_serve": 3,
-      "trial_or_paid": 1
+      "self_serve": 4,
+      "trial_or_paid": 2
     },
     "Developer, Infra and Data platforms": {
-      "self_serve": 6,
+      "self_serve": 7,
       "trial_or_paid": 2
     },
     "Ecommerce": {
-      "self_serve": 4,
+      "self_serve": 5,
       "trial_or_paid": 1
     },
     "Finance and Fintech": {
@@ -109,7 +109,7 @@
       "gated": 1
     },
     "Productivity and Project Management": {
-      "self_serve": 7
+      "self_serve": 8
     },
     "Support and Helpdesk": {
       "trial_or_paid": 5,
@@ -118,7 +118,7 @@
     }
   },
   "buildability_overall": {
-    "yes": 47,
+    "yes": 54,
     "partial": 3,
     "no": 1
   },
@@ -133,13 +133,13 @@
       "yes": 5
     },
     "Data, SEO and Scraping": {
-      "yes": 4
+      "yes": 5
     },
     "Developer, Infra and Data platforms": {
-      "yes": 3
+      "yes": 7
     },
     "Ecommerce": {
-      "yes": 5,
+      "yes": 6,
       "no": 1
     },
     "Finance and Fintech": {
@@ -151,7 +151,7 @@
       "partial": 1
     },
     "Productivity and Project Management": {
-      "yes": 6
+      "yes": 7
     },
     "Support and Helpdesk": {
       "yes": 5,
@@ -163,9 +163,9 @@
     "admin_approval": 1
   },
   "mcp": {
-    "official": 54,
-    "unknown": 21,
-    "community": 11,
+    "official": 63,
+    "unknown": 15,
+    "community": 13,
     "none_found": 1
   },
   "easy_wins": [
@@ -182,16 +182,23 @@
     "GoHighLevel",
     "Klaviyo",
     "SendGrid",
+    "Shopify",
     "WooCommerce",
     "Squarespace",
     "Gumroad",
     "DataForSEO",
     "Apify",
     "Firecrawl",
+    "Bright Data",
     "Cloudflare",
+    "Supabase",
+    "Neo4j",
+    "Snowflake",
+    "Sentry",
     "Notion",
     "Linear",
     "Jira",
+    "Asana",
     "Monday.com",
     "Coda",
     "Stripe",
@@ -249,10 +256,6 @@
       "reason": "missing evidence-backed: self_serve"
     },
     {
-      "app": "Discord",
-      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
-    },
-    {
       "app": "Telegram",
       "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
     },
@@ -293,10 +296,6 @@
       "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, api_surface.type, self_serve"
     },
     {
-      "app": "Shopify",
-      "reason": "4 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
-    },
-    {
       "app": "BigCommerce",
       "reason": "missing evidence-backed: auth_methods, api_surface.type"
     },
@@ -325,10 +324,6 @@
       "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
     },
     {
-      "app": "GitHub",
-      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
-    },
-    {
       "app": "Vercel",
       "reason": "missing evidence-backed: auth_methods"
     },
@@ -337,16 +332,8 @@
       "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
     },
     {
-      "app": "Snowflake",
-      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
-    },
-    {
-      "app": "Sentry",
-      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
-    },
-    {
-      "app": "Notion",
-      "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+      "app": "Smartsheet",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
     },
     {
       "app": "Binance",
@@ -394,11 +381,11 @@
     }
   ],
   "headlines": [
-    "87 apps counted; 13 API-error records excluded.",
-    "Most common auth: OAuth2 (53), API key (40).",
-    "Access: self_serve (45), trial_or_paid (13).",
-    "28 easy wins, 3 need outreach.",
-    "54 official and 11 community MCP servers found.",
-    "47 apps still need a human."
+    "92 apps counted; 8 API-error records excluded.",
+    "Most common auth: OAuth2 (57), API key (45).",
+    "Access: self_serve (49), trial_or_paid (14).",
+    "35 easy wins, 3 need outreach.",
+    "63 official and 13 community MCP servers found.",
+    "42 apps still need a human."
   ]
 }

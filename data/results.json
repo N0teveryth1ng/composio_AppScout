@@ -1393,16 +1393,21 @@
     "self_serve_note": "Follow a step-by-step guide to build and run your first Discord bot.",
     "api_surface": {
       "type": [
-        "unknown"
+        "REST"
       ],
       "breadth": "unknown",
-      "existing_mcp": "unknown",
-      "mcp_url": null
+      "existing_mcp": "community",
+      "mcp_url": "https://mcpservers.org/servers/SaseQ/discord-mcp"
     },
     "buildability": "yes",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://docs.discord.com/developers/topics/oauth2",
+        "snippet": "OAuth2 enables application developers to build applications that utilize authentication and data from the Discord API."
+      },
       {
         "field": "auth_methods",
         "url": "https://apis.io/security/discord/discord-authentication",
@@ -1422,13 +1427,18 @@
         "field": "buildability",
         "url": "https://docs.discord.com",
         "snippet": "Build bots and integrations on Discord, or connect your game with rich presence, voice chat, and more."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://mcpservers.org/servers/SaseQ/discord-mcp",
+        "snippet": "An MCP server for the Discord API, enabling seamless integration of Discord bots with MCP-compatible applications."
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "needs_human",
-    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type",
+    "status": "ok",
+    "needs_human_reason": "none",
     "error_reason": "none",
-    "llm_model": "openai/gpt-oss-20b",
+    "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
   {
@@ -2137,17 +2147,17 @@
       "OAuth2",
       "Token"
     ],
-    "self_serve": "unknown",
-    "self_serve_note": "unknown",
+    "self_serve": "self_serve",
+    "self_serve_note": "Shopify's docs and dev tools make building easy and efficient, with a free trial available to start.",
     "api_surface": {
       "type": [
-        "unknown"
+        "REST"
       ],
       "breadth": "unknown",
-      "existing_mcp": "unknown",
-      "mcp_url": null
+      "existing_mcp": "official",
+      "mcp_url": "https://github.com/Shopify/shopify-ai-toolkit"
     },
-    "buildability": "unknown",
+    "buildability": "yes",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
@@ -2160,13 +2170,33 @@
         "field": "auth_methods",
         "url": "https://community.shopify.com/t/admin-api-key-for-personal-use-devtools-not-showing-it-as-documentation-says/581876",
         "snippet": "Admin API requests should authenticate with an access token in the `X-Shopify-Access-Token` header"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://community.shopify.com/t/admin-api-key-for-personal-use-devtools-not-showing-it-as-documentation-says/581876",
+        "snippet": "GET /admin/api/{version}/blogs.json"
+      },
+      {
+        "field": "self_serve",
+        "url": "https://shopify.dev/docs",
+        "snippet": "Shopify's docs, dev tools and frameworks make building easy and efficient."
+      },
+      {
+        "field": "buildability",
+        "url": "https://shopify.dev/api",
+        "snippet": "Reference documentation for Shopify's APIs, libraries, and developer tools"
+      },
+      {
+        "field": "api_surface",
+        "url": "https://ecomheroes.dev/blogs/news/shopify-mcp-guide",
+        "snippet": "Shopify officially offers two: Storefront MCP... Dev MCP (part of the Shopify AI Toolkit)"
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "needs_human",
-    "needs_human_reason": "4 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve",
+    "status": "ok",
+    "needs_human_reason": "none",
     "error_reason": "none",
-    "llm_model": "openai/gpt-oss-120b",
+    "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
   {
@@ -2748,7 +2778,7 @@
     "has_composio_toolkit": "unknown",
     "status": "error",
     "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -2832,7 +2862,7 @@
       "existing_mcp": "official",
       "mcp_url": "https://mcp.mrscraper.com/mcp"
     },
-    "buildability": "yes",
+    "buildability": "unknown",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
@@ -2857,21 +2887,16 @@
         "snippet": "MrScraper Pricing: Start Free, Plans From $99/Month"
       },
       {
-        "field": "buildability",
-        "url": "https://mrscraper.com/pricing",
-        "snippet": "MrScraper Pricing: Start Free, Plans From $99/Month"
-      },
-      {
         "field": "api_surface",
         "url": "https://apis.io/apis/mrscraper/mrscraper-mcp-server",
         "snippet": "Official Model Context Protocol server: hosted Streamable HTTP endpoint at https://mcp.mrscraper.com/mcp"
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
-    "llm_model": "gemini-3.5-flash-lite",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
+    "llm_model": "openai/gpt-oss-20b",
     "pass": 2
   },
   {
@@ -3052,9 +3077,9 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -3175,13 +3200,13 @@
     "self_serve_note": "Create your free account Explore GitHub's core features for individuals and organizations.",
     "api_surface": {
       "type": [
-        "unknown"
+        "REST"
       ],
       "breadth": "unknown",
-      "existing_mcp": "unknown",
-      "mcp_url": null
+      "existing_mcp": "official",
+      "mcp_url": "https://docs.github.com/en/copilot/concepts/customizations/mcp"
     },
-    "buildability": "unknown",
+    "buildability": "yes",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
@@ -3196,16 +3221,31 @@
         "snippet": "To enforce regular token rotation and reduce the impact of a compromised token, you can configure your OAuth app to get access tokens that expire."
       },
       {
+        "field": "api_surface",
+        "url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
+        "snippet": "docs.github.com/rest"
+      },
+      {
         "field": "self_serve",
         "url": "https://github.com/signup",
         "snippet": "Create your free account Explore GitHub's core features for individuals and organizations."
+      },
+      {
+        "field": "buildability",
+        "url": "https://github.com/signup",
+        "snippet": "Create your free account Explore GitHub's core features for individuals and organizations."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://docs.github.com/en/copilot/concepts/customizations/mcp",
+        "snippet": "The GitHub MCP server is built in and available without additional configuration."
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "needs_human",
-    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type",
-    "error_reason": "none",
-    "llm_model": "openai/gpt-oss-120b",
+    "status": "error",
+    "needs_human_reason": "not applicable (status=error; retry next run)",
+    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
+    "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
   {
@@ -3424,9 +3464,9 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -3481,11 +3521,6 @@
         "snippet": "as well as a GraphQL library for rapid API development backed by the Neo4j graph database."
       },
       {
-        "field": "api_surface",
-        "url": "https://apis.io/providers/neo4j",
-        "snippet": "official drivers for Python, Java, and JavaScript"
-      },
-      {
         "field": "self_serve",
         "url": "https://neo4j.com/pricing",
         "snippet": "No credit card or other payment method required"
@@ -3502,9 +3537,9 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -3522,13 +3557,13 @@
     "self_serve_note": "A Snowflake trial account lets you evaluate/test Snowflake’s full range of innovative and powerful features with no cost or contractual obligations. To sign up for a trial account, all you need is a valid email address; no payment information or other qualifying information is required.",
     "api_surface": {
       "type": [
-        "unknown"
+        "REST"
       ],
       "breadth": "unknown",
-      "existing_mcp": "unknown",
-      "mcp_url": null
+      "existing_mcp": "official",
+      "mcp_url": "https://www.snowflake.com/en/developers/guides/getting-started-with-snowflake-mcp-server"
     },
-    "buildability": "unknown",
+    "buildability": "yes",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
@@ -3543,16 +3578,31 @@
         "snippet": "Snowflake secures its APIs with http-bearer and oauth2 across 4 declared security schemes... OAuth 2.0 is offered via the authorizationCode and implicit flow(s)."
       },
       {
+        "field": "api_surface",
+        "url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication",
+        "snippet": "Authenticating Snowflake REST APIs with Snowflake"
+      },
+      {
         "field": "self_serve",
         "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
         "snippet": "A Snowflake trial account lets you evaluate/test Snowflake’s full range of innovative and powerful features with no cost or contractual obligations. To sign up for a trial account, all you need is a valid email address; no payment information or other qualifying information is required."
+      },
+      {
+        "field": "buildability",
+        "url": "https://docs.snowflake.com/en/user-guide/admin-trial-account",
+        "snippet": "A Snowflake trial account lets you evaluate/test Snowflake’s full range of innovative and powerful features with no cost or contractual obligations."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.snowflake.com/en/developers/guides/getting-started-with-snowflake-mcp-server",
+        "snippet": "The Snowflake-managed MCP server lets AI agents securely retrieve data from Snowflake accounts without deploying separate infrastructure."
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "needs_human",
-    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type",
+    "status": "ok",
+    "needs_human_reason": "none",
     "error_reason": "none",
-    "llm_model": "openai/gpt-oss-120b",
+    "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
   {
@@ -3697,13 +3747,13 @@
     "self_serve_note": "Free plan after that. Upgrade whenever you want.",
     "api_surface": {
       "type": [
-        "unknown"
+        "REST"
       ],
       "breadth": "unknown",
-      "existing_mcp": "unknown",
-      "mcp_url": null
+      "existing_mcp": "official",
+      "mcp_url": "https://mcp.sentry.dev"
     },
-    "buildability": "unknown",
+    "buildability": "yes",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
@@ -3726,13 +3776,23 @@
         "field": "self_serve",
         "url": "https://sentry.io/signup",
         "snippet": "Free plan after that. Upgrade whenever you want."
+      },
+      {
+        "field": "buildability",
+        "url": "https://sentry.io/signup",
+        "snippet": "Free, forever\n 14 days of unlimited volume, every feature unlocked. Then you're moved to free, automatically. No forced upgrades."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://mcp.sentry.dev",
+        "snippet": "Sentry MCP Server\n\nConnects AI assistants to Sentry for searching errors, analyzing performance, triaging issues, reading documentation, and managing projects — all via the Model Context Protocol."
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "needs_human",
-    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type",
+    "status": "ok",
+    "needs_human_reason": "none",
     "error_reason": "none",
-    "llm_model": "openai/gpt-oss-120b",
+    "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
   {
@@ -3748,11 +3808,11 @@
     "self_serve_note": "A personal access token (PAT) lets you authenticate API requests as yourself without setting up a connection or completing an OAuth flow.",
     "api_surface": {
       "type": [
-        "unknown"
+        "REST"
       ],
       "breadth": "unknown",
-      "existing_mcp": "unknown",
-      "mcp_url": null
+      "existing_mcp": "official",
+      "mcp_url": "https://mcp.notion.com/mcp"
     },
     "buildability": "yes",
     "main_blocker": "unknown",
@@ -3769,6 +3829,11 @@
         "snippet": "Notion secures its APIs with http and oauth2 across 2 declared security schemes, as derived from its OpenAPI definitions. OAuth 2.0 is offered via the authorizationCode flow(s)."
       },
       {
+        "field": "api_surface",
+        "url": "https://developers.notion.com/guides/authorization/overview",
+        "snippet": "The API token will be used to authenticate REST API requests."
+      },
+      {
         "field": "self_serve",
         "url": "https://developers.notion.com",
         "snippet": "A personal access token (PAT) lets you authenticate API requests as yourself without setting up a connection or completing an OAuth flow."
@@ -3777,13 +3842,18 @@
         "field": "buildability",
         "url": "https://developers.notion.com",
         "snippet": "Create a page in your Notion workspace with a personal access token and a single API request."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://ivgraph.com/journal/notion-mcp",
+        "snippet": "Notion MCP is Notion's official hosted MCP server at `https://mcp.notion.com/mcp`."
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "needs_human",
-    "needs_human_reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type",
+    "status": "ok",
+    "needs_human_reason": "none",
     "error_reason": "none",
-    "llm_model": "openai/gpt-oss-120b",
+    "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
   {
@@ -4026,9 +4096,9 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -4226,7 +4296,7 @@
       "Token"
     ],
     "self_serve": "unknown",
-    "self_serve_note": "Smartsheet offers flexible pricing plans including Pro and Business that can be chosen directly on the site.",
+    "self_serve_note": "unknown",
     "api_surface": {
       "type": [
         "REST"
@@ -4255,20 +4325,15 @@
         "snippet": "To retrieve the data of a specific sheet, you can make a GET request to the /sheets/{sheetId} endpoint."
       },
       {
-        "field": "self_serve",
-        "url": "https://smartsheet.com/pricing",
-        "snippet": "Flexible plans for any team. Choose the plan that works best for you and manage your projects, programs, and processes"
-      },
-      {
         "field": "api_surface",
         "url": "https://developers.smartsheet.com/ai-mcp/smartsheet/mcp-server-tools",
         "snippet": "The Smartsheet Model Context Protocol (MCP) server provides a way to leverage Smartsheet’s public API via AI clients"
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "status": "needs_human",
+    "needs_human_reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -4329,7 +4394,7 @@
     "has_composio_toolkit": "unknown",
     "status": "error",
     "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -4451,7 +4516,7 @@
     "has_composio_toolkit": "unknown",
     "status": "error",
     "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -4796,7 +4861,7 @@
     "has_composio_toolkit": "unknown",
     "status": "error",
     "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -4967,7 +5032,7 @@
     "has_composio_toolkit": "unknown",
     "status": "error",
     "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },
@@ -5247,7 +5312,7 @@
     "has_composio_toolkit": "unknown",
     "status": "error",
     "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
+    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2
   },

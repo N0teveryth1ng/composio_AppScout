@@ -549,7 +549,14 @@ def main() -> None:
     group.add_argument("--limit", type=int, help="research the first N apps")
     group.add_argument("--apps", help="comma-separated app names")
     group.add_argument("--all", action="store_true", help="research all 100 apps")
-    group.add_argument("--pass2-only", action="store_true", help="not implemented yet")
+    group.add_argument("--pass2-only", action="store_true", help="verify pass-1 claims only")
+    parser.add_argument(
+        "--pass2-apps", help="comma-separated app names to verify with --pass2-only"
+    )
+    parser.add_argument(
+        "--force-pass2", action="store_true",
+        help="re-verify apps with --pass2-only even if already verified",
+    )
     parser.add_argument(
         "--force", action="store_true", help="re-research apps even if already done"
     )
@@ -558,7 +565,11 @@ def main() -> None:
     if args.pass2_only:
         import pass2
 
-        pass2.run()
+        wanted = (
+            {name.strip().lower() for name in args.pass2_apps.split(",") if name.strip()}
+            if args.pass2_apps else None
+        )
+        pass2.run(apps=wanted, force=args.force_pass2)
         return
 
     apps = json.loads(APPS_FILE.read_text(encoding="utf-8"))

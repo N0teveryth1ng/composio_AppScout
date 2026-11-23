@@ -24,7 +24,7 @@ import tools
 
 INPUT_FILE = Path("data/pass1.json")
 OUTPUT_FILE = Path("data/results.json")
-PAGE_CHARS = 2000
+PAGE_CHARS = 12000
 VERIFIABLE_FIELDS = ("auth_methods", "self_serve", "api_surface", "buildability")
 
 CHECK_SYSTEM = """You verify claims against web-page text.
@@ -32,6 +32,11 @@ For each claim, answer ONLY one of: supported, contradicted, not_found.
 - supported: the page text explicitly says what the claim says.
 - contradicted: the page text says the opposite.
 - not_found: the page text does not address the claim.
+- For api_surface claims, the "value" is narrowed to the one subfield that this
+  evidence supports (see "subfield"). Judge ONLY that subfield, not the whole
+  api_surface object. The quoted snippet is an excerpt from the cited page: use
+  the snippet together with the PAGE text, and answer "supported" when that
+  specific subfield is explicitly supported.
 Use ONLY the supplied PAGE texts. Never guess. Copy each claim's "index" into
 your answer. Return ONE JSON object, no markdown, no commentary."""
 
@@ -81,7 +86,30 @@ def _snippet_in_page(snippet: str, page: str) -> bool:
     return len(words & found) / len(words) >= 0.70
 
 
-def _value_for(record: dict, field: str):
+API_TYPE_HINTS = ("rest", "graphql", "soap", "sdk", "openapi", "api", "apis")
+BREADTH_HINTS = ("breadth", "comprehensive", "narrow")
+
+
+def _api_subfield(record: dict, item: dict) -> str:
+    """Pick the single api_surface subfield this evidence item actually supports."""
+    api = record.get("api_surface") if isinstance(record.get("api_surface"), dict) else {}
+    hint = _norm(f"{item.get('url', '')} {item.get('snippet', '')}")
+    mcp_url = api.get("mcp_url")
+    if (
+        (isinstance(mcp_url, str) and mcp_url
+         and _norm(mcp_url) == _norm(item.get("url", "")))
+        or "mcp" in hint
+        or "model context protocol" in hint
+    ):
+        return "existing_mcp"
+    if any(word in hint for word in API_TYPE_HINTS):
+        return "type"
+    if any(word in hint for word in BREADTH_HINTS):
+        return "breadth"
+    return "api_surface"
+
+
+def _value_for(record: dict, field: str, item: dict | None = None):
     if field == "auth_methods":
         return record["auth_methods"]
     if field == "self_serve":
@@ -90,7 +118,10 @@ def _value_for(record: dict, field: str):
         return record["buildability"]
     if field == "api_surface":
         api = record["api_surface"]
-        return {key: api.get(key) for key in ("type", "breadth", "existing_mcp")}
+        subfield = _api_subfield(record, item) if item is not None else "api_surface"
+        if subfield == "api_surface":
+            return {key: api.get(key) for key in ("type", "breadth", "existing_mcp")}
+        return {subfield: api.get(subfield)}
     return "?"
 
 
@@ -102,13 +133,16 @@ def _claims(record: dict) -> tuple[list[dict], dict[str, str]]:
             continue
         url = item.get("url", "")
         pages[url] = _page_text(url)
-        claims.append({
+        claim = {
             "index": index,
             "field": field,
-            "value": _value_for(record, field),
+            "value": _value_for(record, field, item),
             "url": url,
             "snippet": item.get("snippet", ""),
-        })
+        }
+        if field == "api_surface":
+            claim["subfield"] = _api_subfield(record, item)
+        claims.append(claim)
     return claims, pages
 
 
@@ -248,13 +282,15 @@ def verify_record(record: dict) -> dict:
 
 
 def run(input_path: Path = INPUT_FILE, output_path: Path = OUTPUT_FILE,
-        limit: int | None = None, apps: set[str] | None = None) -> list[dict]:
+        limit: int | None = None, apps: set[str] | None = None,
+        force: bool = False) -> list[dict]:
     """Verify pass-1 records, writing results incrementally for resume."""
     source = json.loads(input_path.read_text(encoding="utf-8"))
     if limit is not None:
         source = source[:limit]
     if apps is not None:
-        source = [record for record in source if record["app"] in apps]
+        wanted = {name.lower() for name in apps}
+        source = [record for record in source if record["app"].lower() in wanted]
 
     existing = {}
     if output_path.exists():
@@ -265,7 +301,7 @@ def run(input_path: Path = INPUT_FILE, output_path: Path = OUTPUT_FILE,
 
     for record in source:
         name = record["app"]
-        if name in existing and existing[name].get("pass") == 2 \
+        if not force and name in existing and existing[name].get("pass") == 2 \
                 and existing[name].get("status") != "error":
             print(f"[pass2] skipping already-verified {name}", flush=True)
             continue
