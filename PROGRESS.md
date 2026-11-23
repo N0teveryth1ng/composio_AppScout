@@ -97,6 +97,21 @@ apps are done and is never edited afterwards.
 - Verified the exact start command locally with uvicorn: `/`, `/results`,
   `/results.json`, `/patterns.json` all returned 200.
 
+## Railway deployment live (2026-11-23)
+
+- User logged into GitHub in the in-app browser; Railway dashboard then showed
+  the `bubbly-illumination` project with a `composio_AppScout` service already
+  pointed at `N0teveryth1ng/composio_AppScout` (branch `main`), but with 3
+  unapplied changes and no active deployment.
+- Applied the changes (repo + branch + redeploy). Deployment `4b89b4ab` became
+  ACTIVE; auto-deploy on GitHub push is enabled.
+- Generated public domain `https://composioappscout-production.up.railway.app`
+  on target port 8080 (matches Uvicorn's `$PORT` in the deploy logs).
+- Verified live: `/` 200 with all homepage sections, `/results.json` 200 with
+  the 10 committed pass-2 records. No runtime env vars or keys are set.
+- Pass 1 is still running (64 records at check time: 35 ok / 19 needs_human /
+  10 error); the live site therefore still shows the 10-record partial dataset.
+
 ## What is needed from the user before publishing
 
 - GitHub: confirm the remote `https://github.com/N0teveryth1ng/composio_AppScout`
