@@ -112,6 +112,12 @@ apps are done and is never edited afterwards.
 - Pass 1 is still running (64 records at check time: 35 ok / 19 needs_human /
   10 error); the live site therefore still shows the 10-record partial dataset.
 
+## README (2026-11-23)
+
+- [x] Added `README.md` with the live link, repo layout, free-tier setup, CLI
+  run modes, data-refresh order, verification flow, web routes, deploy commands
+  and honesty notes. Committed and pushed; Railway auto-deploys on the push.
+
 ## What is needed from the user before publishing
 
 - GitHub: confirm the remote `https://github.com/N0teveryth1ng/composio_AppScout`
