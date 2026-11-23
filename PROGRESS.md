@@ -131,12 +131,114 @@ apps are done and is never edited afterwards.
   matches (1 `gsk_`, 1 `ak_` each); they are gitignored. Zero tracked/history
   hits, zero `AIza` hits. No values were printed.
 
-## What is needed from the user before publishing
+## Pass 1 finished and live-data refresh (2026-11-23)
 
-- GitHub: confirm the remote `https://github.com/N0teveryth1ng/composio_AppScout`
-  is the intended one, and create the empty repository there (or grant push
-  access). No account or remote was created here.
-- Host: choose Render or Railway and create the app/service pointing at that
-  GitHub repo. Nothing was created here. Render can import `render.yaml`;
-  Railway can use the `Procfile`. No environment variables are needed for the
-  read-only dashboard.
+- Pass 1 ended on its own at 21:59:35 with all 100 records written:
+  42 ok / 22 needs_human / 36 error. The detached process was not stopped.
+- `data/pass1_frozen.json` was **not** created: the agent only freezes when all
+  100 records exist and none has `status=error`; 36 transient API-error records
+  remain. No manual freeze was forced.
+- Started a fresh pass 2 from a stable read-only snapshot of `pass1.json`,
+  with repeat sweeps that retry error records. It skips the 10 already-verified
+  records and re-verifies every error record.
+- `/` now states "X of 100 apps covered" (count of records in `results.json`)
+  plus counted vs API-error counts; verified with `TestClient`.
+
+## Pass-1 error analysis (2026-11-23)
+
+- All 36 pass-1 `error` records have the same cause: transient
+  `LLM_API_ERROR: ServerError: 503 UNAVAILABLE` (free-tier model overloaded).
+  No data/evidence error, no schema error.
+- `llm_model` on those records: 24 `gemini-3.5-flash-lite` alone; the other 12
+  are two-model chains that also ended on `gemini-3.5-flash-lite`.
+- 9 of the 36 are in `data/sample.json`: Sherlock, Waterfall.io, Snowflake,
+  Sentry, ClickUp, QuickBooks, Brex, Consensus, Mermaid CLI.
+- Verified a single retry (`agent.py --apps Sherlock`): Sherlock recovered to
+  `needs_human`, so the 503s are transient.
+- Stopped the stale pass-2 background job (it used a pre-retry snapshot and
+  competed for the same free LLM quota). Pass 2 will be re-run after retries.
+
+## Retry state check (2026-11-23)
+
+State reported to the user: pass 1 = 44 ok / 25 needs_human / 31 error;
+`pass1_frozen.json` absent; `agent.py --all` and pass 2 were both running at
+the time of the check. Last commit `9bd6210`.
+
+- Sample apps still in `error` (4): ClickUp (77), Brex (88), Consensus (94),
+  Mermaid CLI (98). All four are the same transient 503 "model overloaded"
+  LLM error. Because sample apps are not all non-error, **no freeze was done**.
+- `agent.py --all` was stopped (it was retrying the same overloaded models and
+  blocking a clean pass 2). Pass 2 was started over all 100 pass-1 records with
+  sample apps first.
+- Ground truth: 20 entries, 0 filled by hand. No accuracy numbers invented;
+  `verify.py --compare` was not run and `verification.json` is not created.
+
+## Brex resolved and baseline frozen (2026-11-24)
+
+- Brex was retried 3 more times; it recovered on the fourth extra attempt
+  (`status=ok`, `openai/gpt-oss-20b`, 9 evidence items). No sample change was
+  needed — all 20 sample apps are now non-error.
+- `agent.py` auto-froze `data/pass1_frozen.json`: 100 records,
+  46 ok / 27 needs_human / 27 error. Non-sample error records remain and are
+  excluded from statistics.
+- Full pass 2 is running over all 100 records with sample apps first.
+
+## Ground truth prefilled with sources (2026-11-24)
+
+- By explicit user request, `data/ground_truth.json` (gitignored, user-owned)
+  now has `doc_url` + `passage` for all 20 sample apps. Every passage is real
+  text verified against a cached first-party docs page (the one exception,
+  Sherlock, was fetched live from the official `sherlock-project/sherlock`
+  README). First-party domains include `docs.attio.com`, `developers.podio.com`,
+  `docs.usepylon.com`, `developer.gladly.com`, `docs.discord.com`,
+  `developers.facebook.com`, `developers.google.com`, `shopify.dev`,
+  `developer-docs.amazon`, `docs.snowflake.com`, `docs.sentry.io`,
+  `developers.notion.com`, `developer.clickup.com`, `developer.brex.com`,
+  `docs.consensus.app`, plus official GitHub/npm repos.
+- That prefilled file was later drafted with truth values from those same
+  official sources; see "Ground truth drafted" below. `verify.py --compare`
+  remains withheld until the human-review count is confirmed.
+
+## Ground truth drafted (2026-11-24)
+
+- At the user's request, the five truth fields for all 20 sample apps were
+  drafted from official docs/pricing/sign-up pages only, with every URL used
+  recorded under `urls`, `drafted_by: "ai"` and `human_reviewed: false`.
+- The user asked that Sherlock and Mermaid CLI be excluded from accuracy because
+  they are not hosted APIs, and listed separately on the page.
+- `verify.py --compare` is deliberately withheld until the user supplies the
+  confirmed human-review count. The measured count in the file at this point is
+  0 of 20 `human_reviewed: true`, so no accuracy numbers are published.
+
+## Final error retries and pass 2 (2026-11-24)
+
+- Retried the 27 non-sample pass-1 `error` apps up to 3 attempts each.
+  26 recovered; Clay still failed on all 3 attempts with transient 503s.
+  Pass 1 finished at 66 ok / 33 needs_human / 1 error.
+- Re-ran pass 2 with `agent.py --pass2-only` over the refreshed pass-1 data.
+  Final `data/results.json`: 100 records, 40 ok / 47 needs_human / 13 error.
+  The 13 remaining pass-2 errors are transient LLM-verification 503s, not
+  missing research; they are excluded from patterns.
+- `patterns.py` regenerated `data/patterns.json`: 87 counted, 13 excluded;
+  28 easy wins, 3 need outreach, 54 official and 11 community MCP servers.
+
+## Dashboard restyle (2026-11-24)
+
+- Added `templates/_styles.html` with a single system-font stylesheet: light
+  grey-blue page, one centred white card, pill filters, soft status/access/
+  buildability badges, sticky table header, horizontal table scroll, and
+  comfortable dividers instead of heavy borders.
+- `templates/results.html` now has a `Sources (N)` cell with one link per
+  unique source domain, opening in a new tab, instead of one link per field.
+- `templates/index.html` sections are simple cards; headline patterns are a
+  short list and easy wins/needs outreach are pill chips.
+- Both pages were rendered at a 390px iframe viewport: no page-level horizontal
+  overflow; the table scrolls inside its card. No JS, external fonts or libraries.
+
+## Publishing
+
+- GitHub repo: `https://github.com/N0teveryth1ng/composio_AppScout`
+- Railway project `bubbly-illumination`, service `composio_AppScout`, public URL
+  `https://composioappscout-production.up.railway.app`
+- Verification remains pending by explicit request; `verification.json` is not
+  generated or committed.

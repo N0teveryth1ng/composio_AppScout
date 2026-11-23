@@ -31,6 +31,7 @@ from schema import (
 )
 
 APPS_FILE = Path("apps.json")
+SAMPLE_FILE = Path("data/sample.json")  # manual ground-truth sample; retried first
 OUT_FILE = Path("data/pass1.json")
 FROZEN_FILE = Path("data/pass1_frozen.json")  # baseline: written once, never edited
 RUN_LOG = Path("data/pass1_run.log")
@@ -567,7 +568,21 @@ def main() -> None:
         wanted = {name.strip().lower() for name in args.apps.split(",")}
         selected = [app for app in apps if app["app"].lower() in wanted]
     else:
+        # --all: research the manual sample first so those records become
+        # non-error before any non-sample apps. Selection is unchanged: this
+        # only reorders the queue.
         selected = apps
+        if SAMPLE_FILE.exists():
+            sample = json.loads(SAMPLE_FILE.read_text(encoding="utf-8"))
+            sample_order = [item["app"].lower() for item in sample]
+            selected = sorted(
+                apps,
+                key=lambda app: (
+                    sample_order.index(app["app"].lower())
+                    if app["app"].lower() in sample_order
+                    else len(sample_order)
+                ),
+            )
 
     records = _load_existing()
     skipped = [
@@ -623,16 +638,25 @@ def main() -> None:
 
     _write_existing(records)
     final = _load_existing()
-    all_done = (
+    if SAMPLE_FILE.exists():
+        sample = json.loads(SAMPLE_FILE.read_text(encoding="utf-8"))
+        freeze_apps = sample
+    else:
+        freeze_apps = apps
+    freeze_ready = (
         len(final) >= len(apps)
         and all(
             final.get(app["app"].lower(), {}).get("status") != "error"
-            for app in apps
+            for app in freeze_apps
         )
     )
-    if all_done and not FROZEN_FILE.exists():
+    if freeze_ready and not FROZEN_FILE.exists():
         shutil.copyfile(OUT_FILE, FROZEN_FILE)
-        log_line(f"pass 1 complete: froze baseline at {FROZEN_FILE} ({len(final)} records)")
+        error_count = sum(r.get("status") == "error" for r in final.values())
+        log_line(
+            f"freeze ready: all {len(freeze_apps)} sample apps non-error; "
+            f"froze {FROZEN_FILE} ({len(final)} records, {error_count} errors)"
+        )
     elif FROZEN_FILE.exists():
         log_line(f"baseline already frozen at {FROZEN_FILE}; left untouched")
 

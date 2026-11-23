@@ -12,6 +12,8 @@ from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 
+from schema import counted_records
+
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
 
@@ -34,6 +36,14 @@ def _load(name: str, default):
         return default
 
 
+def _total_apps() -> int:
+    """Number of apps in the static input, independent of the working dir."""
+    try:
+        return len(json.loads((ROOT / "apps.json").read_text(encoding="utf-8")))
+    except (json.JSONDecodeError, OSError):
+        return 100
+
+
 def _usage_rows(usage: dict) -> list[dict]:
     """Turn counted backend keys into one row per operation/backend pair."""
     grouped: dict[tuple[str, str], dict] = {}
@@ -54,6 +64,12 @@ def _usage_rows(usage: dict) -> list[dict]:
     return sorted(grouped.values(), key=lambda r: (r["operation"], r["backend"]))
 
 
+def _display(value) -> str:
+    if isinstance(value, list):
+        return ", ".join(str(item) for item in value)
+    return str(value)
+
+
 def _json_file(name: str):
     file = _data_path(name)
     if not file.exists():
@@ -67,9 +83,23 @@ def index(request: Request):
     verification = _load("verification.json", None)
     results = _load("results.json", [])
     usage = _load("tool_usage.json", {})
+    counted = counted_records(results)
+    verification_data = verification or {}
+    misses = [
+        {
+            **miss,
+            "agent_display": _display(miss.get("agent_value")),
+            "true_display": _display(miss.get("true_value")),
+        }
+        for miss in verification_data.get("misses", [])
+    ]
     return templates.TemplateResponse(request, "index.html", {
         "patterns": patterns,
         "verification": verification,
+        "misses": misses,
+        "total_apps": _total_apps(),
+        "covered_count": len(results),
+        "counted_count": len(counted),
         "results_count": len(results),
         "needs_human": [r for r in results if r.get("status") == "needs_human"],
         "error_count": sum(r.get("status") == "error" for r in results),

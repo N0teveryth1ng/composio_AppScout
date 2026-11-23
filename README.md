@@ -64,8 +64,10 @@ Failures are never cached.
 
 `--all` writes after every app, skips completed records and retries `error`
 records on the next invocation. Backend calls are logged to `data/tool_usage.json`.
-When all 100 apps finish, the agent creates `data/pass1_frozen.json` once — the
-frozen baseline used for accuracy measurement. Never edit that file.
+`--all` retries apps in `data/sample.json` first. Once all 100 records exist and
+every sample app is non-error, the agent creates `data/pass1_frozen.json` once —
+the frozen baseline used for accuracy measurement. Non-sample apps may still be
+in `error`; those records are excluded from statistics. Never edit that file.
 
 Pass 1 status depends only on auth, API type and self-serve; a `main_blocker`
 without official evidence is left `unknown` without changing the status.
@@ -80,8 +82,11 @@ After pass 1 is complete and frozen, run in this order:
 .\.venv\Scripts\python.exe patterns.py
 ```
 
-Fill `data/ground_truth.json` by hand from real docs (the agent never fills it),
-then measure the real pass-1/pass-2 accuracy:
+The answer key in `data/ground_truth.json` was AI-drafted from official docs,
+pricing and sign-up pages; it is gitignored, and human review is tracked with
+`human_reviewed` flags. Sherlock and Mermaid CLI are reported separately and
+excluded from accuracy because they are not hosted APIs. Measure the real
+pass-1/pass-2 accuracy:
 
 ```powershell
 .\.venv\Scripts\python.exe verify.py --compare
@@ -121,8 +126,8 @@ regardless of the working directory. See `DEPLOY.md` for details.
   reported as research findings.
 - JavaScript-heavy docs can yield no text; those apps legitimately become
   `needs_human`.
-- Ground truth is filled by a human. Accuracy numbers are computed only from that
-  file and are never fabricated or tuned.
+- The answer key was AI-drafted from official docs and marked for human review.
+  Accuracy numbers are computed only from that file and are never fabricated or tuned.
 
 See `PROJECT_SPEC.md` for the original build specification and `PROGRESS.md` for
 the run log and deployment history.

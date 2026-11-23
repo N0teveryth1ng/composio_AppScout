@@ -2,100 +2,192 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Composio app research</title>
-  <style>
-    body { font-family: system-ui, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
-    h1, h2 { margin-top: 1.8rem; }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid #ddd; padding: .4rem .6rem; text-align: left; }
-    .warn { background: #fff4e5; }
-    code { background: #f4f4f4; padding: .1rem .3rem; }
-    table.usage { width: auto; }
-  </style>
+  {% include "_styles.html" %}
 </head>
 <body>
-  <h1>Composio app research</h1>
-  <p>Evidence-backed research on 100 apps: auth, self-serve access, API type, MCP,
-     buildability and blockers. Unknown means exactly that &mdash; no guess was made.</p>
+  <main class="card">
+    <header class="page-header">
+      <h1>Composio app research</h1>
+      <p class="subtitle">100 apps researched: auth, access, API type, MCP, buildability</p>
+    </header>
 
-  <h2>Headline patterns</h2>
-  <ul>
-    {% for line in patterns.get('headlines', []) %}
-      <li>{{ line }}</li>
-    {% else %}
-      <li>No patterns computed yet.</li>
-    {% endfor %}
-  </ul>
+    <p class="coverage"><strong>{{ counted_count }} of {{ total_apps }} apps have results,
+       {{ error_count }} still errored on API limits.</strong></p>
 
-  <h2>Easy wins vs needs outreach</h2>
-  <div>
-    <h3>Easy wins ({{ patterns.get('easy_wins', [])|length }})</h3>
-    <p>{{ patterns.get('easy_wins', [])|join(', ') or 'none yet' }}</p>
-    <h3>Needs outreach ({{ patterns.get('needs_outreach', [])|length }})</h3>
-    <p>{{ patterns.get('needs_outreach', [])|join(', ') or 'none yet' }}</p>
-  </div>
+    <section class="section">
+      <h2>Headline patterns</h2>
+      <ul class="plain-list">
+        {% for line in patterns.get('headlines', []) %}
+          <li>{{ line }}</li>
+        {% else %}
+          <li>No patterns computed yet.</li>
+        {% endfor %}
+      </ul>
+    </section>
 
-  <h2>The agent</h2>
-  <ol>
-    <li><strong>Step A &mdash; gather:</strong> Composio Instant search/fetch first,
-        free fallback second. Pages are cached; every call is counted.</li>
-    <li><strong>Step B &mdash; pass 1:</strong> three small extraction calls per app
-        (auth/API, access, MCP). Every claim needs a URL and a snippet.</li>
-    <li><strong>Step C &mdash; pass 2:</strong> one batched claim check per app, a
-        code-only snippet-in-page check, and consistency rules.</li>
-  </ol>
-  <h3>Backend calls</h3>
-  <p>Most failures are guessed official URLs that don't exist; they are logged,
-     never counted as evidence, and do not affect a record's status.</p>
-  <table class="usage">
-    <thead>
-      <tr><th>Operation</th><th>Backend</th><th>OK</th><th>Failed</th></tr>
-    </thead>
-    <tbody>
-      {% for row in usage_rows %}
-        <tr>
-          <td>{{ row.operation }}</td>
-          <td>{{ row.backend }}</td>
-          <td>{{ row.ok }}</td>
-          <td>{{ row.failed }}</td>
-        </tr>
+    <section class="section">
+      <h2>Easy wins vs needs outreach</h2>
+      <div class="chip-grid">
+        <div>
+          <h3>Easy wins ({{ patterns.get('easy_wins', [])|length }})</h3>
+          <div class="chips">
+            {% for name in patterns.get('easy_wins', []) %}
+              <span class="chip">{{ name }}</span>
+            {% else %}
+              <span class="muted">none yet</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div>
+          <h3>Needs outreach ({{ patterns.get('needs_outreach', [])|length }})</h3>
+          <div class="chips">
+            {% for name in patterns.get('needs_outreach', []) %}
+              <span class="chip">{{ name }}</span>
+            {% else %}
+              <span class="muted">none yet</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>The agent</h2>
+      <ol class="plain-list">
+        <li><strong>Step A &mdash; gather:</strong> Composio Instant search/fetch first,
+            free fallback second. Pages are cached; every call is counted.</li>
+        <li><strong>Step B &mdash; pass 1:</strong> three small extraction calls per app
+            (auth/API, access, MCP). Every claim needs a URL and a snippet.</li>
+        <li><strong>Step C &mdash; pass 2:</strong> one batched claim check per app, a
+            code-only snippet-in-page check, and consistency rules.</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h3>Backend calls</h3>
+      <p>Most failures are guessed official URLs that don't exist; they are logged,
+         never counted as evidence, and do not affect a record's status.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Operation</th><th>Backend</th><th>OK</th><th>Failed</th></tr>
+          </thead>
+          <tbody>
+            {% for row in usage_rows %}
+              <tr>
+                <td>{{ row.operation }}</td>
+                <td>{{ row.backend }}</td>
+                <td>{{ row.ok }}</td>
+                <td>{{ row.failed }}</td>
+              </tr>
+            {% else %}
+              <tr><td colspan="4">No backend calls recorded yet.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p>Research records served: {{ results_count }}; API-error records excluded from
+         stats: {{ error_count }}.</p>
+    </section>
+
+    <section class="section">
+      <h2>Where a human was needed ({{ needs_human|length }})</h2>
+      <ul class="plain-list">
+        {% for row in needs_human %}
+          <li><strong>{{ row.app }}</strong>: {{ row.needs_human_reason }}</li>
+        {% else %}
+          <li>No needs-human records in the current data.</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Verification</h2>
+      {% if verification %}
+        <p>The answer key was AI-drafted from official docs and reviewed by hand for
+           {{ verification.human_reviewed_count }} of
+           {{ verification.human_reviewed_total }} entries.</p>
+        <p>Accuracy is scored on {{ verification.scored_apps }} of
+           {{ verification.sample_size }} sample apps. Excluded from accuracy (not hosted APIs):
+           {% for item in verification.excluded_from_accuracy %}
+             <strong>{{ item.app }}</strong>{% if not loop.last %}, {% endif %}
+           {% endfor %}.</p>
+        <p><strong>Overall accuracy: pass 1 =
+           {{ verification.overall_accuracy.pass1.correct }}/{{ verification.overall_accuracy.pass1.compared }}
+           ({{ "%.2f"|format(verification.overall_accuracy.pass1.accuracy * 100) }}%),
+           pass 2 =
+           {{ verification.overall_accuracy.pass2.correct }}/{{ verification.overall_accuracy.pass2.compared }}
+           ({{ "%.2f"|format(verification.overall_accuracy.pass2.accuracy * 100) }}%).</strong></p>
+
+        <h3>Accuracy by field</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Field</th><th>Pass 1</th><th>Pass 2</th></tr>
+            </thead>
+            <tbody>
+              {% for field, scores in verification.per_field_accuracy.items() %}
+                <tr>
+                  <td>{{ field }}</td>
+                  <td>{{ scores.pass1.correct }}/{{ scores.pass1.compared }}
+                      ({{ "%.2f"|format(scores.pass1.accuracy * 100) }}%)</td>
+                  <td>{{ scores.pass2.correct }}/{{ scores.pass2.compared }}
+                      ({{ "%.2f"|format(scores.pass2.accuracy * 100) }}%)</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Every miss ({{ misses|length }})</h3>
+        {% if misses %}
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Pass</th><th>App</th><th>Field</th><th>Agent value</th>
+                    <th>Answer key value</th><th>Source</th></tr>
+              </thead>
+              <tbody>
+                {% for miss in misses %}
+                  <tr>
+                    <td>{{ miss.pass }}</td>
+                    <td>{{ miss.app }}</td>
+                    <td>{{ miss.field }}</td>
+                    <td>{{ miss.agent_display }}</td>
+                    <td>{{ miss.true_display }}</td>
+                    <td><a href="{{ miss.doc_url }}">docs</a></td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% else %}
+          <p>No misses in the scored sample.</p>
+        {% endif %}
+        <p>Full-precision numbers: <a href="/verification.json">verification.json</a>.</p>
       {% else %}
-        <tr><td colspan="4">No backend calls recorded yet.</td></tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <p>Pass-1 records served: {{ results_count }}; API-error records excluded from
-     stats: {{ error_count }}.</p>
+        <p>Verification pending: ground truth not yet completed.</p>
+        <p>The answer key was AI-drafted from official docs. Accuracy is withheld until
+           the confirmed human-review count (N of 20) is provided; Sherlock and
+           Mermaid CLI will be listed separately and excluded from the score because
+           they are not hosted APIs.</p>
+      {% endif %}
+    </section>
 
-  <h2>Where a human was needed ({{ needs_human|length }})</h2>
-  <ul>
-    {% for row in needs_human %}
-      <li><strong>{{ row.app }}</strong>: {{ row.needs_human_reason }}</li>
-    {% else %}
-      <li>No needs-human records in the current data.</li>
-    {% endfor %}
-  </ul>
+    <section class="section">
+      <h2>Limitations and honesty notes</h2>
+      <ul class="plain-list">
+        <li>JavaScript-heavy docs can return empty text; those apps become needs_human.</li>
+        <li>API-error records are retried and never counted as research results.</li>
+        <li>The answer key was AI-drafted from official docs and marked for human review; the agent does not invent it.</li>
+      </ul>
+    </section>
 
-  <h2>Verification</h2>
-  {% if verification %}
-    <p>Overall accuracy: pass 1 = {{ verification.overall_accuracy.pass1.accuracy }},
-       pass 2 = {{ verification.overall_accuracy.pass2.accuracy }}.
-       Sample size: {{ verification.sample_size }}.</p>
-    <p>Misses: {{ verification.misses|length }}. See
-       <a href="/verification.json">verification.json</a>.</p>
-  {% else %}
-    <p>Ground truth has not been filled yet, so no accuracy numbers are shown.</p>
-  {% endif %}
-
-  <h2>Limitations and honesty notes</h2>
-  <ul>
-    <li>JavaScript-heavy docs can return empty text; those apps become needs_human.</li>
-    <li>API-error records are retried and never counted as research results.</li>
-    <li>Ground truth is filled by a human from real docs; the agent does not invent it.</li>
-  </ul>
-
-  <p><a href="/results">Full results table</a> &middot;
-     <a href="/results.json">results.json</a> &middot;
-     <a href="/patterns.json">patterns.json</a></p>
+    <p class="footer-link"><a href="/results">Full results table</a> &middot;
+       <a href="/results.json">results.json</a> &middot;
+       <a href="/patterns.json">patterns.json</a></p>
+  </main>
 </body>
 </html>

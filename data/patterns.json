@@ -1,43 +1,172 @@
 {
   "source": "data\\results.json",
-  "records_counted": 10,
-  "records_excluded": 0,
+  "records_counted": 87,
+  "records_excluded": 13,
   "auth_overall": {
-    "OAuth2": 10,
-    "API key": 6,
-    "Basic": 3,
-    "Token": 2
+    "OAuth2": 53,
+    "API key": 40,
+    "Token": 30,
+    "Basic": 12,
+    "Other": 4
   },
   "auth_by_category": {
+    "AI, Research and Media-native": {
+      "API key": 5,
+      "OAuth2": 4,
+      "Token": 2,
+      "Other": 1
+    },
     "CRM and Sales": {
       "OAuth2": 10,
       "API key": 6,
       "Basic": 3,
       "Token": 2
+    },
+    "Communications and Messaging": {
+      "OAuth2": 6,
+      "API key": 4,
+      "Token": 4,
+      "Basic": 2
+    },
+    "Data, SEO and Scraping": {
+      "API key": 4,
+      "OAuth2": 3,
+      "Basic": 1,
+      "Token": 1
+    },
+    "Developer, Infra and Data platforms": {
+      "OAuth2": 5,
+      "Token": 5,
+      "API key": 4,
+      "Other": 1
+    },
+    "Ecommerce": {
+      "OAuth2": 8,
+      "Token": 4,
+      "API key": 2,
+      "Basic": 1
+    },
+    "Finance and Fintech": {
+      "API key": 3,
+      "OAuth2": 3,
+      "Other": 2
+    },
+    "Marketing, Ads, Email and Social": {
+      "OAuth2": 4,
+      "API key": 3,
+      "Token": 3,
+      "Basic": 1
+    },
+    "Productivity and Project Management": {
+      "API key": 5,
+      "OAuth2": 5,
+      "Token": 5,
+      "Basic": 1
+    },
+    "Support and Helpdesk": {
+      "OAuth2": 5,
+      "API key": 4,
+      "Token": 4,
+      "Basic": 3
     }
   },
   "self_serve_overall": {
-    "self_serve": 7,
-    "trial_or_paid": 2
+    "self_serve": 45,
+    "trial_or_paid": 13,
+    "gated": 3
   },
   "self_serve_by_category": {
+    "AI, Research and Media-native": {
+      "self_serve": 3,
+      "trial_or_paid": 1
+    },
     "CRM and Sales": {
       "self_serve": 7,
       "trial_or_paid": 2
+    },
+    "Communications and Messaging": {
+      "self_serve": 5,
+      "trial_or_paid": 1
+    },
+    "Data, SEO and Scraping": {
+      "self_serve": 3,
+      "trial_or_paid": 1
+    },
+    "Developer, Infra and Data platforms": {
+      "self_serve": 6,
+      "trial_or_paid": 2
+    },
+    "Ecommerce": {
+      "self_serve": 4,
+      "trial_or_paid": 1
+    },
+    "Finance and Fintech": {
+      "self_serve": 3,
+      "gated": 1
+    },
+    "Marketing, Ads, Email and Social": {
+      "self_serve": 5,
+      "gated": 1
+    },
+    "Productivity and Project Management": {
+      "self_serve": 7
+    },
+    "Support and Helpdesk": {
+      "trial_or_paid": 5,
+      "self_serve": 2,
+      "gated": 1
     }
   },
   "buildability_overall": {
-    "yes": 8
+    "yes": 47,
+    "partial": 3,
+    "no": 1
   },
   "buildability_by_category": {
+    "AI, Research and Media-native": {
+      "yes": 4
+    },
     "CRM and Sales": {
       "yes": 8
+    },
+    "Communications and Messaging": {
+      "yes": 5
+    },
+    "Data, SEO and Scraping": {
+      "yes": 4
+    },
+    "Developer, Infra and Data platforms": {
+      "yes": 3
+    },
+    "Ecommerce": {
+      "yes": 5,
+      "no": 1
+    },
+    "Finance and Fintech": {
+      "yes": 3,
+      "partial": 1
+    },
+    "Marketing, Ads, Email and Social": {
+      "yes": 4,
+      "partial": 1
+    },
+    "Productivity and Project Management": {
+      "yes": 6
+    },
+    "Support and Helpdesk": {
+      "yes": 5,
+      "partial": 1
     }
   },
-  "blockers": {},
+  "blockers": {
+    "none": 1,
+    "admin_approval": 1
+  },
   "mcp": {
-    "official": 8,
-    "unknown": 2
+    "official": 54,
+    "unknown": 21,
+    "community": 11,
+    "none_found": 1
   },
   "easy_wins": [
     "Salesforce",
@@ -45,9 +174,35 @@
     "Pipedrive",
     "Twenty",
     "Podio",
-    "Zoho CRM"
+    "Zoho CRM",
+    "Gorgias",
+    "Slack",
+    "Twilio",
+    "Discord",
+    "GoHighLevel",
+    "Klaviyo",
+    "SendGrid",
+    "WooCommerce",
+    "Squarespace",
+    "Gumroad",
+    "DataForSEO",
+    "Apify",
+    "Firecrawl",
+    "Cloudflare",
+    "Notion",
+    "Linear",
+    "Jira",
+    "Monday.com",
+    "Coda",
+    "Stripe",
+    "Reducto",
+    "Devin"
   ],
-  "needs_outreach": [],
+  "needs_outreach": [
+    "Pylon",
+    "Google Ads",
+    "PitchBook"
+  ],
   "needs_human": [
     {
       "app": "HubSpot",
@@ -56,14 +211,194 @@
     {
       "app": "DealCloud",
       "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Zendesk",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, api_surface.type"
+    },
+    {
+      "app": "Front",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "LiveAgent",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "Plain",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "Help Scout",
+      "reason": "missing evidence-backed: auth_methods"
+    },
+    {
+      "app": "Gladly",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Zoho Cliq",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Lark (Larksuite)",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, api_surface.type"
+    },
+    {
+      "app": "Pumble",
+      "reason": "missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Discord",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "Telegram",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "WhatsApp Business",
+      "reason": "missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "Vonage",
+      "reason": "4 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
+    },
+    {
+      "app": "Google Ads",
+      "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
+    },
+    {
+      "app": "Meta Ads",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "LinkedIn Ads",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "GoHighLevel",
+      "reason": "4 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "Mailchimp",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
+    },
+    {
+      "app": "Pinterest",
+      "reason": "5 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, self_serve"
+    },
+    {
+      "app": "Threads (Meta)",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, api_surface.type, self_serve"
+    },
+    {
+      "app": "Shopify",
+      "reason": "4 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "BigCommerce",
+      "reason": "missing evidence-backed: auth_methods, api_surface.type"
+    },
+    {
+      "app": "Salesforce Commerce Cloud",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "Magento (Adobe Commerce)",
+      "reason": "missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "reason": "4 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "fanbasis",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "Sherlock",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, api_surface.type, self_serve"
+    },
+    {
+      "app": "Waterfall.io",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "GitHub",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "Vercel",
+      "reason": "missing evidence-backed: auth_methods"
+    },
+    {
+      "app": "Netlify",
+      "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
+    },
+    {
+      "app": "Snowflake",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "Sentry",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "Notion",
+      "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type"
+    },
+    {
+      "app": "Binance",
+      "reason": "missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Paygent Connect",
+      "reason": "missing evidence-backed: auth_methods, api_surface.type, self_serve"
+    },
+    {
+      "app": "iPayX",
+      "reason": "missing evidence-backed: auth_methods, api_surface.type"
+    },
+    {
+      "app": "QuickBooks",
+      "reason": "missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "Xero",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Brex",
+      "reason": "5 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
+    },
+    {
+      "app": "Fathom",
+      "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Consensus",
+      "reason": "missing evidence-backed: auth_methods, api_surface.type, self_serve"
+    },
+    {
+      "app": "Mermaid CLI",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "YouTube Transcript",
+      "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Grain",
+      "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
     }
   ],
   "headlines": [
-    "10 apps counted; 0 API-error records excluded.",
-    "Most common auth: OAuth2 (10), API key (6).",
-    "Access: self_serve (7), trial_or_paid (2).",
-    "6 easy wins, 0 need outreach.",
-    "8 official and 0 community MCP servers found.",
-    "2 apps still need a human."
+    "87 apps counted; 13 API-error records excluded.",
+    "Most common auth: OAuth2 (53), API key (40).",
+    "Access: self_serve (45), trial_or_paid (13).",
+    "28 easy wins, 3 need outreach.",
+    "54 official and 11 community MCP servers found.",
+    "47 apps still need a human."
   ]
 }

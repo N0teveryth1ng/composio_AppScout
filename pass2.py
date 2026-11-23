@@ -13,6 +13,7 @@ Only supported, in-page claims survive into data/results.json.
 import copy
 import hashlib
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -39,6 +40,22 @@ CHECK_TEMPLATE = {
         {"index": 0, "verdict": "supported|contradicted|not_found", "reason": "short reason"}
     ]
 }
+
+
+def _write_json(path: Path, data) -> None:
+    """Write via a same-directory temp file; avoids partial/truncated artifacts."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(f".{path.name}.{os.getpid()}.tmp")
+    payload = json.dumps(data, indent=2, ensure_ascii=False)
+    for attempt in range(5):
+        try:
+            tmp.write_text(payload, encoding="utf-8")
+            tmp.replace(path)
+            return
+        except OSError:
+            if attempt == 4:
+                raise
+    raise AssertionError("unreachable")
 
 
 def _page_text(url: str) -> str:
@@ -253,11 +270,8 @@ def run(input_path: Path = INPUT_FILE, output_path: Path = OUTPUT_FILE,
             print(f"[pass2] skipping already-verified {name}", flush=True)
             continue
         existing[name] = verify_record(record)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
         ordered = sorted(existing.values(), key=lambda item: (item.get("id", 9999), item["app"]))
-        output_path.write_text(
-            json.dumps(ordered, indent=2, ensure_ascii=False), encoding="utf-8"
-        )
+        _write_json(output_path, ordered)
 
     ordered = sorted(existing.values(), key=lambda item: (item.get("id", 9999), item["app"]))
     counts = {

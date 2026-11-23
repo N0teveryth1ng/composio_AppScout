@@ -1,7 +1,7 @@
-"""Sample picker, empty ground-truth template, and (later) accuracy check.
+"""Sample picker, empty ground-truth template, and accuracy check.
 
 Generating the template is all this script does by default. Accuracy is only
-computed with --compare, after the user has filled ground_truth.json by hand.
+computed with --compare, after the AI-drafted ground_truth.json is available.
 """
 
 import argparse
@@ -20,6 +20,12 @@ OUTPUT_FILE = Path("data/verification.json")
 SEED = 42
 PER_CATEGORY = 2
 FIELDS = ("auth_methods", "self_serve", "api_type", "existing_mcp", "buildability")
+# These are developer tools, not hosted APIs, so they are reported separately
+# and excluded from the accuracy denominators.
+EXCLUDED_FROM_ACCURACY = {
+    "Sherlock": "open-source CLI, not a hosted API",
+    "Mermaid CLI": "CLI/library, not a hosted API",
+}
 
 
 def pick_sample() -> list[dict]:
@@ -78,9 +84,16 @@ def _field_value(record: dict, field: str):
 
 
 def compare() -> None:
-    truth = json.loads(TRUTH_FILE.read_text(encoding="utf-8"))
-    if any(not entry.get("doc_url") for entry in truth):
+    all_truth = json.loads(TRUTH_FILE.read_text(encoding="utf-8"))
+    if any(not entry.get("doc_url") for entry in all_truth):
         raise SystemExit("ground_truth.json still has empty doc_url fields; fill it first")
+    excluded = [
+        {"app": entry["app"], "reason": EXCLUDED_FROM_ACCURACY[entry["app"]]}
+        for entry in all_truth if entry["app"] in EXCLUDED_FROM_ACCURACY
+    ]
+    truth = [
+        entry for entry in all_truth if entry["app"] not in EXCLUDED_FROM_ACCURACY
+    ]
     pass1 = {
         r["app"]: r for r in counted_records(
             json.loads(PASS1_FILE.read_text(encoding="utf-8"))
@@ -133,7 +146,15 @@ def compare() -> None:
         }
     results = json.loads(RESULTS_FILE.read_text(encoding="utf-8"))
     data = {
-        "sample_size": len(truth),
+        "sample_size": len(all_truth),
+        "scored_apps": len(truth),
+        "ground_truth_drafted_by": "ai",
+        "ground_truth_source": "official docs, pricing and sign-up pages",
+        "human_reviewed_count": sum(
+            entry.get("human_reviewed") is True for entry in all_truth
+        ),
+        "human_reviewed_total": len(all_truth),
+        "excluded_from_accuracy": excluded,
         "per_field_accuracy": accuracy,
         "overall_accuracy": overall,
         "misses": misses,
