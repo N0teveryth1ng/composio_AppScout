@@ -85,6 +85,18 @@ apps are done and is never edited afterwards.
   `data/tool_usage.json`. `results.json` is still the 10-record partial pass-2
   output; refresh it after pass 1 freezes.
 
+## GitHub push and Railway check (2026-11-23)
+
+- GitHub CLI is authenticated as `N0teveryth1ng`; `composio_AppScout` existed but
+  was **empty** (GitHub API: `isEmpty: true`, contents 404). Added `origin` and
+  pushed `main` (`9dd04e5`). Contents API now lists all 23 committed files.
+- No Railway CLI is installed, no Railway auth config exists locally, the in-app
+  browser shows Railway's login dialog, and the repo has zero GitHub
+  deployments and zero webhooks. So Railway is **not yet connected** to this
+  repo as far as can be verified from here.
+- Verified the exact start command locally with uvicorn: `/`, `/results`,
+  `/results.json`, `/patterns.json` all returned 200.
+
 ## What is needed from the user before publishing
 
 - GitHub: confirm the remote `https://github.com/N0teveryth1ng/composio_AppScout`
