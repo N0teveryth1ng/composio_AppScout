@@ -97,21 +97,25 @@ Commit the refreshed `data/results.json`, `data/patterns.json` and
 
 ## Results and limitations
 
-Published snapshot (commit `7ef8dec`):
+Final published snapshot:
 
-- 86 of 100 apps have results; 14 remain API-limit errors.
-- Pass 2 versions: 63 fixed (`subfield-fix-1`), 37 restored v1 (`v1-pre-fix`).
-  Only fixed records are scored.
-- Verification scored 11 of 18 eligible apps. 9 of 20 entries were reviewed by
-  hand (5 of the 11 scored apps: Discord, Shopify, Amazon SP-API, Notion,
-  QuickBooks); 0 answer values corrected.
+- 86 of 100 apps have results; 14 remain API-limit errors. Record statuses are
+  46 `ok`, 40 `needs_human` and 14 `error`.
+- Pass 2 versions: 81 fixed (`subfield-fix-1`), 19 restored v1 (`v1-pre-fix`).
+  Only fixed records are scored. 25 records remain marked `retry_pending` after
+  capped retries.
+- Verification scored 11 of 18 eligible apps. All 20 answer-key entries were
+  reviewed by hand, including all 11 scored apps; 0 answer values were
+  corrected after review. The scored apps are Podio, Discord, WhatsApp Business,
+  Shopify, Amazon Selling Partner, Waterfall.io, Snowflake, Sentry, Notion,
+  QuickBooks and Consensus.
 - Overall accuracy: pass 1 31/55 (56.4%), pass 2 27/55 (49.1%). By field:
   `auth_methods` 45.5% vs 45.5%, `self_serve` 54.5% vs 54.5%, `api_type`
   54.5% vs 54.5%, `existing_mcp` 72.7% vs 36.4%, `buildability` 54.5% vs
   54.5%. There are 52 miss rows.
-- Sherlock and Mermaid CLI are excluded as not hosted APIs. Attio, Pylon,
-  Gladly, Google Ads, GoHighLevel, ClickUp and Brex stayed on API errors and
-  are unscored.
+- Sherlock and Mermaid CLI are excluded as not hosted APIs. Seven sample apps
+  still on API errors are unscored: Attio, Pylon, Gladly, Google Ads,
+  GoHighLevel, ClickUp and Brex.
 - Pass 2 did not improve accuracy on this sample. The four non-MCP fields score
   identically; the whole drop is `existing_mcp`, where a code rule downgrading
   "official" MCP claims without vendor-domain evidence removed five
@@ -119,8 +123,8 @@ Published snapshot (commit `7ef8dec`):
   cause was not diagnosed and the rule was not tuned after seeing scores.
 - MCP counts mix fixed and v1-pre-fix records and are indicative. 13 of the 28
   pass-2 misses are abstentions (agent said unknown), and 12 of the 52 miss rows
-  come from two unreviewed entries (Consensus, Waterfall.io). With 11 scored
-  apps, all numbers are indicative.
+  come from Consensus and Waterfall.io. All 20 sample entries are reviewed by
+  hand, but with only 11 scored apps, all accuracy numbers remain indicative.
 
 ## Web app
 
@@ -153,8 +157,9 @@ regardless of the working directory. See `DEPLOY.md` for details.
   reported as research findings.
 - JavaScript-heavy docs can yield no text; those apps legitimately become
   `needs_human`.
-- The answer key was AI-drafted from official docs and marked for human review.
-  Accuracy numbers are computed only from that file and are never fabricated or tuned.
+- The answer key was AI-drafted from official docs and all 20 sample entries were
+  reviewed by hand. Accuracy numbers are computed only from that file and are
+  never fabricated or tuned.
 
 See `PROJECT_SPEC.md` for the original build specification and `PROGRESS.md` for
 the run log and deployment history.

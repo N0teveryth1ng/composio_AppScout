@@ -7,31 +7,21 @@
     "auth_methods": [
       "OAuth2"
     ],
-    "self_serve": "self_serve",
-    "self_serve_note": "Developer Edition provides a free and easy solution so that you can use Salesforce for testing and development.",
+    "self_serve": "unknown",
+    "self_serve_note": "unknown",
     "api_surface": {
       "type": [
         "REST",
         "SOAP"
       ],
       "breadth": "unknown",
-      "existing_mcp": "official",
-      "mcp_url": "https://developer.salesforce.com/docs/platform/sfdx-dev/guide/sfdx-dev-mcp.html"
+      "existing_mcp": "unknown",
+      "mcp_url": null
     },
     "buildability": "yes",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
-      {
-        "field": "auth_methods",
-        "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/intro_using_oauth.html",
-        "snippet": "Connect REST API uses OAuth to securely identify your application before connecting to Salesforce."
-      },
-      {
-        "field": "auth_methods",
-        "url": "https://www.youtube.com/watch?v=ef2dffppLyI",
-        "snippet": "OAuth is the industry standard way to grant limited access without sharing user passwords."
-      },
       {
         "field": "auth_methods",
         "url": "https://www.salesforceben.com/salesforce-to-salesforce-integration-using-oauth-2-0-a-comprehensive-guide",
@@ -43,29 +33,18 @@
         "snippet": "allow broad REST and SOAP access under the signed in user."
       },
       {
-        "field": "self_serve",
-        "url": "https://developer.salesforce.com/docs/platform/connect-rest-api/guide/quickstart_dev_org.html",
-        "snippet": "Developer Edition provides a free and easy solution so that you can use Salesforce for testing and development."
-      },
-      {
         "field": "buildability",
         "url": "https://docs.salesforce.com",
         "snippet": "Developer: Salesforce APIs, programming guides, SDKs, and reference documentation."
-      },
-      {
-        "field": "api_surface",
-        "url": "https://developer.salesforce.com/docs/platform/sfdx-dev/guide/sfdx-dev-mcp.html",
-        "snippet": "Salesforce DX MCP Server and Tools | Salesforce DX Developer Guide | Salesforce Developers"
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "ok",
-    "needs_human_reason": "none",
+    "status": "needs_human",
+    "needs_human_reason": "5 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve",
     "pass": 2,
-    "llm_model": "gemini-3.5-flash-lite",
+    "llm_model": "openai/gpt-oss-20b",
     "error_reason": "none",
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 2,
@@ -76,17 +55,17 @@
       "OAuth2",
       "API key"
     ],
-    "self_serve": "self_serve",
-    "self_serve_note": "No credit card or commitment required.",
+    "self_serve": "unknown",
+    "self_serve_note": "unknown",
     "api_surface": {
       "type": [
         "unknown"
       ],
       "breadth": "unknown",
-      "existing_mcp": "official",
-      "mcp_url": "https://developers.hubspot.com/ai-tools/mcp"
+      "existing_mcp": "unknown",
+      "mcp_url": null
     },
-    "buildability": "yes",
+    "buildability": "unknown",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
@@ -99,31 +78,15 @@
         "field": "auth_methods",
         "url": "https://community.hubspot.com/t5/APIs-Integrations/Authentication-credentials-not-found-This-API-supports-both-API/m-p/749561?profile.language=de",
         "snippet": "\"This API supports both API Key and OAuth 2.0 authentication\""
-      },
-      {
-        "field": "self_serve",
-        "url": "https://hubspot.com/free-trial",
-        "snippet": "No credit card or commitment required."
-      },
-      {
-        "field": "buildability",
-        "url": "https://developers.hubspot.com",
-        "snippet": "Explore our docs to learn more about our APIs, Apps, Developer Tooling, and CMS"
-      },
-      {
-        "field": "api_surface",
-        "url": "https://developers.hubspot.com/ai-tools/mcp",
-        "snippet": "HubSpot offers two distinct MCP (Model Context Protocol) servers — one for connecting any MCP-compatible AI tool or agent to your CRM, and one for building on the HubSpot Developer Platform."
       }
     ],
     "has_composio_toolkit": "unknown",
     "status": "needs_human",
-    "needs_human_reason": "missing evidence-backed: api_surface.type",
+    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve",
     "pass": 2,
-    "llm_model": "gemini-3.5-flash-lite",
+    "llm_model": "openai/gpt-oss-120b",
     "error_reason": "none",
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 3,
@@ -131,8 +94,7 @@
     "category": "CRM and Sales",
     "one_liner": "CRM and sales platform with a REST API",
     "auth_methods": [
-      "OAuth2",
-      "Token"
+      "unknown"
     ],
     "self_serve": "self_serve",
     "self_serve_note": "Free 14-day trial. No credit card required.",
@@ -144,20 +106,10 @@
       "existing_mcp": "official",
       "mcp_url": "https://www.pipedrive.com/en/features/mcp-server"
     },
-    "buildability": "yes",
+    "buildability": "unknown",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
-      {
-        "field": "auth_methods",
-        "url": "https://developers.pipedrive.com/docs/api/v1/Oauth",
-        "snippet": "OAuth 2.0"
-      },
-      {
-        "field": "auth_methods",
-        "url": "https://developers.pipedrive.com/docs/api/v1/Oauth",
-        "snippet": "\"token_type\":\"Bearer\""
-      },
       {
         "field": "self_serve",
         "url": "https://pipedrive.com/pricing",
@@ -175,13 +127,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "ok",
-    "needs_human_reason": "none",
+    "status": "needs_human",
+    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods",
     "pass": 2,
-    "llm_model": "gemini-3.5-flash-lite",
+    "llm_model": "openai/gpt-oss-120b",
     "error_reason": "none",
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 4,
@@ -1597,8 +1548,7 @@
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 30,
@@ -1810,8 +1760,7 @@
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 34,
@@ -1887,7 +1836,9 @@
     "category": "Marketing, Ads, Email and Social",
     "one_liner": "Mailchimp Marketing API v3.0 is a REST API for managing audiences, contacts, campaigns, automations, and reports.",
     "auth_methods": [
-      "unknown"
+      "OAuth2",
+      "API key",
+      "Basic"
     ],
     "self_serve": "self_serve",
     "self_serve_note": "Create a free account or log in.",
@@ -1899,10 +1850,25 @@
       "existing_mcp": "community",
       "mcp_url": "https://ai-inc.mailchimp.com/claude/mcp/v2"
     },
-    "buildability": "unknown",
+    "buildability": "yes",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://mailchimp.com/developer/marketing/build/start-developing/set-up-an-oauth-app",
+        "snippet": "Register an application, implement the OAuth 2 flow on your server, and rotate a client secret."
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://stackoverflow.com/questions/33407601/api-key-for-mailchimp-api-authentication-methods",
+        "snippet": "There are two types of authentication methods: Basic and OAuth 2."
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://www.activepieces.com/blog/mailchimp-api-keys-rate-limits-and-requests-2026",
+        "snippet": "authenticated with an API key or OAuth 2"
+      },
       {
         "field": "api_surface",
         "url": "https://www.activepieces.com/blog/mailchimp-api-keys-rate-limits-and-requests-2026",
@@ -1925,13 +1891,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "needs_human",
-    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods",
+    "status": "ok",
+    "needs_human_reason": "none",
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 36,
@@ -1993,8 +1958,7 @@
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 37,
@@ -2222,8 +2186,7 @@
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 41,
@@ -2347,8 +2310,7 @@
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 43,
@@ -2459,18 +2421,13 @@
         "GraphQL"
       ],
       "breadth": "unknown",
-      "existing_mcp": "community",
-      "mcp_url": "https://github.com/rafaelstz/adobe-commerce-dev-mcp"
+      "existing_mcp": "unknown",
+      "mcp_url": null
     },
     "buildability": "unknown",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
-      {
-        "field": "auth_methods",
-        "url": "https://developer.adobe.com/commerce/webapi/get-started/authentication/gs-authentication-oauth",
-        "snippet": "OAuth authentication with Adobe Commerce and Magento Open Source is based on OAuth 1.0a"
-      },
       {
         "field": "auth_methods",
         "url": "https://www.mageplaza.com/devdocs/token-oauth-session-authentication-magento-2.html",
@@ -2480,21 +2437,15 @@
         "field": "api_surface",
         "url": "https://apis.io/providers/adobe-commerce",
         "snippet": "The Adobe Commerce Web APIs expose REST and GraphQL access to products, categories, customers, carts, orders, inventory, and configuration"
-      },
-      {
-        "field": "api_surface",
-        "url": "https://github.com/rafaelstz/adobe-commerce-dev-mcp",
-        "snippet": "Adobe Commerce Dev MCP Server ... This project implements a Model Context Protocol (MCP) server that interacts with Adobe Commerce."
       }
     ],
     "has_composio_toolkit": "unknown",
     "status": "needs_human",
-    "needs_human_reason": "missing evidence-backed: self_serve",
+    "needs_human_reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve",
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 46,
@@ -2554,10 +2505,9 @@
     "status": "ok",
     "needs_human_reason": "none",
     "error_reason": "none",
-    "llm_model": "gemini-3.5-flash-lite",
+    "llm_model": "qwen/qwen3.8-27b",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 47,
@@ -2624,8 +2574,7 @@
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 48,
@@ -2636,17 +2585,17 @@
       "OAuth2",
       "Token"
     ],
-    "self_serve": "self_serve",
-    "self_serve_note": "To start using the API, you'll need to register your OAuth application... After creating an application, you'll be given a unique application id and application secret.",
+    "self_serve": "unknown",
+    "self_serve_note": "unknown",
     "api_surface": {
       "type": [
         "REST"
       ],
       "breadth": "unknown",
-      "existing_mcp": "official",
-      "mcp_url": "https://gumroad.com/claude/v1/mcp"
+      "existing_mcp": "unknown",
+      "mcp_url": null
     },
-    "buildability": "yes",
+    "buildability": "unknown",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
@@ -2664,31 +2613,15 @@
         "field": "api_surface",
         "url": "https://rollout.com/integration-guides/gumroad/api-essentials",
         "snippet": "The Gumroad OAuth API is based around REST. We return JSON for every request, including errors."
-      },
-      {
-        "field": "self_serve",
-        "url": "https://gumroad.com/api",
-        "snippet": "To start using the API, you'll need to register your OAuth application. Note: The Verify License API endpoint does not require an OAuth application."
-      },
-      {
-        "field": "buildability",
-        "url": "https://gumroad.com/api",
-        "snippet": "The Gumroad OAuth API is based around REST. We return JSON for every request, including errors."
-      },
-      {
-        "field": "api_surface",
-        "url": "https://gumroad.com/claude",
-        "snippet": "Gumroad MCP for Claude | Sell digital products ... MCP server URL `https://gumroad.com/claude/v1/mcp`"
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "ok",
-    "needs_human_reason": "none",
+    "status": "needs_human",
+    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve",
     "error_reason": "none",
-    "llm_model": "gemini-3.5-flash-lite",
+    "llm_model": "openai/gpt-oss-20b",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 49,
@@ -2837,8 +2770,7 @@
     "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 52,
@@ -2928,11 +2860,6 @@
     "evidence": [
       {
         "field": "auth_methods",
-        "url": "https://docs.ahrefs.com/en/ahrefs-connect/docs/oauth-guide",
-        "snippet": "Ahrefs Connect uses OAuth 2.0 Authorization Code Flow with Proof Key for Code Exchange (PKCE)."
-      },
-      {
-        "field": "auth_methods",
         "url": "https://apis.io/security/ahrefs/ahrefs-authentication",
         "snippet": "http http scheme: bearer · in: header (Authorization)"
       },
@@ -2961,10 +2888,9 @@
     "status": "ok",
     "needs_human_reason": "none",
     "error_reason": "none",
-    "llm_model": "gemini-3.5-flash-lite",
+    "llm_model": "openai/gpt-oss-120b",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 54,
@@ -3084,7 +3010,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 56,
@@ -3142,7 +3069,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 57,
@@ -3448,7 +3376,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 63,
@@ -3456,7 +3385,8 @@
     "category": "Developer, Infra and Data platforms",
     "one_liner": "Netlify API allows users to manage atomic deploys, form submissions, DNS, and more using a REST-style API.",
     "auth_methods": [
-      "unknown"
+      "OAuth2",
+      "Token"
     ],
     "self_serve": "self_serve",
     "self_serve_note": "Free — $0 forever: Audience: Individual, Credits: 300 credit limit, Deploy from AI, Git, or API",
@@ -3468,10 +3398,20 @@
       "existing_mcp": "official",
       "mcp_url": "https://netlify-mcp.netlify.app/mcp"
     },
-    "buildability": "unknown",
+    "buildability": "yes",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
+      {
+        "field": "auth_methods",
+        "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api",
+        "snippet": "Netlify uses OAuth2 for authentication."
+      },
+      {
+        "field": "auth_methods",
+        "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api",
+        "snippet": "To generate a personal access token (PAT)"
+      },
       {
         "field": "api_surface",
         "url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api",
@@ -3494,13 +3434,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "needs_human",
-    "needs_human_reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods",
+    "status": "ok",
+    "needs_human_reason": "none",
     "error_reason": "none",
-    "llm_model": "gemini-3.5-flash-lite",
+    "llm_model": "qwen/qwen3.8-27b",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 64,
@@ -3563,7 +3502,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 65,
@@ -3825,7 +3765,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 69,
@@ -3894,7 +3835,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 70,
@@ -4076,7 +4018,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 73,
@@ -4134,7 +4077,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 74,
@@ -4204,7 +4148,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 75,
@@ -4461,7 +4406,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 79,
@@ -4639,7 +4585,8 @@
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
     "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "restored_from": "b91bae7",
+    "retry_pending": true
   },
   {
     "id": 82,
@@ -4704,8 +4651,7 @@
     "category": "Finance and Fintech",
     "one_liner": "Binance.US API documentation for REST endpoints with API key authentication and signature.",
     "auth_methods": [
-      "API key",
-      "Other"
+      "unknown"
     ],
     "self_serve": "unknown",
     "self_serve_note": "unknown",
@@ -4714,42 +4660,26 @@
         "REST"
       ],
       "breadth": "unknown",
-      "existing_mcp": "community",
-      "mcp_url": "https://github.com/ethancod1ng/binance-mcp-server"
+      "existing_mcp": "unknown",
+      "mcp_url": null
     },
     "buildability": "unknown",
     "main_blocker": "unknown",
     "blocker_note": "unknown",
     "evidence": [
       {
-        "field": "auth_methods",
-        "url": "https://docs.binance.us",
-        "snippet": "Get API Keys"
-      },
-      {
-        "field": "auth_methods",
-        "url": "https://docs.binance.us",
-        "snippet": "Signature Authentication"
-      },
-      {
         "field": "api_surface",
         "url": "https://docs.binance.us",
         "snippet": "REST API"
-      },
-      {
-        "field": "api_surface",
-        "url": "https://github.com/ethancod1ng/binance-mcp-server",
-        "snippet": "A Model Context Protocol (MCP) server for integrating AI assistants with Binance cryptocurrency exchange APIs"
       }
     ],
     "has_composio_toolkit": "unknown",
     "status": "needs_human",
-    "needs_human_reason": "missing evidence-backed: self_serve",
+    "needs_human_reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, self_serve",
     "error_reason": "none",
-    "llm_model": "qwen/qwen3.8-27b",
+    "llm_model": "openai/gpt-oss-120b",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 84,
@@ -4824,10 +4754,9 @@
     "status": "needs_human",
     "needs_human_reason": "missing evidence-backed: auth_methods, api_surface.type",
     "error_reason": "none",
-    "llm_model": "gemini-3.5-flash-lite",
+    "llm_model": "qwen/qwen3.8-27b",
     "pass": 2,
-    "pass2_version": "v1-pre-fix",
-    "restored_from": "b91bae7"
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 86,

@@ -132,7 +132,10 @@
         <p><strong>Scored {{ verification.scored_apps }} of
            {{ verification.get('eligible_size', verification.sample_size - 2) }} eligible apps.</strong>
            Only fixed pass-2 records are scored; v1-pre-fix records are never scored.</p>
-        <p><strong>9 of 20 reviewed by hand (5 of the 11 scored apps: Discord, Shopify, Amazon SP-API, Notion, QuickBooks), 0 values corrected.</strong></p>
+        <p><strong>{{ verification.human_reviewed_count }} of
+           {{ verification.human_reviewed_total }} reviewed by hand (all
+           {{ verification.scored_apps }} scored apps),
+           {{ verification.get('answer_value_corrections', 0) }} values corrected.</strong></p>
         <p>Not hosted APIs, excluded:
            {% for item in verification.excluded_from_accuracy %}
              <strong>{{ item.app }}</strong>{% if not loop.last %}, {% endif %}
@@ -158,15 +161,19 @@
              ({{ "%.2f"|format(verification.overall_accuracy.pass2.accuracy * 100) }}%).</p>
 
           <p><strong>What these numbers show:</strong> Pass 2 did not improve accuracy on this
-             sample (49.1% vs 56.4%, 11 scored apps, 5 reviewed by hand). The four non-MCP
+             sample ({{ "%.1f"|format(verification.overall_accuracy.pass2.accuracy * 100) }}% vs
+             {{ "%.1f"|format(verification.overall_accuracy.pass1.accuracy * 100) }}%,
+             {{ verification.scored_apps }} scored apps, all
+             {{ verification.scored_apps }} reviewed by hand). The four non-MCP
              fields score identically; the whole drop is existing_mcp (72.7% to 36.4%), where
              a code rule downgrading "official" MCP claims without vendor-domain
              evidence removed five correct answers (Shopify, Sentry, Notion, QuickBooks,
              WhatsApp Business). The cause was not diagnosed and the rule was not tuned after
              seeing scores. 13 of the 28 pass-2 misses are abstentions (agent said unknown).
-             The answer key is AI-drafted, only 9 of 20 entries were reviewed by hand, and
-             12 of the 52 miss rows come from two unreviewed entries (Consensus, Waterfall.io).
-             With 11 scored apps, all numbers are indicative.</p>
+             The answer key was AI-drafted from official docs; all
+             {{ verification.human_reviewed_total }} sample entries were reviewed by hand, and
+             12 of the {{ misses|length }} miss rows come from Consensus and Waterfall.io.
+             With {{ verification.scored_apps }} scored apps, all numbers are indicative.</p>
 
           <h3>Accuracy by field</h3>
           <div class="table-wrap">
@@ -228,7 +235,7 @@
       <ul class="plain-list">
         <li>JavaScript-heavy docs can return empty text; those apps become needs_human.</li>
         <li>API-error records are retried and never counted as research results.</li>
-        <li>The answer key was AI-drafted from official docs and marked for human review; the agent does not invent it.</li>
+        <li>The answer key was AI-drafted from official docs and all 20 sample entries were reviewed by hand; the agent does not invent it.</li>
         <li>Pass 2 initially dropped `api_surface.type` for some apps because each api_surface evidence item was checked against the whole `{type, breadth, existing_mcp}` object, so a snippet supporting only one subfield could be marked not_found. The verifier now narrows each claim to the single supported subfield and reads up to 12,000 characters of the cached page; the code-only snippet check already used the full cached page. This claim-check bug was found and fixed during the run: the fixed pass 2 was applied to {{ fixed_version_count }} of {{ total_apps }} apps, and {{ v1_version_count }} records are tagged v1-pre-fix from commit b91bae7. For verification, only the fixed version counts.</li>
       </ul>
     </section>

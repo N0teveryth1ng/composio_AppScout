@@ -48,9 +48,9 @@
   "comparison_computed": true,
   "ground_truth_drafted_by": "ai",
   "ground_truth_source": "official docs, pricing and sign-up pages",
-  "human_reviewed_count": 9,
+  "human_reviewed_count": 20,
   "human_reviewed_total": 20,
-  "corrected_values_count": 9,
+  "corrected_values_count": 20,
   "answer_value_corrections": 0,
   "ground_truth_validation": "passed",
   "accuracy_withheld": false,
@@ -724,6 +724,6 @@
       "doc_url": "https://docs.consensus.app/consensus-mcp"
     }
   ],
-  "needs_human_count": 39,
+  "needs_human_count": 40,
   "api_error_count": 14
 }

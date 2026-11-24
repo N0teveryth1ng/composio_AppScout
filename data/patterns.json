@@ -3,11 +3,11 @@
   "records_counted": 86,
   "records_excluded": 14,
   "auth_overall": {
-    "OAuth2": 55,
+    "OAuth2": 56,
     "API key": 41,
     "Token": 26,
-    "Basic": 11,
-    "Other": 4
+    "Basic": 12,
+    "Other": 3
   },
   "auth_by_category": {
     "AI, Research and Media-native": {
@@ -17,10 +17,9 @@
       "Token": 1
     },
     "CRM and Sales": {
-      "OAuth2": 8,
+      "OAuth2": 7,
       "API key": 4,
-      "Basic": 1,
-      "Token": 1
+      "Basic": 1
     },
     "Communications and Messaging": {
       "OAuth2": 6,
@@ -35,9 +34,9 @@
       "Basic": 1
     },
     "Developer, Infra and Data platforms": {
+      "OAuth2": 7,
       "API key": 6,
-      "OAuth2": 6,
-      "Token": 4,
+      "Token": 5,
       "Other": 1
     },
     "Ecommerce": {
@@ -47,14 +46,14 @@
       "Basic": 1
     },
     "Finance and Fintech": {
-      "API key": 4,
       "OAuth2": 4,
-      "Other": 2
+      "API key": 3,
+      "Other": 1
     },
     "Marketing, Ads, Email and Social": {
-      "OAuth2": 5,
-      "API key": 3,
-      "Basic": 2,
+      "OAuth2": 6,
+      "API key": 4,
+      "Basic": 3,
       "Token": 2
     },
     "Productivity and Project Management": {
@@ -71,7 +70,7 @@
     }
   },
   "self_serve_overall": {
-    "self_serve": 46,
+    "self_serve": 43,
     "trial_or_paid": 13,
     "gated": 1
   },
@@ -81,7 +80,7 @@
       "trial_or_paid": 1
     },
     "CRM and Sales": {
-      "self_serve": 6,
+      "self_serve": 4,
       "trial_or_paid": 1
     },
     "Communications and Messaging": {
@@ -97,7 +96,7 @@
       "trial_or_paid": 2
     },
     "Ecommerce": {
-      "self_serve": 5,
+      "self_serve": 4,
       "trial_or_paid": 1
     },
     "Finance and Fintech": {
@@ -116,7 +115,7 @@
     }
   },
   "buildability_overall": {
-    "yes": 54,
+    "yes": 53,
     "partial": 2,
     "no": 1
   },
@@ -125,7 +124,7 @@
       "yes": 3
     },
     "CRM and Sales": {
-      "yes": 7
+      "yes": 5
     },
     "Communications and Messaging": {
       "yes": 5
@@ -134,10 +133,10 @@
       "yes": 6
     },
     "Developer, Infra and Data platforms": {
-      "yes": 7
+      "yes": 8
     },
     "Ecommerce": {
-      "yes": 6,
+      "yes": 5,
       "no": 1
     },
     "Finance and Fintech": {
@@ -145,7 +144,7 @@
       "partial": 1
     },
     "Marketing, Ads, Email and Social": {
-      "yes": 4,
+      "yes": 5,
       "partial": 1
     },
     "Productivity and Project Management": {
@@ -160,31 +159,29 @@
     "admin_approval": 1
   },
   "mcp": {
-    "official": 36,
-    "unknown": 22,
-    "community": 28
+    "unknown": 27,
+    "official": 33,
+    "community": 26
   },
   "easy_wins": [
-    "Salesforce",
-    "HubSpot",
-    "Pipedrive",
     "Twenty",
     "Podio",
     "Gorgias",
     "Slack",
     "Twilio",
     "Discord",
+    "Mailchimp",
     "Klaviyo",
     "Pinterest",
     "SendGrid",
     "Shopify",
     "WooCommerce",
     "Squarespace",
-    "Gumroad",
     "DataForSEO",
     "Apify",
     "Firecrawl",
     "Bright Data",
+    "Netlify",
     "Cloudflare",
     "Supabase",
     "Neo4j",
@@ -206,8 +203,16 @@
   ],
   "needs_human": [
     {
+      "app": "Salesforce",
+      "reason": "5 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
       "app": "HubSpot",
-      "reason": "missing evidence-backed: api_surface.type"
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: api_surface.type, self_serve"
+    },
+    {
+      "app": "Pipedrive",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
     },
     {
       "app": "Zoho CRM",
@@ -274,10 +279,6 @@
       "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
     },
     {
-      "app": "Mailchimp",
-      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
-    },
-    {
       "app": "Threads (Meta)",
       "reason": "missing evidence-backed: self_serve"
     },
@@ -291,7 +292,11 @@
     },
     {
       "app": "Magento (Adobe Commerce)",
-      "reason": "missing evidence-backed: self_serve"
+      "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
+    },
+    {
+      "app": "Gumroad",
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
     },
     {
       "app": "Amazon Selling Partner",
@@ -314,16 +319,12 @@
       "reason": "missing evidence-backed: auth_methods"
     },
     {
-      "app": "Netlify",
-      "reason": "2 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods"
-    },
-    {
       "app": "Smartsheet",
       "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: self_serve"
     },
     {
       "app": "Binance",
-      "reason": "missing evidence-backed: self_serve"
+      "reason": "3 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, self_serve"
     },
     {
       "app": "Paygent Connect",
@@ -364,10 +365,10 @@
   ],
   "headlines": [
     "86 apps counted; 14 API-error records excluded.",
-    "Most common auth: OAuth2 (55), API key (41).",
-    "Access: self_serve (46), trial_or_paid (13).",
-    "35 easy wins, 1 need outreach.",
-    "36 official and 28 community MCP servers found.",
-    "39 apps still need a human."
+    "Most common auth: OAuth2 (56), API key (41).",
+    "Access: self_serve (43), trial_or_paid (13).",
+    "33 easy wins, 1 need outreach.",
+    "33 official and 26 community MCP servers found.",
+    "40 apps still need a human."
   ]
 }
