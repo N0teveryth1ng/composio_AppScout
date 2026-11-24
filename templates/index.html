@@ -182,7 +182,7 @@
         <li>JavaScript-heavy docs can return empty text; those apps become needs_human.</li>
         <li>API-error records are retried and never counted as research results.</li>
         <li>The answer key was AI-drafted from official docs and marked for human review; the agent does not invent it.</li>
-        <li>Pass 2 initially dropped `api_surface.type` for some apps because each api_surface evidence item was checked against the whole `{type, breadth, existing_mcp}` object, so a snippet supporting only one subfield could be marked not_found. The verifier now narrows each claim to the single supported subfield and reads up to 12,000 characters of the cached page; the code-only snippet check already used the full cached page.</li>
+        <li>Pass 2 initially dropped `api_surface.type` for some apps because each api_surface evidence item was checked against the whole `{type, breadth, existing_mcp}` object, so a snippet supporting only one subfield could be marked not_found. The verifier now narrows each claim to the single supported subfield and reads up to 12,000 characters of the cached page; the code-only snippet check already used the full cached page. This claim-check bug was found and fixed during the run, and the final pass 2 was applied to 100 of 100 apps.</li>
       </ul>
     </section>
 

@@ -24,7 +24,9 @@ import tools
 
 INPUT_FILE = Path("data/pass1.json")
 OUTPUT_FILE = Path("data/results.json")
+APPS_FILE = Path(__file__).resolve().parent / "apps.json"
 PAGE_CHARS = 12000
+PASS2_VERSION = "subfield-fix-1"
 VERIFIABLE_FIELDS = ("auth_methods", "self_serve", "api_surface", "buildability")
 
 CHECK_SYSTEM = """You verify claims against web-page text.
@@ -203,10 +205,12 @@ def verify_record(record: dict) -> dict:
     if record.get("status") == "error":
         carried = copy.deepcopy(record)
         carried["pass"] = 2
+        carried["pass2_version"] = PASS2_VERSION
         return carried
     if not claims:
         new = copy.deepcopy(record)
         new["pass"] = 2
+        new["pass2_version"] = PASS2_VERSION
         new["evidence"] = []
         new["status"] = "needs_human"
         new["needs_human_reason"] = "no pass-1 evidence to verify"
@@ -228,6 +232,7 @@ def verify_record(record: dict) -> dict:
 
     new = copy.deepcopy(record)
     new["pass"] = 2
+    new["pass2_version"] = PASS2_VERSION
     new["llm_model"] = meta["model"]
     if "_error" in result:
         new["status"] = "error"
@@ -281,6 +286,51 @@ def verify_record(record: dict) -> dict:
     return new
 
 
+def apply_official_mcp_rule(record: dict, app_meta: dict) -> None:
+    """Code-only rule: downgrade MCP claims that lack official-source support."""
+    api = record.get("api_surface")
+    if not isinstance(api, dict):
+        return
+    existing = api.get("existing_mcp")
+    if existing not in ("official", "community"):
+        return
+
+    # Any evidence item whose URL or snippet mentions MCP supports the claim.
+    mcp_urls = []
+    for item in record.get("evidence") or []:
+        if not isinstance(item, dict):
+            continue
+        text = _norm(f"{item.get('url', '')} {item.get('snippet', '')}")
+        if "mcp" in text or "model context protocol" in text:
+            mcp_urls.append(item.get("url", ""))
+
+    if not mcp_urls:
+        api["existing_mcp"] = "unknown"
+        api["mcp_url"] = None
+        return
+
+    # Lazy import: agent.py imports pass2 inside its run function, so importing
+    # agent at module load here would create an import cycle.
+    from agent import _is_official
+
+    if not any(_is_official(url, app_meta) for url in mcp_urls):
+        if existing == "official":
+            api["existing_mcp"] = "community"
+
+
+def apply_official_mcp_rule_all(records: list[dict]) -> None:
+    """Apply the official-MCP rule to every record using apps.json metadata."""
+    apps = json.loads(APPS_FILE.read_text(encoding="utf-8"))
+    by_name = {item["app"]: item for item in apps}
+    by_lower = {name.lower(): item for name, item in by_name.items()}
+    for record in records:
+        name = record.get("app", "")
+        app_meta = by_name.get(name) or by_lower.get(str(name).lower())
+        if app_meta is None:
+            app_meta = {"app": name, "hint": ""}
+        apply_official_mcp_rule(record, app_meta)
+
+
 def run(input_path: Path = INPUT_FILE, output_path: Path = OUTPUT_FILE,
         limit: int | None = None, apps: set[str] | None = None,
         force: bool = False) -> list[dict]:
@@ -310,6 +360,8 @@ def run(input_path: Path = INPUT_FILE, output_path: Path = OUTPUT_FILE,
         _write_json(output_path, ordered)
 
     ordered = sorted(existing.values(), key=lambda item: (item.get("id", 9999), item["app"]))
+    apply_official_mcp_rule_all(ordered)
+    _write_json(output_path, ordered)
     counts = {
         status: sum(item.get("status") == status for item in ordered)
         for status in ("ok", "needs_human", "error")
