@@ -83,7 +83,7 @@
               {% endif %}
             {% endfor %}
             <tr>
-              <td>{{ row.id }} {{ row.app }}</td>
+              <td>{{ row.id }} {{ row.app }}{% if row.pass2_version == 'v1-pre-fix' %} <span class="version-v1" title="pass2_version: v1-pre-fix">v1</span>{% endif %}</td>
               <td>{{ row.category }}</td>
               <td>{{ row.auth_methods|join(', ') }}</td>
               <td><span class="badge badge--{{ row.self_serve }}">{{ row.self_serve }}</span></td>

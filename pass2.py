@@ -331,6 +331,11 @@ def apply_official_mcp_rule_all(records: list[dict]) -> None:
         apply_official_mcp_rule(record, app_meta)
 
 
+def _is_valid_pass2(record: dict) -> bool:
+    """A finished pass-2 record: must not be replaced by an API-error result."""
+    return record.get("pass") == 2 and record.get("status") in ("ok", "needs_human")
+
+
 def run(input_path: Path = INPUT_FILE, output_path: Path = OUTPUT_FILE,
         limit: int | None = None, apps: set[str] | None = None,
         force: bool = False) -> list[dict]:
@@ -351,11 +356,23 @@ def run(input_path: Path = INPUT_FILE, output_path: Path = OUTPUT_FILE,
 
     for record in source:
         name = record["app"]
-        if not force and name in existing and existing[name].get("pass") == 2 \
-                and existing[name].get("status") != "error":
+        if not force and name in existing and _is_valid_pass2(existing[name]):
             print(f"[pass2] skipping already-verified {name}", flush=True)
             continue
-        existing[name] = verify_record(record)
+        candidate = verify_record(record)
+        if candidate.get("status") == "error" and name in existing \
+                and _is_valid_pass2(existing[name]):
+            # An API failure must never destroy a finished pass-2 record.
+            kept = existing[name]
+            kept["retry_pending"] = True
+            print(
+                f"[pass2] {name}: verification failed; kept existing "
+                f"{kept['status']} record and marked retry_pending",
+                flush=True,
+            )
+        else:
+            candidate.pop("retry_pending", None)
+            existing[name] = candidate
         ordered = sorted(existing.values(), key=lambda item: (item.get("id", 9999), item["app"]))
         _write_json(output_path, ordered)
 

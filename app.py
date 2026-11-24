@@ -103,6 +103,12 @@ def index(request: Request):
         "results_count": len(results),
         "needs_human": [r for r in results if r.get("status") == "needs_human"],
         "error_count": sum(r.get("status") == "error" for r in results),
+        "fixed_version_count": sum(
+            r.get("pass2_version") == "subfield-fix-1" for r in results
+        ),
+        "v1_version_count": sum(
+            r.get("pass2_version") == "v1-pre-fix" for r in results
+        ),
         "usage_rows": _usage_rows(usage),
     })
 

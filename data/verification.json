@@ -1,0 +1,729 @@
+{
+  "sample_size": 20,
+  "eligible_size": 18,
+  "scored_apps": 11,
+  "scored_app_names": [
+    "Podio",
+    "Discord",
+    "WhatsApp Business",
+    "Shopify",
+    "Amazon Selling Partner",
+    "Waterfall.io",
+    "Snowflake",
+    "Sentry",
+    "Notion",
+    "QuickBooks",
+    "Consensus"
+  ],
+  "unscored_apps": [
+    {
+      "app": "Attio",
+      "reason": "pass-2 ended on an API error"
+    },
+    {
+      "app": "Pylon",
+      "reason": "pass-2 ended on an API error"
+    },
+    {
+      "app": "Gladly",
+      "reason": "pass-2 ended on an API error"
+    },
+    {
+      "app": "Google Ads",
+      "reason": "pass-2 ended on an API error"
+    },
+    {
+      "app": "GoHighLevel",
+      "reason": "pass-2 ended on an API error"
+    },
+    {
+      "app": "ClickUp",
+      "reason": "pass-2 ended on an API error"
+    },
+    {
+      "app": "Brex",
+      "reason": "pass-2 ended on an API error"
+    }
+  ],
+  "comparison_computed": true,
+  "ground_truth_drafted_by": "ai",
+  "ground_truth_source": "official docs, pricing and sign-up pages",
+  "human_reviewed_count": 9,
+  "human_reviewed_total": 20,
+  "corrected_values_count": 9,
+  "answer_value_corrections": 0,
+  "ground_truth_validation": "passed",
+  "accuracy_withheld": false,
+  "excluded_from_accuracy": [
+    {
+      "app": "Sherlock",
+      "reason": "not hosted APIs, excluded"
+    },
+    {
+      "app": "Mermaid CLI",
+      "reason": "not hosted APIs, excluded"
+    }
+  ],
+  "per_field_accuracy": {
+    "auth_methods": {
+      "pass1": {
+        "correct": 5,
+        "compared": 11,
+        "accuracy": 0.45454545454545453
+      },
+      "pass2": {
+        "correct": 5,
+        "compared": 11,
+        "accuracy": 0.45454545454545453
+      }
+    },
+    "self_serve": {
+      "pass1": {
+        "correct": 6,
+        "compared": 11,
+        "accuracy": 0.5454545454545454
+      },
+      "pass2": {
+        "correct": 6,
+        "compared": 11,
+        "accuracy": 0.5454545454545454
+      }
+    },
+    "api_type": {
+      "pass1": {
+        "correct": 6,
+        "compared": 11,
+        "accuracy": 0.5454545454545454
+      },
+      "pass2": {
+        "correct": 6,
+        "compared": 11,
+        "accuracy": 0.5454545454545454
+      }
+    },
+    "existing_mcp": {
+      "pass1": {
+        "correct": 8,
+        "compared": 11,
+        "accuracy": 0.7272727272727273
+      },
+      "pass2": {
+        "correct": 4,
+        "compared": 11,
+        "accuracy": 0.36363636363636365
+      }
+    },
+    "buildability": {
+      "pass1": {
+        "correct": 6,
+        "compared": 11,
+        "accuracy": 0.5454545454545454
+      },
+      "pass2": {
+        "correct": 6,
+        "compared": 11,
+        "accuracy": 0.5454545454545454
+      }
+    }
+  },
+  "overall_accuracy": {
+    "pass1": {
+      "correct": 31,
+      "compared": 55,
+      "accuracy": 0.5636363636363636
+    },
+    "pass2": {
+      "correct": 27,
+      "compared": 55,
+      "accuracy": 0.4909090909090909
+    }
+  },
+  "misses": [
+    {
+      "app": "Podio",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "oauth2"
+      ],
+      "true_value": [
+        "api key",
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed api key, token; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://developers.podio.com/doc/oauth-authorization/get-access-token-22359"
+    },
+    {
+      "app": "Podio",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "oauth2"
+      ],
+      "true_value": [
+        "api key",
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed api key, token; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developers.podio.com/doc/oauth-authorization/get-access-token-22359"
+    },
+    {
+      "app": "Podio",
+      "field": "existing_mcp",
+      "pass": "pass1",
+      "agent_value": "official",
+      "true_value": "unknown",
+      "likely_cause": "Pass 1 likely cause: missed unknown; over-claimed official; official MCP claim lacked vendor-domain or GitHub-org evidence; no claim-level re-check at pass 1.",
+      "doc_url": "https://developers.podio.com/doc/oauth-authorization/get-access-token-22359"
+    },
+    {
+      "app": "Discord",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "api key",
+        "oauth2",
+        "token"
+      ],
+      "true_value": [
+        "basic",
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed basic; over-claimed api key; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.discord.com/developers/topics/oauth2"
+    },
+    {
+      "app": "Discord",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "api key",
+        "oauth2",
+        "token"
+      ],
+      "true_value": [
+        "basic",
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed basic; over-claimed api key; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.discord.com/developers/topics/oauth2"
+    },
+    {
+      "app": "Discord",
+      "field": "existing_mcp",
+      "pass": "pass1",
+      "agent_value": "community",
+      "true_value": "unknown",
+      "likely_cause": "Pass 1 likely cause: missed unknown; over-claimed community; only third-party MCP evidence was present; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.discord.com/developers/topics/oauth2"
+    },
+    {
+      "app": "Discord",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "community",
+      "true_value": "unknown",
+      "likely_cause": "Pass 2 likely cause: missed unknown; over-claimed community; only third-party MCP evidence was present; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.discord.com/developers/topics/oauth2"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "api key",
+        "oauth2"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed token; over-claimed api key; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "api key",
+        "oauth2"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed token; over-claimed api key; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "trial_or_paid",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed trial_or_paid; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "trial_or_paid",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed trial_or_paid; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "api_type",
+      "pass": "pass1",
+      "agent_value": [
+        "unknown"
+      ],
+      "true_value": [
+        "rest"
+      ],
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed rest; over-claimed unknown; cited docs describe a different API style; no claim-level re-check at pass 1.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "api_type",
+      "pass": "pass2",
+      "agent_value": [
+        "unknown"
+      ],
+      "true_value": [
+        "rest"
+      ],
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed rest; over-claimed unknown; cited docs describe a different API style; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "official",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed official; over-claimed unknown; official MCP server was not found in the cited sources; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "buildability",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "partial",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed partial; over-claimed unknown; buildability judgment differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "WhatsApp Business",
+      "field": "buildability",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "partial",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed partial; over-claimed unknown; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "Shopify",
+      "field": "api_type",
+      "pass": "pass1",
+      "agent_value": [
+        "rest"
+      ],
+      "true_value": [
+        "graphql"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed graphql; over-claimed rest; cited docs describe a different API style; no claim-level re-check at pass 1.",
+      "doc_url": "https://shopify.dev/docs/apps/build/authentication-authorization/manage-credentials"
+    },
+    {
+      "app": "Shopify",
+      "field": "api_type",
+      "pass": "pass2",
+      "agent_value": [
+        "rest"
+      ],
+      "true_value": [
+        "graphql"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed graphql; over-claimed rest; cited docs describe a different API style; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://shopify.dev/docs/apps/build/authentication-authorization/manage-credentials"
+    },
+    {
+      "app": "Shopify",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "community",
+      "true_value": "official",
+      "likely_cause": "Pass 2 likely cause: missed official; over-claimed community; official MCP server was not found in the cited sources; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://shopify.dev/docs/apps/build/authentication-authorization/manage-credentials"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "oauth2"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed token; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "oauth2"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed token; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "gated",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed gated; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "gated",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed gated; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "api_type",
+      "pass": "pass1",
+      "agent_value": [
+        "rest"
+      ],
+      "true_value": [
+        "graphql",
+        "rest"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed graphql; cited docs describe a different API style; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "api_type",
+      "pass": "pass2",
+      "agent_value": [
+        "rest"
+      ],
+      "true_value": [
+        "graphql",
+        "rest"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed graphql; cited docs describe a different API style; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "existing_mcp",
+      "pass": "pass1",
+      "agent_value": "community",
+      "true_value": "unknown",
+      "likely_cause": "Pass 1 likely cause: missed unknown; over-claimed community; only third-party MCP evidence was present; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "community",
+      "true_value": "unknown",
+      "likely_cause": "Pass 2 likely cause: missed unknown; over-claimed community; only third-party MCP evidence was present; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "buildability",
+      "pass": "pass1",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 1 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Amazon Selling Partner",
+      "field": "buildability",
+      "pass": "pass2",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 2 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api"
+    },
+    {
+      "app": "Waterfall.io",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "gated",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed gated; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.waterfall.io/v1/introduction"
+    },
+    {
+      "app": "Waterfall.io",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "gated",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed gated; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.waterfall.io/v1/introduction"
+    },
+    {
+      "app": "Waterfall.io",
+      "field": "buildability",
+      "pass": "pass1",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 1 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.waterfall.io/v1/introduction"
+    },
+    {
+      "app": "Waterfall.io",
+      "field": "buildability",
+      "pass": "pass2",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 2 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.waterfall.io/v1/introduction"
+    },
+    {
+      "app": "Sentry",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "api key",
+        "oauth2",
+        "token"
+      ],
+      "true_value": [
+        "basic",
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed basic; over-claimed api key; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.sentry.io/api/auth"
+    },
+    {
+      "app": "Sentry",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "api key",
+        "oauth2",
+        "token"
+      ],
+      "true_value": [
+        "basic",
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed basic; over-claimed api key; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.sentry.io/api/auth"
+    },
+    {
+      "app": "Sentry",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "community",
+      "true_value": "official",
+      "likely_cause": "Pass 2 likely cause: missed official; over-claimed community; official MCP server was not found in the cited sources; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.sentry.io/api/auth"
+    },
+    {
+      "app": "Notion",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "community",
+      "true_value": "official",
+      "likely_cause": "Pass 2 likely cause: missed official; over-claimed community; official MCP server was not found in the cited sources; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developers.notion.com/guides/authorization/overview"
+    },
+    {
+      "app": "QuickBooks",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "self_serve",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed self_serve; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "app": "QuickBooks",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "self_serve",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed self_serve; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "app": "QuickBooks",
+      "field": "api_type",
+      "pass": "pass1",
+      "agent_value": [
+        "unknown"
+      ],
+      "true_value": [
+        "rest"
+      ],
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed rest; over-claimed unknown; cited docs describe a different API style; no claim-level re-check at pass 1.",
+      "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "app": "QuickBooks",
+      "field": "api_type",
+      "pass": "pass2",
+      "agent_value": [
+        "unknown"
+      ],
+      "true_value": [
+        "rest"
+      ],
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed rest; over-claimed unknown; cited docs describe a different API style; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "app": "QuickBooks",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "official",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed official; over-claimed unknown; official MCP server was not found in the cited sources; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "app": "QuickBooks",
+      "field": "buildability",
+      "pass": "pass1",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 1 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "app": "QuickBooks",
+      "field": "buildability",
+      "pass": "pass2",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 2 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "app": "Consensus",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "unknown"
+      ],
+      "true_value": [
+        "api key"
+      ],
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed api key; over-claimed unknown; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.consensus.app/consensus-mcp"
+    },
+    {
+      "app": "Consensus",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "unknown"
+      ],
+      "true_value": [
+        "api key"
+      ],
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed api key; over-claimed unknown; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.consensus.app/consensus-mcp"
+    },
+    {
+      "app": "Consensus",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "self_serve",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed self_serve; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.consensus.app/consensus-mcp"
+    },
+    {
+      "app": "Consensus",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "self_serve",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed self_serve; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.consensus.app/consensus-mcp"
+    },
+    {
+      "app": "Consensus",
+      "field": "api_type",
+      "pass": "pass1",
+      "agent_value": [
+        "unknown"
+      ],
+      "true_value": [
+        "rest"
+      ],
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed rest; over-claimed unknown; cited docs describe a different API style; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.consensus.app/consensus-mcp"
+    },
+    {
+      "app": "Consensus",
+      "field": "api_type",
+      "pass": "pass2",
+      "agent_value": [
+        "unknown"
+      ],
+      "true_value": [
+        "rest"
+      ],
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed rest; over-claimed unknown; cited docs describe a different API style; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.consensus.app/consensus-mcp"
+    },
+    {
+      "app": "Consensus",
+      "field": "buildability",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "yes",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed yes; over-claimed unknown; buildability judgment differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.consensus.app/consensus-mcp"
+    },
+    {
+      "app": "Consensus",
+      "field": "buildability",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "yes",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed yes; over-claimed unknown; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.consensus.app/consensus-mcp"
+    }
+  ],
+  "needs_human_count": 39,
+  "api_error_count": 14
+}

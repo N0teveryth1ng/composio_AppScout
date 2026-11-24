@@ -16,6 +16,10 @@
     <p class="coverage"><strong>{{ counted_count }} of {{ total_apps }} apps have results,
        {{ error_count }} still errored on API limits.</strong></p>
 
+    <p class="version-summary">Pass 2 versions: {{ fixed_version_count }} fixed (subfield-fix-1),
+       {{ v1_version_count }} restored as v1-pre-fix. For verification, only the fixed version counts.
+       Apps still on error are free-tier LLM rate limits and remain unscored.</p>
+
     <section class="section">
       <h2>Headline patterns</h2>
       <ul class="plain-list">
@@ -105,74 +109,92 @@
 
     <section class="section">
       <h2>Verification</h2>
+      <p>The answer key was AI-drafted from official docs, not hand-authored.</p>
       {% if verification %}
-        <p>The answer key was AI-drafted from official docs and reviewed by hand for
-           {{ verification.human_reviewed_count }} of
-           {{ verification.human_reviewed_total }} entries.</p>
-        <p>Accuracy is scored on {{ verification.scored_apps }} of
-           {{ verification.sample_size }} sample apps. Excluded from accuracy (not hosted APIs):
+        <p><strong>Scored {{ verification.scored_apps }} of
+           {{ verification.get('eligible_size', verification.sample_size - 2) }} eligible apps.</strong>
+           Only fixed pass-2 records are scored; v1-pre-fix records are never scored.</p>
+        <p><strong>{{ verification.human_reviewed_count }} of
+           {{ verification.human_reviewed_total }} reviewed,
+           {{ verification.scored_apps }} of the
+           {{ verification.get('eligible_size', 18) }} scored,
+           {{ verification.get('answer_value_corrections', 0) }} values corrected</strong>.</p>
+        <p>Not hosted APIs, excluded:
            {% for item in verification.excluded_from_accuracy %}
              <strong>{{ item.app }}</strong>{% if not loop.last %}, {% endif %}
            {% endfor %}.</p>
-        <p><strong>Overall accuracy: pass 1 =
-           {{ verification.overall_accuracy.pass1.correct }}/{{ verification.overall_accuracy.pass1.compared }}
-           ({{ "%.2f"|format(verification.overall_accuracy.pass1.accuracy * 100) }}%),
-           pass 2 =
-           {{ verification.overall_accuracy.pass2.correct }}/{{ verification.overall_accuracy.pass2.compared }}
-           ({{ "%.2f"|format(verification.overall_accuracy.pass2.accuracy * 100) }}%).</strong></p>
+        {% if verification.get('unscored_apps') %}
+          <p>Other unscored apps:</p>
+          <ul class="plain-list">
+            {% for item in verification.unscored_apps %}
+              <li><strong>{{ item.app }}</strong> &mdash; {{ item.reason }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+        {% if verification.get('accuracy_withheld', true) %}
+          <p>Accuracy is withheld until you provide the confirmed human-review count
+             (N of 20). Currently {{ verification.human_reviewed_count }} of
+             {{ verification.human_reviewed_total }} entries are marked human-reviewed.</p>
+        {% else %}
+          <p>Overall accuracy: pass 1 =
+             {{ verification.overall_accuracy.pass1.correct }}/{{ verification.overall_accuracy.pass1.compared }}
+             ({{ "%.2f"|format(verification.overall_accuracy.pass1.accuracy * 100) }}%),
+             pass 2 =
+             {{ verification.overall_accuracy.pass2.correct }}/{{ verification.overall_accuracy.pass2.compared }}
+             ({{ "%.2f"|format(verification.overall_accuracy.pass2.accuracy * 100) }}%).</p>
 
-        <h3>Accuracy by field</h3>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr><th>Field</th><th>Pass 1</th><th>Pass 2</th></tr>
-            </thead>
-            <tbody>
-              {% for field, scores in verification.per_field_accuracy.items() %}
-                <tr>
-                  <td>{{ field }}</td>
-                  <td>{{ scores.pass1.correct }}/{{ scores.pass1.compared }}
-                      ({{ "%.2f"|format(scores.pass1.accuracy * 100) }}%)</td>
-                  <td>{{ scores.pass2.correct }}/{{ scores.pass2.compared }}
-                      ({{ "%.2f"|format(scores.pass2.accuracy * 100) }}%)</td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
-
-        <h3>Every miss ({{ misses|length }})</h3>
-        {% if misses %}
+          <h3>Accuracy by field</h3>
           <div class="table-wrap">
             <table>
               <thead>
-                <tr><th>Pass</th><th>App</th><th>Field</th><th>Agent value</th>
-                    <th>Answer key value</th><th>Source</th></tr>
+                <tr><th>Field</th><th>Pass 1</th><th>Pass 2</th></tr>
               </thead>
               <tbody>
-                {% for miss in misses %}
+                {% for field, scores in verification.per_field_accuracy.items() %}
                   <tr>
-                    <td>{{ miss.pass }}</td>
-                    <td>{{ miss.app }}</td>
-                    <td>{{ miss.field }}</td>
-                    <td>{{ miss.agent_display }}</td>
-                    <td>{{ miss.true_display }}</td>
-                    <td><a href="{{ miss.doc_url }}">docs</a></td>
+                    <td>{{ field }}</td>
+                    <td>{{ scores.pass1.correct }}/{{ scores.pass1.compared }}
+                        ({{ "%.2f"|format(scores.pass1.accuracy * 100) }}%)</td>
+                    <td>{{ scores.pass2.correct }}/{{ scores.pass2.compared }}
+                        ({{ "%.2f"|format(scores.pass2.accuracy * 100) }}%)</td>
                   </tr>
                 {% endfor %}
               </tbody>
             </table>
           </div>
-        {% else %}
-          <p>No misses in the scored sample.</p>
+
+          <h3>Every miss ({{ misses|length }})</h3>
+          {% if misses %}
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Pass</th><th>App</th><th>Field</th><th>Agent value</th>
+                      <th>Answer key value</th><th>Likely cause</th><th>Source</th></tr>
+                </thead>
+                <tbody>
+                  {% for miss in misses %}
+                    <tr>
+                      <td>{{ miss.pass }}</td>
+                      <td>{{ miss.app }}</td>
+                      <td>{{ miss.field }}</td>
+                      <td>{{ miss.agent_display }}</td>
+                      <td>{{ miss.true_display }}</td>
+                      <td>{{ miss.likely_cause }}</td>
+                      <td><a href="{{ miss.doc_url }}">docs</a></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% else %}
+            <p>No misses in the scored sample.</p>
+          {% endif %}
+          <p>Full-precision numbers: <a href="/verification.json">verification.json</a>.</p>
         {% endif %}
-        <p>Full-precision numbers: <a href="/verification.json">verification.json</a>.</p>
       {% else %}
-        <p>Verification pending: ground truth not yet completed.</p>
-        <p>The answer key was AI-drafted from official docs. Accuracy is withheld until
-           the confirmed human-review count (N of 20) is provided; Sherlock and
-           Mermaid CLI will be listed separately and excluded from the score because
-           they are not hosted APIs.</p>
+        <p>Comparison pending. The answer key was AI-drafted from official docs;
+           accuracy is withheld until the confirmed human-review count (N of 20)
+           is provided.</p>
       {% endif %}
     </section>
 
@@ -182,7 +204,7 @@
         <li>JavaScript-heavy docs can return empty text; those apps become needs_human.</li>
         <li>API-error records are retried and never counted as research results.</li>
         <li>The answer key was AI-drafted from official docs and marked for human review; the agent does not invent it.</li>
-        <li>Pass 2 initially dropped `api_surface.type` for some apps because each api_surface evidence item was checked against the whole `{type, breadth, existing_mcp}` object, so a snippet supporting only one subfield could be marked not_found. The verifier now narrows each claim to the single supported subfield and reads up to 12,000 characters of the cached page; the code-only snippet check already used the full cached page. This claim-check bug was found and fixed during the run, and the final pass 2 was applied to 100 of 100 apps.</li>
+        <li>Pass 2 initially dropped `api_surface.type` for some apps because each api_surface evidence item was checked against the whole `{type, breadth, existing_mcp}` object, so a snippet supporting only one subfield could be marked not_found. The verifier now narrows each claim to the single supported subfield and reads up to 12,000 characters of the cached page; the code-only snippet check already used the full cached page. This claim-check bug was found and fixed during the run: the fixed pass 2 was applied to {{ fixed_version_count }} of {{ total_apps }} apps, and {{ v1_version_count }} records are tagged v1-pre-fix from commit b91bae7. For verification, only the fixed version counts.</li>
       </ul>
     </section>
 

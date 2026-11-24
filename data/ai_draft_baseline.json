@@ -1,0 +1,462 @@
+[
+  {
+    "app": "Amazon Selling Partner",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "gated",
+    "api_type": [
+      "REST",
+      "GraphQL"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "partial",
+    "urls": [
+      "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api",
+      "https://developer-docs.amazon/sp-api/llms.txt",
+      "https://developer-docs.amazon/sp-api/docs/what-is-the-selling-partner-api",
+      "https://developer-docs.amazon/sp-api/docs/selling-partner-api-onboarding-overview",
+      "https://developer-docs.amazon/sp-api/docs/data-kiosk-api.md",
+      "https://developer-docs.amazon/sp-api/docs/request-and-filter-data-with-graphql.md",
+      "https://sell.amazon.com/"
+    ],
+    "doc_url": "https://developer-docs.amazon/sp-api/docs/connecting-to-the-selling-partner-api",
+    "passage": "A Login with Amazon (LWA) access token authorizes your application to take certain actions on behalf of a selling partner.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Attio",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Basic",
+      "Token"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "yes",
+    "urls": [
+      "https://docs.attio.com/rest-api/guides/authentication",
+      "https://docs.attio.com/rest-api/guides/authentication.md",
+      "https://docs.attio.com/rest-api/overview.md",
+      "https://attio.com/pricing",
+      "https://docs.attio.com/mcp/overview",
+      "https://docs.attio.com/mcp/overview.md"
+    ],
+    "doc_url": "https://docs.attio.com/rest-api/guides/authentication",
+    "passage": "Attio implements the standard OAuth 2.0 specification, using the Authorization Code Grant Flow",
+    "human_reviewed": false
+  },
+  {
+    "app": "Brex",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "gated",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "partial",
+    "urls": [
+      "https://developer.brex.com/guides/partner_authentication",
+      "https://developer.brex.com/guides/partner_authentication.md",
+      "https://developer.brex.com/guides/authentication",
+      "https://developer.brex.com/guides/authentication.md",
+      "https://developer.brex.com/guides/quickstart.md",
+      "https://developer.brex.com/",
+      "https://brex.com/pricing/",
+      "https://www.brex.com/pricing",
+      "https://www.brex.com/signup"
+    ],
+    "doc_url": "https://developer.brex.com/guides/partner_authentication",
+    "passage": "The Brex API is fully compliant with OpenID Connect, an extension on top of OAuth 2.0.",
+    "human_reviewed": false
+  },
+  {
+    "app": "ClickUp",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "yes",
+    "urls": [
+      "https://developer.clickup.com/docs/authentication",
+      "https://developer.clickup.com/docs/authentication.md",
+      "https://clickup.com/pricing",
+      "https://developer.clickup.com/llms.txt",
+      "https://developer.clickup.com/docs/connect-an-ai-assistant-to-clickups-mcp-server.md"
+    ],
+    "doc_url": "https://developer.clickup.com/docs/authentication",
+    "passage": "Authenticate to the ClickUp API using a personal token or OAuth.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Consensus",
+    "auth_methods": [
+      "API key"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "yes",
+    "urls": [
+      "https://docs.consensus.app/consensus-mcp",
+      "https://docs.consensus.app/consensus-mcp.md",
+      "https://docs.consensus.app/llms.txt",
+      "https://consensus.app/pricing/",
+      "https://docs.consensus.app/api-reference/search.md",
+      "https://docs.consensus.app/mcp-plans-and-access.md",
+      "https://docs.consensus.app/api-get-started.md"
+    ],
+    "doc_url": "https://docs.consensus.app/consensus-mcp",
+    "passage": "Search 400M+ scholarly articles, including 350M peer-reviewed papers and all of PubMed, from Claude, ChatGPT, Cursor, Microsoft 365 Copilot and other MCP clients.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Discord",
+    "auth_methods": [
+      "OAuth2",
+      "Token",
+      "Basic"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "yes",
+    "urls": [
+      "https://docs.discord.com/developers/topics/oauth2",
+      "https://discord.com/developers/docs/reference",
+      "https://docs.discord.com/developers/bots/overview.md",
+      "https://discord.com/register"
+    ],
+    "doc_url": "https://docs.discord.com/developers/topics/oauth2",
+    "passage": "OAuth2 enables application developers to build applications that utilize authentication and data from the Discord API.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Gladly",
+    "auth_methods": [
+      "Basic",
+      "Token"
+    ],
+    "self_serve": "gated",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "partial",
+    "urls": [
+      "https://developer.gladly.com/rest",
+      "https://gladly.com/pricing"
+    ],
+    "doc_url": "https://developer.gladly.com/rest",
+    "passage": "The Gladly API was built to help facilitate those relationships, providing agents with the rich customer context they need to deliver seamless experiences",
+    "human_reviewed": false
+  },
+  {
+    "app": "GoHighLevel",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "trial_or_paid",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "partial",
+    "urls": [
+      "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md",
+      "https://raw.githubusercontent.com/GoHighLevel/highlevel-api-docs/main/docs/oauth/Authorization.md",
+      "https://developers.gohighlevel.com/",
+      "https://www.gohighlevel.com/pricing"
+    ],
+    "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md",
+    "passage": "HighLevel supports the Authorization Code Grant flow with v2 APIs.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Google Ads",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "gated",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "partial",
+    "urls": [
+      "https://developers.google.com/google-ads/api/docs/get-started/make-first-call",
+      "https://developers.google.com/google-ads/api/rest",
+      "https://developers.google.com/google-ads/api/docs/api-policy/access-levels",
+      "https://developers.google.com/google-ads/api/docs/developer-toolkit/mcp-server"
+    ],
+    "doc_url": "https://developers.google.com/google-ads/api/docs/get-started/make-first-call",
+    "passage": "OAuth 2.0 is an industry-standard protocol for authorization, used by all Google APIs.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Mermaid CLI",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "api_type": [
+      "unknown"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "unknown",
+    "urls": [
+      "https://www.npmjs.com/mermaid-cli",
+      "https://www.npmjs.com/package/@mermaid-js/mermaid-cli",
+      "https://mermaid.js.org/intro/",
+      "https://mermaid.js.org/config/usage.html"
+    ],
+    "doc_url": "https://www.npmjs.com/mermaid-cli",
+    "passage": "Render mermaid chart description files to PNG or SVG.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Notion",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "yes",
+    "urls": [
+      "https://developers.notion.com/guides/authorization/overview",
+      "https://developers.notion.com/guides/authorization/overview.md",
+      "https://www.notion.com/pricing",
+      "https://developers.notion.com/llms.txt",
+      "https://developers.notion.com/guides/mcp/overview.md",
+      "https://developers.notion.com/guides/mcp/get-started-with-mcp"
+    ],
+    "doc_url": "https://developers.notion.com/guides/authorization/overview",
+    "passage": "Internal connections use a static credential called an internal connection API token, personal access tokens use a user-scoped static token, and OAuth integrations and public integrations use the OAuth 2.0 protocol.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Podio",
+    "auth_methods": [
+      "OAuth2",
+      "API key",
+      "Token"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "yes",
+    "urls": [
+      "https://developers.podio.com/doc/oauth-authorization/get-access-token-22359",
+      "https://developers.podio.com/",
+      "https://developers.podio.com/doc/reference",
+      "https://developers.podio.com/doc/getting-started/get-an-api-key-22346",
+      "https://podio.com/pricing",
+      "https://podio.com/register"
+    ],
+    "doc_url": "https://developers.podio.com/doc/oauth-authorization/get-access-token-22359",
+    "passage": "Podio supports 4 ways of obtaining an access token",
+    "human_reviewed": false
+  },
+  {
+    "app": "Pylon",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "trial_or_paid",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "partial",
+    "urls": [
+      "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+      "https://docs.usepylon.com/pylon-docs/developer/api/authentication.md",
+      "https://docs.usepylon.com/pylon-docs/developer/api/api-reference.md",
+      "https://docs.usepylon.com/pylon-docs/llms.txt",
+      "https://usepylon.com/pricing",
+      "https://docs.usepylon.com/pylon-docs/developer/api.md",
+      "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp.md"
+    ],
+    "doc_url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication",
+    "passage": "The Pylon API uses Bearer authentication.",
+    "human_reviewed": false
+  },
+  {
+    "app": "QuickBooks",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "partial",
+    "urls": [
+      "https://github.com/intuit/quickbooks-online-mcp-server",
+      "https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0",
+      "https://developer.intuit.com/app/developer/qbo/docs/develop",
+      "https://help.developer.intuit.com/s/article/How-to-integrate-with-QuickBooks-API",
+      "https://www.intuit.com/quickbooks/pricing/"
+    ],
+    "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server",
+    "passage": "The QuickBooks MCP Server lets AI assistants access QuickBooks data via a standard interface.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Sentry",
+    "auth_methods": [
+      "OAuth2",
+      "Token",
+      "Basic"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "yes",
+    "urls": [
+      "https://docs.sentry.io/api/auth",
+      "https://docs.sentry.io/api/auth/",
+      "https://sentry.io/pricing/",
+      "https://docs.sentry.io/llms.txt",
+      "https://docs.sentry.io/product/sentry-mcp/"
+    ],
+    "doc_url": "https://docs.sentry.io/api/auth",
+    "passage": "For third-party applications that need to access Sentry on behalf of users, Sentry supports OAuth2 with the authorization code grant type.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Sherlock",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "api_type": [
+      "unknown"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "unknown",
+    "urls": [
+      "https://github.com/sherlock-project/sherlock"
+    ],
+    "doc_url": "https://github.com/sherlock-project/sherlock",
+    "passage": "Hunt down social media accounts by username across 400+ social networks",
+    "human_reviewed": false
+  },
+  {
+    "app": "Shopify",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "GraphQL"
+    ],
+    "existing_mcp": "official",
+    "buildability": "yes",
+    "urls": [
+      "https://shopify.dev/docs/api",
+      "https://shopify.dev/docs/api/usage/authentication",
+      "https://shopify.dev/docs/apps/build/authentication-authorization/manage-credentials",
+      "https://shopify.dev/docs/api/admin-graphql",
+      "https://www.shopify.com/pricing",
+      "https://shopify.dev/docs/api/ai-toolkit",
+      "https://shopify.dev/docs/apps/build/storefront-mcp"
+    ],
+    "doc_url": "https://shopify.dev/docs/apps/build/authentication-authorization/manage-credentials",
+    "passage": "The client secret authorizes it to make OAuth calls.",
+    "human_reviewed": false
+  },
+  {
+    "app": "Snowflake",
+    "auth_methods": [
+      "OAuth2",
+      "Token",
+      "Other"
+    ],
+    "self_serve": "self_serve",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "yes",
+    "urls": [
+      "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication",
+      "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication.md",
+      "https://www.snowflake.com/pricing/",
+      "https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-agents-mcp"
+    ],
+    "doc_url": "https://docs.snowflake.com/en/developer-guide/snowflake-rest-api/authentication",
+    "passage": "When you send a request, the request must include authentication information using either of the following:",
+    "human_reviewed": false
+  },
+  {
+    "app": "Waterfall.io",
+    "auth_methods": [
+      "API key"
+    ],
+    "self_serve": "gated",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "unknown",
+    "buildability": "partial",
+    "urls": [
+      "https://docs.waterfall.io/v1/introduction",
+      "https://docs.waterfall.io/v1/introduction.md",
+      "https://docs.waterfall.io/v1/authentication",
+      "https://www.waterfall.io/pricing"
+    ],
+    "doc_url": "https://docs.waterfall.io/v1/introduction",
+    "passage": "The Waterfall API is available at `https://api.waterfall.io`. Send your API key in the `x-api-key` header.",
+    "human_reviewed": false
+  },
+  {
+    "app": "WhatsApp Business",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "trial_or_paid",
+    "api_type": [
+      "REST"
+    ],
+    "existing_mcp": "official",
+    "buildability": "partial",
+    "urls": [
+      "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp",
+      "https://developers.facebook.com/docs/whatsapp/pricing",
+      "https://developers.facebook.com/docs/whatsapp/cloud-api/get-started"
+    ],
+    "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp",
+    "passage": "the WhatsApp Business Tools MCP server lets your AI agent and IDE assistant manage and debug your WhatsApp Business integration",
+    "human_reviewed": false
+  }
+]
