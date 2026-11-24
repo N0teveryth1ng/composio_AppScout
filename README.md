@@ -95,6 +95,33 @@ pass-1/pass-2 accuracy:
 Commit the refreshed `data/results.json`, `data/patterns.json` and
 `data/verification.json`; Railway auto-deploys on every push to `main`.
 
+## Results and limitations
+
+Published snapshot (commit `7ef8dec`):
+
+- 86 of 100 apps have results; 14 remain API-limit errors.
+- Pass 2 versions: 63 fixed (`subfield-fix-1`), 37 restored v1 (`v1-pre-fix`).
+  Only fixed records are scored.
+- Verification scored 11 of 18 eligible apps. 9 of 20 entries were reviewed by
+  hand (5 of the 11 scored apps: Discord, Shopify, Amazon SP-API, Notion,
+  QuickBooks); 0 answer values corrected.
+- Overall accuracy: pass 1 31/55 (56.4%), pass 2 27/55 (49.1%). By field:
+  `auth_methods` 45.5% vs 45.5%, `self_serve` 54.5% vs 54.5%, `api_type`
+  54.5% vs 54.5%, `existing_mcp` 72.7% vs 36.4%, `buildability` 54.5% vs
+  54.5%. There are 52 miss rows.
+- Sherlock and Mermaid CLI are excluded as not hosted APIs. Attio, Pylon,
+  Gladly, Google Ads, GoHighLevel, ClickUp and Brex stayed on API errors and
+  are unscored.
+- Pass 2 did not improve accuracy on this sample. The four non-MCP fields score
+  identically; the whole drop is `existing_mcp`, where a code rule downgrading
+  "official" MCP claims without vendor-domain evidence removed five
+  correct answers (Shopify, Sentry, Notion, QuickBooks, WhatsApp Business). The
+  cause was not diagnosed and the rule was not tuned after seeing scores.
+- MCP counts mix fixed and v1-pre-fix records and are indicative. 13 of the 28
+  pass-2 misses are abstentions (agent said unknown), and 12 of the 52 miss rows
+  come from two unreviewed entries (Consensus, Waterfall.io). With 11 scored
+  apps, all numbers are indicative.
+
 ## Web app
 
 ```powershell

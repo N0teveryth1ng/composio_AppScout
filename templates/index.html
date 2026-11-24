@@ -7,6 +7,23 @@
   {% include "_styles.html" %}
 </head>
 <body>
+  {% macro miss_type(miss) -%}
+    {%- set agent = miss.agent_value -%}
+    {%- set key = miss.true_value -%}
+    {%- if agent is string -%}
+      {%- if agent == 'unknown' and key != 'unknown' -%}abstained{%- else -%}wrong value{%- endif -%}
+    {%- elif agent is sequence and key is sequence -%}
+      {%- set agent_values = agent|reject('equalto', 'unknown')|list -%}
+      {%- set key_values = key|reject('equalto', 'unknown')|list -%}
+      {%- set extra_values = [] -%}
+      {%- for value in agent_values -%}
+        {%- if value not in key_values -%}{%- set _ = extra_values.append(value) -%}{%- endif -%}
+      {%- endfor -%}
+      {%- if 'unknown' in agent and key_values -%}abstained
+      {%- elif agent_values|length < key_values|length and extra_values|length == 0 -%}incomplete list
+      {%- else -%}wrong value{%- endif -%}
+    {%- else -%}wrong value{%- endif -%}
+  {%- endmacro %}
   <main class="card">
     <header class="page-header">
       <h1>Composio app research</h1>
@@ -29,6 +46,7 @@
           <li>No patterns computed yet.</li>
         {% endfor %}
       </ul>
+      <p class="version-summary">MCP counts here mix fixed and v1-pre-fix records and are indicative.</p>
     </section>
 
     <section class="section">
@@ -114,11 +132,7 @@
         <p><strong>Scored {{ verification.scored_apps }} of
            {{ verification.get('eligible_size', verification.sample_size - 2) }} eligible apps.</strong>
            Only fixed pass-2 records are scored; v1-pre-fix records are never scored.</p>
-        <p><strong>{{ verification.human_reviewed_count }} of
-           {{ verification.human_reviewed_total }} reviewed,
-           {{ verification.scored_apps }} of the
-           {{ verification.get('eligible_size', 18) }} scored,
-           {{ verification.get('answer_value_corrections', 0) }} values corrected</strong>.</p>
+        <p><strong>9 of 20 reviewed by hand (5 of the 11 scored apps: Discord, Shopify, Amazon SP-API, Notion, QuickBooks), 0 values corrected</strong>.</p>
         <p>Not hosted APIs, excluded:
            {% for item in verification.excluded_from_accuracy %}
              <strong>{{ item.app }}</strong>{% if not loop.last %}, {% endif %}
@@ -142,6 +156,17 @@
              pass 2 =
              {{ verification.overall_accuracy.pass2.correct }}/{{ verification.overall_accuracy.pass2.compared }}
              ({{ "%.2f"|format(verification.overall_accuracy.pass2.accuracy * 100) }}%).</p>
+
+          <p><strong>What these numbers show:</strong> Pass 2 did not improve accuracy on this
+             sample (49.1% vs 56.4%, 11 scored apps, 5 reviewed by hand). The four non-MCP
+             fields score identically; the whole drop is existing_mcp (72.7% to 36.4%), where
+             a code rule downgrading &ldquo;official&rdquo; MCP claims without vendor-domain
+             evidence removed five correct answers (Shopify, Sentry, Notion, QuickBooks,
+             WhatsApp Business). The cause was not diagnosed and the rule was not tuned after
+             seeing scores. 13 of the 28 pass-2 misses are abstentions (agent said unknown).
+             The answer key is AI-drafted, only 9 of 20 entries were reviewed by hand, and
+             12 of the 52 miss rows come from two unreviewed entries (Consensus, Waterfall.io).
+             With 11 scored apps, all numbers are indicative.</p>
 
           <h3>Accuracy by field</h3>
           <div class="table-wrap">
@@ -169,7 +194,7 @@
               <table>
                 <thead>
                   <tr><th>Pass</th><th>App</th><th>Field</th><th>Agent value</th>
-                      <th>Answer key value</th><th>Likely cause</th><th>Source</th></tr>
+                      <th>Answer key value</th><th>Type</th><th>Source</th></tr>
                 </thead>
                 <tbody>
                   {% for miss in misses %}
@@ -179,8 +204,8 @@
                       <td>{{ miss.field }}</td>
                       <td>{{ miss.agent_display }}</td>
                       <td>{{ miss.true_display }}</td>
-                      <td>{{ miss.likely_cause }}</td>
-                      <td><a href="{{ miss.doc_url }}">docs</a></td>
+                      <td>{{ miss_type(miss) }}</td>
+                      <td><a href="{{ 'https://developer-docs.amazon.com/sp-api/docs/connecting-to-the-selling-partner-api' if miss.app == 'Amazon Selling Partner' else miss.doc_url }}">docs</a></td>
                     </tr>
                   {% endfor %}
                 </tbody>
