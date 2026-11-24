@@ -1,5 +1,41 @@
 # Composio AppScout
 
+## Start here — first things first
+
+This is a small website that shows how easy or hard **100 apps** are to connect to.
+
+**The easiest way:** just open the live site:
+https://composioappscout-production.up.railway.app
+
+Click **Full results** in the top menu to see the big table.
+
+### Run it on your own computer
+
+You only need Windows and Python 3.11+. In this folder, open PowerShell and copy
+these four lines:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m uvicorn app:app --host 127.0.0.1 --port 8000
+```
+
+Then open http://127.0.0.1:8000 in your browser. That's it.
+
+### What the menu does
+
+- **Home** — the easy-to-read summary.
+- **Full results** — the table of all 100 apps.
+- **results.json** — the raw results.
+- **patterns.json** — the counted patterns.
+- **verification.json** — the accuracy numbers.
+
+You do **not** need API keys just to open the website. Keys are only needed if you
+want to run the research again; that is explained further down.
+
+## What this project is
+
 An evidence-backed research agent that investigates **100 apps** and reports how
 hard they are to integrate: auth methods, credential access, public API surface,
 existing MCP servers, buildability and blockers. Every non-`unknown` claim must
@@ -7,7 +43,6 @@ have a URL and a snippet from a page that was actually fetched. When evidence is
 missing, the answer is `unknown` and the record is marked `needs_human` — never
 guessed.
 
-**Live dashboard:** https://composioappscout-production.up.railway.app
 **Repository:** https://github.com/N0teveryth1ng/composio_AppScout
 
 ## What is here
