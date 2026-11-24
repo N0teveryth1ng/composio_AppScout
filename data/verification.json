@@ -1,50 +1,28 @@
 {
   "sample_size": 20,
   "eligible_size": 18,
-  "scored_apps": 11,
+  "scored_apps": 18,
   "scored_app_names": [
+    "Attio",
     "Podio",
+    "Pylon",
+    "Gladly",
     "Discord",
     "WhatsApp Business",
+    "Google Ads",
+    "GoHighLevel",
     "Shopify",
     "Amazon Selling Partner",
     "Waterfall.io",
     "Snowflake",
     "Sentry",
     "Notion",
+    "ClickUp",
     "QuickBooks",
+    "Brex",
     "Consensus"
   ],
-  "unscored_apps": [
-    {
-      "app": "Attio",
-      "reason": "pass-2 ended on an API error"
-    },
-    {
-      "app": "Pylon",
-      "reason": "pass-2 ended on an API error"
-    },
-    {
-      "app": "Gladly",
-      "reason": "pass-2 ended on an API error"
-    },
-    {
-      "app": "Google Ads",
-      "reason": "pass-2 ended on an API error"
-    },
-    {
-      "app": "GoHighLevel",
-      "reason": "pass-2 ended on an API error"
-    },
-    {
-      "app": "ClickUp",
-      "reason": "pass-2 ended on an API error"
-    },
-    {
-      "app": "Brex",
-      "reason": "pass-2 ended on an API error"
-    }
-  ],
+  "unscored_apps": [],
   "comparison_computed": true,
   "ground_truth_drafted_by": "ai",
   "ground_truth_source": "official docs, pricing and sign-up pages",
@@ -67,78 +45,132 @@
   "per_field_accuracy": {
     "auth_methods": {
       "pass1": {
-        "correct": 5,
-        "compared": 11,
-        "accuracy": 0.45454545454545453
+        "correct": 6,
+        "compared": 18,
+        "accuracy": 0.3333333333333333
       },
       "pass2": {
-        "correct": 5,
-        "compared": 11,
-        "accuracy": 0.45454545454545453
+        "correct": 6,
+        "compared": 18,
+        "accuracy": 0.3333333333333333
       }
     },
     "self_serve": {
       "pass1": {
-        "correct": 6,
-        "compared": 11,
-        "accuracy": 0.5454545454545454
+        "correct": 8,
+        "compared": 18,
+        "accuracy": 0.4444444444444444
       },
       "pass2": {
-        "correct": 6,
-        "compared": 11,
-        "accuracy": 0.5454545454545454
+        "correct": 8,
+        "compared": 18,
+        "accuracy": 0.4444444444444444
       }
     },
     "api_type": {
       "pass1": {
-        "correct": 6,
-        "compared": 11,
-        "accuracy": 0.5454545454545454
+        "correct": 12,
+        "compared": 18,
+        "accuracy": 0.6666666666666666
       },
       "pass2": {
-        "correct": 6,
-        "compared": 11,
-        "accuracy": 0.5454545454545454
+        "correct": 12,
+        "compared": 18,
+        "accuracy": 0.6666666666666666
       }
     },
     "existing_mcp": {
       "pass1": {
-        "correct": 8,
-        "compared": 11,
-        "accuracy": 0.7272727272727273
+        "correct": 12,
+        "compared": 18,
+        "accuracy": 0.6666666666666666
       },
       "pass2": {
-        "correct": 4,
-        "compared": 11,
-        "accuracy": 0.36363636363636365
+        "correct": 8,
+        "compared": 18,
+        "accuracy": 0.4444444444444444
       }
     },
     "buildability": {
       "pass1": {
-        "correct": 6,
-        "compared": 11,
-        "accuracy": 0.5454545454545454
+        "correct": 10,
+        "compared": 18,
+        "accuracy": 0.5555555555555556
       },
       "pass2": {
-        "correct": 6,
-        "compared": 11,
-        "accuracy": 0.5454545454545454
+        "correct": 10,
+        "compared": 18,
+        "accuracy": 0.5555555555555556
       }
     }
   },
   "overall_accuracy": {
     "pass1": {
-      "correct": 31,
-      "compared": 55,
-      "accuracy": 0.5636363636363636
+      "correct": 48,
+      "compared": 90,
+      "accuracy": 0.5333333333333333
     },
     "pass2": {
-      "correct": 27,
-      "compared": 55,
-      "accuracy": 0.4909090909090909
+      "correct": 44,
+      "compared": 90,
+      "accuracy": 0.4888888888888889
     }
   },
   "misses": [
+    {
+      "app": "Attio",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "api key",
+        "basic",
+        "oauth2"
+      ],
+      "true_value": [
+        "api key",
+        "basic",
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed token; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.attio.com/rest-api/guides/authentication"
+    },
+    {
+      "app": "Attio",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "api key",
+        "basic",
+        "oauth2"
+      ],
+      "true_value": [
+        "api key",
+        "basic",
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed token; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.attio.com/rest-api/guides/authentication"
+    },
+    {
+      "app": "Attio",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "trial_or_paid",
+      "true_value": "self_serve",
+      "likely_cause": "Pass 1 likely cause: missed self_serve; over-claimed trial_or_paid; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.attio.com/rest-api/guides/authentication"
+    },
+    {
+      "app": "Attio",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "trial_or_paid",
+      "true_value": "self_serve",
+      "likely_cause": "Pass 2 likely cause: missed self_serve; over-claimed trial_or_paid; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.attio.com/rest-api/guides/authentication"
+    },
     {
       "app": "Podio",
       "field": "auth_methods",
@@ -177,6 +209,88 @@
       "true_value": "unknown",
       "likely_cause": "Pass 1 likely cause: missed unknown; over-claimed official; official MCP claim lacked vendor-domain or GitHub-org evidence; no claim-level re-check at pass 1.",
       "doc_url": "https://developers.podio.com/doc/oauth-authorization/get-access-token-22359"
+    },
+    {
+      "app": "Pylon",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "token"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed oauth2; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication"
+    },
+    {
+      "app": "Pylon",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "token"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed oauth2; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication"
+    },
+    {
+      "app": "Pylon",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "gated",
+      "true_value": "trial_or_paid",
+      "likely_cause": "Pass 1 likely cause: missed trial_or_paid; over-claimed gated; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication"
+    },
+    {
+      "app": "Pylon",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "gated",
+      "true_value": "trial_or_paid",
+      "likely_cause": "Pass 2 likely cause: missed trial_or_paid; over-claimed gated; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://docs.usepylon.com/pylon-docs/developer/api/authentication"
+    },
+    {
+      "app": "Gladly",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "gated",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed gated; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.gladly.com/rest"
+    },
+    {
+      "app": "Gladly",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "gated",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed gated; over-claimed unknown; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.gladly.com/rest"
+    },
+    {
+      "app": "Gladly",
+      "field": "existing_mcp",
+      "pass": "pass1",
+      "agent_value": "none_found",
+      "true_value": "unknown",
+      "likely_cause": "Pass 1 likely cause: missed unknown; over-claimed none_found; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.gladly.com/rest"
+    },
+    {
+      "app": "Gladly",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "none_found",
+      "true_value": "unknown",
+      "likely_cause": "Pass 2 likely cause: missed unknown; over-claimed none_found; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.gladly.com/rest"
     },
     {
       "app": "Discord",
@@ -330,6 +444,116 @@
       "true_value": "partial",
       "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed partial; over-claimed unknown; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
       "doc_url": "https://developers.facebook.com/documentation/mcp/whatsapp-business-tools-mcp"
+    },
+    {
+      "app": "Google Ads",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "api key",
+        "oauth2"
+      ],
+      "true_value": [
+        "oauth2"
+      ],
+      "likely_cause": "Pass 1 likely cause: over-claimed api key; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://developers.google.com/google-ads/api/docs/get-started/make-first-call"
+    },
+    {
+      "app": "Google Ads",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "api key",
+        "oauth2"
+      ],
+      "true_value": [
+        "oauth2"
+      ],
+      "likely_cause": "Pass 2 likely cause: over-claimed api key; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developers.google.com/google-ads/api/docs/get-started/make-first-call"
+    },
+    {
+      "app": "GoHighLevel",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "oauth2",
+        "token"
+      ],
+      "true_value": [
+        "oauth2"
+      ],
+      "likely_cause": "Pass 1 likely cause: over-claimed token; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md"
+    },
+    {
+      "app": "GoHighLevel",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "oauth2",
+        "token"
+      ],
+      "true_value": [
+        "oauth2"
+      ],
+      "likely_cause": "Pass 2 likely cause: over-claimed token; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md"
+    },
+    {
+      "app": "GoHighLevel",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "self_serve",
+      "true_value": "trial_or_paid",
+      "likely_cause": "Pass 1 likely cause: missed trial_or_paid; over-claimed self_serve; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md"
+    },
+    {
+      "app": "GoHighLevel",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "self_serve",
+      "true_value": "trial_or_paid",
+      "likely_cause": "Pass 2 likely cause: missed trial_or_paid; over-claimed self_serve; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md"
+    },
+    {
+      "app": "GoHighLevel",
+      "field": "existing_mcp",
+      "pass": "pass1",
+      "agent_value": "community",
+      "true_value": "unknown",
+      "likely_cause": "Pass 1 likely cause: missed unknown; over-claimed community; only third-party MCP evidence was present; no claim-level re-check at pass 1.",
+      "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md"
+    },
+    {
+      "app": "GoHighLevel",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "community",
+      "true_value": "unknown",
+      "likely_cause": "Pass 2 likely cause: missed unknown; over-claimed community; only third-party MCP evidence was present; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md"
+    },
+    {
+      "app": "GoHighLevel",
+      "field": "buildability",
+      "pass": "pass1",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 1 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md"
+    },
+    {
+      "app": "GoHighLevel",
+      "field": "buildability",
+      "pass": "pass2",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 2 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://github.com/GoHighLevel/highlevel-api-docs/blob/main/docs/oauth/Authorization.md"
     },
     {
       "app": "Shopify",
@@ -565,6 +789,56 @@
       "doc_url": "https://developers.notion.com/guides/authorization/overview"
     },
     {
+      "app": "ClickUp",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "api key",
+        "oauth2",
+        "token"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: over-claimed api key; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.clickup.com/docs/authentication"
+    },
+    {
+      "app": "ClickUp",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "api key",
+        "oauth2",
+        "token"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: over-claimed api key; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.clickup.com/docs/authentication"
+    },
+    {
+      "app": "ClickUp",
+      "field": "buildability",
+      "pass": "pass1",
+      "agent_value": "unknown",
+      "true_value": "yes",
+      "likely_cause": "Pass 1 likely cause: agent returned unknown, so no supporting value was extracted; missed yes; over-claimed unknown; buildability judgment differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.clickup.com/docs/authentication"
+    },
+    {
+      "app": "ClickUp",
+      "field": "buildability",
+      "pass": "pass2",
+      "agent_value": "unknown",
+      "true_value": "yes",
+      "likely_cause": "Pass 2 likely cause: agent returned unknown, so no supporting value was extracted; missed yes; over-claimed unknown; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.clickup.com/docs/authentication"
+    },
+    {
       "app": "QuickBooks",
       "field": "self_serve",
       "pass": "pass1",
@@ -634,6 +908,118 @@
       "true_value": "partial",
       "likely_cause": "Pass 2 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
       "doc_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+    },
+    {
+      "app": "Brex",
+      "field": "auth_methods",
+      "pass": "pass1",
+      "agent_value": [
+        "basic",
+        "oauth2"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 1 likely cause: missed token; over-claimed basic; cited docs did not expose every supported auth method; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "auth_methods",
+      "pass": "pass2",
+      "agent_value": [
+        "basic",
+        "oauth2"
+      ],
+      "true_value": [
+        "oauth2",
+        "token"
+      ],
+      "likely_cause": "Pass 2 likely cause: missed token; over-claimed basic; cited docs did not expose every supported auth method; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "self_serve",
+      "pass": "pass1",
+      "agent_value": "self_serve",
+      "true_value": "gated",
+      "likely_cause": "Pass 1 likely cause: missed gated; over-claimed self_serve; sign-up or pricing evidence differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "self_serve",
+      "pass": "pass2",
+      "agent_value": "self_serve",
+      "true_value": "gated",
+      "likely_cause": "Pass 2 likely cause: missed gated; over-claimed self_serve; sign-up or pricing evidence differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "api_type",
+      "pass": "pass1",
+      "agent_value": [
+        "rest",
+        "soap"
+      ],
+      "true_value": [
+        "rest"
+      ],
+      "likely_cause": "Pass 1 likely cause: over-claimed soap; cited docs describe a different API style; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "api_type",
+      "pass": "pass2",
+      "agent_value": [
+        "rest",
+        "soap"
+      ],
+      "true_value": [
+        "rest"
+      ],
+      "likely_cause": "Pass 2 likely cause: over-claimed soap; cited docs describe a different API style; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "existing_mcp",
+      "pass": "pass1",
+      "agent_value": "official",
+      "true_value": "unknown",
+      "likely_cause": "Pass 1 likely cause: missed unknown; over-claimed official; official MCP claim lacked vendor-domain or GitHub-org evidence; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "existing_mcp",
+      "pass": "pass2",
+      "agent_value": "official",
+      "true_value": "unknown",
+      "likely_cause": "Pass 2 likely cause: missed unknown; over-claimed official; official MCP claim lacked vendor-domain or GitHub-org evidence; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "buildability",
+      "pass": "pass1",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 1 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; no claim-level re-check at pass 1.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
+    },
+    {
+      "app": "Brex",
+      "field": "buildability",
+      "pass": "pass2",
+      "agent_value": "yes",
+      "true_value": "partial",
+      "likely_cause": "Pass 2 likely cause: missed partial; over-claimed yes; buildability judgment differed from the reviewed source; pass 2 kept only claims supported by the cited snippet.",
+      "doc_url": "https://developer.brex.com/guides/partner_authentication"
     },
     {
       "app": "Consensus",
@@ -724,6 +1110,6 @@
       "doc_url": "https://docs.consensus.app/consensus-mcp"
     }
   ],
-  "needs_human_count": 40,
-  "api_error_count": 14
+  "needs_human_count": 42,
+  "api_error_count": 0
 }

@@ -134,32 +134,32 @@ Commit the refreshed `data/results.json`, `data/patterns.json` and
 
 Final published snapshot:
 
-- 86 of 100 apps have results; 14 remain API-limit errors. Record statuses are
-  46 `ok`, 40 `needs_human` and 14 `error`.
+- 100 of 100 apps have results; 0 remain API-limit errors. Record statuses are
+  58 `ok`, 42 `needs_human` and 0 `error`.
 - Pass 2 versions: 81 fixed (`subfield-fix-1`), 19 restored v1 (`v1-pre-fix`).
-  Only fixed records are scored. 25 records remain marked `retry_pending` after
-  capped retries.
-- Verification scored 11 of 18 eligible apps. All 20 answer-key entries were
-  reviewed by hand, including all 11 scored apps; 0 answer values were
-  corrected after review. The scored apps are Podio, Discord, WhatsApp Business,
-  Shopify, Amazon Selling Partner, Waterfall.io, Snowflake, Sentry, Notion,
-  QuickBooks and Consensus.
-- Overall accuracy: pass 1 31/55 (56.4%), pass 2 27/55 (49.1%). By field:
-  `auth_methods` 45.5% vs 45.5%, `self_serve` 54.5% vs 54.5%, `api_type`
-  54.5% vs 54.5%, `existing_mcp` 72.7% vs 36.4%, `buildability` 54.5% vs
-  54.5%. There are 52 miss rows.
-- Sherlock and Mermaid CLI are excluded as not hosted APIs. Seven sample apps
-  still on API errors are unscored: Attio, Pylon, Gladly, Google Ads,
-  GoHighLevel, ClickUp and Brex.
+  Only fixed records are scored. 11 records remain marked `retry_pending` from
+  earlier capped retries.
+- Verification scored 18 of 18 eligible apps. All 20 answer-key entries were
+  reviewed by hand, including all 18 scored apps; 0 answer values were
+  corrected after review. The scored apps are Attio, Podio, Pylon, Gladly,
+  Discord, WhatsApp Business, Google Ads, GoHighLevel, Shopify, Amazon Selling
+  Partner, Waterfall.io, Snowflake, Sentry, Notion, ClickUp, QuickBooks, Brex
+  and Consensus.
+- Overall accuracy: pass 1 48/90 (53.3%), pass 2 44/90 (48.9%). By field:
+  `auth_methods` 33.3% vs 33.3%, `self_serve` 44.4% vs 44.4%, `api_type`
+  66.7% vs 66.7%, `existing_mcp` 66.7% vs 44.4%, `buildability` 55.6% vs
+  55.6%. There are 88 miss rows.
+- Sherlock and Mermaid CLI are excluded as not hosted APIs. No sample apps
+  remain unscored from API errors.
 - Pass 2 did not improve accuracy on this sample. The four non-MCP fields score
   identically; the whole drop is `existing_mcp`, where a code rule downgrading
   "official" MCP claims without vendor-domain evidence removed five
   correct answers (Shopify, Sentry, Notion, QuickBooks, WhatsApp Business). The
   cause was not diagnosed and the rule was not tuned after seeing scores.
-- MCP counts mix fixed and v1-pre-fix records and are indicative. 13 of the 28
-  pass-2 misses are abstentions (agent said unknown), and 12 of the 52 miss rows
+- MCP counts mix fixed and v1-pre-fix records and are indicative. 15 of the 46
+  pass-2 misses are abstentions (agent said unknown), and 12 of the 88 miss rows
   come from Consensus and Waterfall.io. All 20 sample entries are reviewed by
-  hand, but with only 11 scored apps, all accuracy numbers remain indicative.
+  hand, but with 18 scored apps, these are still a small indicative sample.
 
 ## Web app
 
@@ -188,7 +188,7 @@ regardless of the working directory. See `DEPLOY.md` for details.
 
 ## Honesty notes
 
-- API-error records are excluded from statistics and retried; they are never
+- API-error records were retried during the run; none remain. They are never
   reported as research findings.
 - JavaScript-heavy docs can yield no text; those apps legitimately become
   `needs_human`.

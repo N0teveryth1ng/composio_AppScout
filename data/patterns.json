@@ -1,25 +1,25 @@
 {
   "source": "data\\results.json",
-  "records_counted": 86,
-  "records_excluded": 14,
+  "records_counted": 100,
+  "records_excluded": 0,
   "auth_overall": {
-    "OAuth2": 56,
-    "API key": 41,
-    "Token": 26,
-    "Basic": 12,
+    "OAuth2": 66,
+    "API key": 47,
+    "Token": 33,
+    "Basic": 16,
     "Other": 3
   },
   "auth_by_category": {
     "AI, Research and Media-native": {
-      "API key": 4,
-      "OAuth2": 3,
+      "API key": 6,
+      "OAuth2": 4,
       "Other": 1,
       "Token": 1
     },
     "CRM and Sales": {
-      "OAuth2": 7,
-      "API key": 4,
-      "Basic": 1
+      "OAuth2": 8,
+      "API key": 5,
+      "Basic": 2
     },
     "Communications and Messaging": {
       "OAuth2": 6,
@@ -28,15 +28,15 @@
       "Basic": 2
     },
     "Data, SEO and Scraping": {
-      "API key": 6,
-      "OAuth2": 4,
-      "Token": 2,
+      "API key": 7,
+      "OAuth2": 5,
+      "Token": 3,
       "Basic": 1
     },
     "Developer, Infra and Data platforms": {
-      "OAuth2": 7,
+      "OAuth2": 8,
       "API key": 6,
-      "Token": 5,
+      "Token": 6,
       "Other": 1
     },
     "Ecommerce": {
@@ -46,53 +46,54 @@
       "Basic": 1
     },
     "Finance and Fintech": {
-      "OAuth2": 4,
+      "OAuth2": 6,
       "API key": 3,
+      "Basic": 2,
       "Other": 1
     },
     "Marketing, Ads, Email and Social": {
-      "OAuth2": 6,
-      "API key": 4,
+      "OAuth2": 8,
+      "API key": 5,
       "Basic": 3,
-      "Token": 2
+      "Token": 3
     },
     "Productivity and Project Management": {
-      "OAuth2": 6,
-      "Token": 6,
-      "API key": 5,
+      "OAuth2": 8,
+      "Token": 8,
+      "API key": 6,
       "Basic": 1
     },
     "Support and Helpdesk": {
       "OAuth2": 5,
-      "API key": 3,
-      "Basic": 3,
-      "Token": 2
+      "Basic": 4,
+      "Token": 4,
+      "API key": 3
     }
   },
   "self_serve_overall": {
-    "self_serve": 43,
-    "trial_or_paid": 13,
-    "gated": 1
+    "self_serve": 51,
+    "trial_or_paid": 15,
+    "gated": 3
   },
   "self_serve_by_category": {
     "AI, Research and Media-native": {
       "self_serve": 3,
-      "trial_or_paid": 1
+      "trial_or_paid": 2
     },
     "CRM and Sales": {
       "self_serve": 4,
-      "trial_or_paid": 1
+      "trial_or_paid": 2
     },
     "Communications and Messaging": {
       "self_serve": 5,
       "trial_or_paid": 1
     },
     "Data, SEO and Scraping": {
-      "self_serve": 4,
+      "self_serve": 6,
       "trial_or_paid": 2
     },
     "Developer, Infra and Data platforms": {
-      "self_serve": 7,
+      "self_serve": 8,
       "trial_or_paid": 2
     },
     "Ecommerce": {
@@ -100,58 +101,62 @@
       "trial_or_paid": 1
     },
     "Finance and Fintech": {
-      "self_serve": 3,
+      "self_serve": 5,
       "gated": 1
     },
     "Marketing, Ads, Email and Social": {
-      "self_serve": 5
+      "self_serve": 6,
+      "gated": 1
     },
     "Productivity and Project Management": {
-      "self_serve": 7
+      "self_serve": 9
     },
     "Support and Helpdesk": {
       "trial_or_paid": 5,
+      "gated": 1,
       "self_serve": 1
     }
   },
   "buildability_overall": {
-    "yes": 53,
-    "partial": 2,
+    "yes": 62,
+    "partial": 6,
     "no": 1
   },
   "buildability_by_category": {
     "AI, Research and Media-native": {
-      "yes": 3
+      "yes": 4,
+      "partial": 1
     },
     "CRM and Sales": {
-      "yes": 5
+      "yes": 6
     },
     "Communications and Messaging": {
       "yes": 5
     },
     "Data, SEO and Scraping": {
-      "yes": 6
+      "yes": 8
     },
     "Developer, Infra and Data platforms": {
-      "yes": 8
+      "yes": 9
     },
     "Ecommerce": {
       "yes": 5,
       "no": 1
     },
     "Finance and Fintech": {
-      "yes": 4,
+      "yes": 6,
       "partial": 1
     },
     "Marketing, Ads, Email and Social": {
-      "yes": 5,
-      "partial": 1
+      "yes": 6,
+      "partial": 2
     },
     "Productivity and Project Management": {
-      "yes": 7
+      "yes": 8
     },
     "Support and Helpdesk": {
-      "yes": 5
+      "yes": 5,
+      "partial": 2
     }
   },
   "blockers": {
@@ -159,9 +164,10 @@
     "admin_approval": 1
   },
   "mcp": {
-    "unknown": 27,
-    "official": 33,
-    "community": 26
+    "unknown": 29,
+    "official": 42,
+    "community": 28,
+    "none_found": 1
   },
   "easy_wins": [
     "Twenty",
@@ -170,6 +176,7 @@
     "Slack",
     "Twilio",
     "Discord",
+    "GoHighLevel",
     "Mailchimp",
     "Klaviyo",
     "Pinterest",
@@ -178,9 +185,11 @@
     "WooCommerce",
     "Squarespace",
     "DataForSEO",
+    "SE Ranking",
     "Apify",
     "Firecrawl",
     "Bright Data",
+    "GitHub",
     "Netlify",
     "Cloudflare",
     "Supabase",
@@ -193,12 +202,17 @@
     "Asana",
     "Monday.com",
     "Coda",
+    "Harvest",
     "Stripe",
     "Plaid",
+    "Brex",
+    "Ramp",
     "Reducto",
     "Devin"
   ],
   "needs_outreach": [
+    "Pylon",
+    "Google Ads",
     "PitchBook"
   ],
   "needs_human": [
@@ -245,6 +259,10 @@
     {
       "app": "Help Scout",
       "reason": "1 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, self_serve"
+    },
+    {
+      "app": "Gladly",
+      "reason": "missing evidence-backed: self_serve"
     },
     {
       "app": "Zoho Cliq",
@@ -351,6 +369,10 @@
       "reason": "missing evidence-backed: auth_methods, api_surface.type, self_serve"
     },
     {
+      "app": "higgsfield",
+      "reason": "missing evidence-backed: self_serve"
+    },
+    {
       "app": "Mermaid CLI",
       "reason": "6 unsupported/out-of-page claims dropped | missing evidence-backed: auth_methods, self_serve"
     },
@@ -364,11 +386,11 @@
     }
   ],
   "headlines": [
-    "86 apps counted; 14 API-error records excluded.",
-    "Most common auth: OAuth2 (56), API key (41).",
-    "Access: self_serve (43), trial_or_paid (13).",
-    "33 easy wins, 1 need outreach.",
-    "33 official and 26 community MCP servers found.",
-    "40 apps still need a human."
+    "100 apps counted; 0 API-error records excluded.",
+    "Most common auth: OAuth2 (66), API key (47).",
+    "Access: self_serve (51), trial_or_paid (15).",
+    "39 easy wins, 3 need outreach.",
+    "42 official and 28 community MCP servers found.",
+    "42 apps still need a human."
   ]
 }

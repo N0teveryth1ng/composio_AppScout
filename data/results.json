@@ -195,13 +195,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
+    "status": "ok",
+    "needs_human_reason": "none",
     "pass": 2,
     "llm_model": "gemini-3.5-flash-lite",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 413 - {'error': {'message': 'Request too large for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier",
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "error_reason": "none",
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 5,
@@ -779,24 +778,18 @@
         "snippet": "API"
       },
       {
-        "field": "buildability",
-        "url": "https://docs.usepylon.com",
-        "snippet": "Documentation index available"
-      },
-      {
         "field": "api_surface",
         "url": "https://docs.usepylon.com/pylon-docs/integrations/pylon-mcp",
         "snippet": "Server URL (US): https://mcp.usepylon.com"
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 413 - {'error': {'message': 'Request too large for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 16,
@@ -1060,13 +1053,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 413 - {'error': {'message': 'Request too large for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier",
+    "status": "needs_human",
+    "needs_human_reason": "missing evidence-backed: self_serve",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 21,
@@ -1620,11 +1612,6 @@
         "snippet": "OAuth 2.0: OAuth 2.0 is an industry-standard protocol for authorization, used by all Google APIs."
       },
       {
-        "field": "auth_methods",
-        "url": "https://developers.google.com/google-ads/api/docs/get-started/make-first-call",
-        "snippet": "A developer token is required to make API calls to the Google Ads API"
-      },
-      {
         "field": "api_surface",
         "url": "https://developers.google.com/google-ads/api/docs/get-started/make-first-call",
         "snippet": "Depending on your preference for making API calls, you can either download a client library or use HTTP clients like curl"
@@ -1646,13 +1633,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 413 - {'error': {'message': 'Request too large for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 32,
@@ -1822,13 +1808,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 413 - {'error': {'message': 'Request too large for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 35,
@@ -2797,11 +2782,6 @@
     "evidence": [
       {
         "field": "auth_methods",
-        "url": "https://seranking.com/api/data/getting-started",
-        "snippet": "Include an `Authorization` header in your request, with the value `Token YOUR_API_KEY`."
-      },
-      {
-        "field": "auth_methods",
         "url": "https://apis.io/security/se-ranking/se-ranking-authentication",
         "snippet": "SE Ranking secures its APIs with apiKey and oauth2 across 4 declared security schemes... OAuth 2.0 is offered via the authorizationCode flow(s)."
       },
@@ -2827,13 +2807,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
-    "llm_model": "gemini-3.5-flash-lite",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
+    "llm_model": "qwen/qwen3.8-27b",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 53,
@@ -3225,15 +3204,15 @@
     "id": 60,
     "app": "Clay",
     "category": "Data, SEO and Scraping",
-    "one_liner": "unknown",
+    "one_liner": "Clay provides HTTP API integration with JWT authentication for data enrichment.",
     "auth_methods": [
-      "unknown"
+      "Token"
     ],
-    "self_serve": "trial_or_paid",
-    "self_serve_note": "Start 14-Day Trial",
+    "self_serve": "self_serve",
+    "self_serve_note": "Start 14-Day Trial with no credit card required",
     "api_surface": {
       "type": [
-        "unknown"
+        "REST"
       ],
       "breadth": "unknown",
       "existing_mcp": "unknown",
@@ -3244,24 +3223,33 @@
     "blocker_note": "unknown",
     "evidence": [
       {
+        "field": "auth_methods",
+        "url": "https://www.clay.com/university/guide/http-api-with-jwt-authentication-integration-overview",
+        "snippet": "Use HTTP API connections authenticated securely with JWT tokens."
+      },
+      {
+        "field": "api_surface",
+        "url": "https://www.clay.com/university/guide/http-api-with-jwt-authentication-integration-overview",
+        "snippet": "Use HTTP API connections authenticated securely with JWT tokens."
+      },
+      {
         "field": "self_serve",
         "url": "https://clay.com/pricing",
         "snippet": "Start 14-Day Trial"
       },
       {
         "field": "buildability",
-        "url": "https://clay.com/pricing",
-        "snippet": "Start 14-Day Trial"
+        "url": "https://developers.clay.com",
+        "snippet": "Call the API directly"
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: ServerError: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spik",
-    "llm_model": "gemini-3.5-flash-lite, qwen/qwen3.8-27b",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
+    "llm_model": "qwen/qwen3.8-27b",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 61,
@@ -3297,11 +3285,6 @@
         "snippet": "To enforce regular token rotation and reduce the impact of a compromised token, you can configure your OAuth app to get access tokens that expire."
       },
       {
-        "field": "api_surface",
-        "url": "https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps",
-        "snippet": "docs.github.com/rest"
-      },
-      {
         "field": "self_serve",
         "url": "https://github.com/signup",
         "snippet": "Create your free account Explore GitHub's core features for individuals and organizations."
@@ -3318,13 +3301,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
-    "llm_model": "gemini-3.5-flash-lite",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
+    "llm_model": "qwen/qwen3.8-27b",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 62,
@@ -4342,13 +4324,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 413 - {'error': {'message': 'Request too large for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 78,
@@ -4516,13 +4497,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 81,
@@ -4879,11 +4859,6 @@
     "evidence": [
       {
         "field": "auth_methods",
-        "url": "https://developer.brex.com/guides/partner_authentication",
-        "snippet": "Brex currently supports 2 different authorization grant types: ... Authorization Code Grant ... Client Credentials Grant"
-      },
-      {
-        "field": "auth_methods",
         "url": "https://apitracker.io/a/brex",
         "snippet": "Authentication methods API Key, Basic OAuth 2.0"
       },
@@ -4891,11 +4866,6 @@
         "field": "auth_methods",
         "url": "https://apitracker.io/a/brex",
         "snippet": "Authentication methods API Key, Basic OAuth 2.0"
-      },
-      {
-        "field": "api_surface",
-        "url": "https://apitracker.io/a/brex",
-        "snippet": "API styles REST, SOAP"
       },
       {
         "field": "api_surface",
@@ -4924,13 +4894,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 413 - {'error': {'message': 'Request too large for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 89,
@@ -4966,11 +4935,6 @@
         "snippet": "authenticating with its client ID and secret (typically HTTP Basic Auth)"
       },
       {
-        "field": "api_surface",
-        "url": "https://apitracker.io/a/ramp",
-        "snippet": "A recorded check validates the specification document and its format. It does not test API uptime, credentials, or live requests. ... 277 documented operations"
-      },
-      {
         "field": "self_serve",
         "url": "https://docs.ramp.com",
         "snippet": "Get sandbox access\n\nDon't have a Ramp account? Request a sandbox to start building right away."
@@ -4987,13 +4951,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 90,
@@ -5164,13 +5127,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
+    "status": "ok",
+    "needs_human_reason": "none",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 93,
@@ -5453,13 +5415,12 @@
       }
     ],
     "has_composio_toolkit": "unknown",
-    "status": "error",
-    "needs_human_reason": "not applicable (status=error; retry next run)",
-    "error_reason": "LLM_API_ERROR: LLM_RATE_LIMITED: every model returned 429 (openai/gpt-oss-20b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01kswayckfeyhby5pavgz577t1` service tier `on_dem | openai/gpt-oss-120b: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01kswayckfeyhby5pavgz577t1` service tie",
+    "status": "needs_human",
+    "needs_human_reason": "missing evidence-backed: self_serve",
+    "error_reason": "none",
     "llm_model": "gemini-3.5-flash-lite",
     "pass": 2,
-    "pass2_version": "subfield-fix-1",
-    "retry_pending": true
+    "pass2_version": "subfield-fix-1"
   },
   {
     "id": 98,

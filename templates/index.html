@@ -42,7 +42,7 @@
 
     <p class="version-summary">Pass 2 versions: {{ fixed_version_count }} fixed (subfield-fix-1),
        {{ v1_version_count }} restored as v1-pre-fix. For verification, only the fixed version counts.
-       Apps still on error are free-tier LLM rate limits and remain unscored.</p>
+       All apps now have results; any future API-error records would remain unscored.</p>
 
     <section class="section">
       <h2>Headline patterns</h2>
@@ -172,11 +172,11 @@
              {{ "%.1f"|format(verification.overall_accuracy.pass1.accuracy * 100) }}%,
              {{ verification.scored_apps }} scored apps, all
              {{ verification.scored_apps }} reviewed by hand). The four non-MCP
-             fields score identically; the whole drop is existing_mcp (72.7% to 36.4%), where
+             fields score identically; the whole drop is existing_mcp (66.7% to 44.4%), where
              a code rule downgrading "official" MCP claims without vendor-domain
              evidence removed five correct answers (Shopify, Sentry, Notion, QuickBooks,
              WhatsApp Business). The cause was not diagnosed and the rule was not tuned after
-             seeing scores. 13 of the 28 pass-2 misses are abstentions (agent said unknown).
+             seeing scores. 15 of the 46 pass-2 misses are abstentions (agent said unknown).
              The answer key was AI-drafted from official docs; all
              {{ verification.human_reviewed_total }} sample entries were reviewed by hand, and
              12 of the {{ misses|length }} miss rows come from Consensus and Waterfall.io.
@@ -241,7 +241,8 @@
       <h2>Limitations and honesty notes</h2>
       <ul class="plain-list">
         <li>JavaScript-heavy docs can return empty text; those apps become needs_human.</li>
-        <li>API-error records are retried and never counted as research results.</li>
+        <li>API-error records were retried during the run; none remain. They are never
+            counted as research results.</li>
         <li>The answer key was AI-drafted from official docs and all 20 sample entries were reviewed by hand; the agent does not invent it.</li>
         <li>Pass 2 initially dropped `api_surface.type` for some apps because each api_surface evidence item was checked against the whole `{type, breadth, existing_mcp}` object, so a snippet supporting only one subfield could be marked not_found. The verifier now narrows each claim to the single supported subfield and reads up to 12,000 characters of the cached page; the code-only snippet check already used the full cached page. This claim-check bug was found and fixed during the run: the fixed pass 2 was applied to {{ fixed_version_count }} of {{ total_apps }} apps, and {{ v1_version_count }} records are tagged v1-pre-fix from commit b91bae7. For verification, only the fixed version counts.</li>
       </ul>
