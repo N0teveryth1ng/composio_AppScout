@@ -132,7 +132,7 @@
         <p><strong>Scored {{ verification.scored_apps }} of
            {{ verification.get('eligible_size', verification.sample_size - 2) }} eligible apps.</strong>
            Only fixed pass-2 records are scored; v1-pre-fix records are never scored.</p>
-        <p><strong>9 of 20 reviewed by hand (5 of the 11 scored apps: Discord, Shopify, Amazon SP-API, Notion, QuickBooks), 0 values corrected</strong>.</p>
+        <p><strong>9 of 20 reviewed by hand (5 of the 11 scored apps: Discord, Shopify, Amazon SP-API, Notion, QuickBooks), 0 values corrected.</strong></p>
         <p>Not hosted APIs, excluded:
            {% for item in verification.excluded_from_accuracy %}
              <strong>{{ item.app }}</strong>{% if not loop.last %}, {% endif %}
@@ -160,7 +160,7 @@
           <p><strong>What these numbers show:</strong> Pass 2 did not improve accuracy on this
              sample (49.1% vs 56.4%, 11 scored apps, 5 reviewed by hand). The four non-MCP
              fields score identically; the whole drop is existing_mcp (72.7% to 36.4%), where
-             a code rule downgrading &ldquo;official&rdquo; MCP claims without vendor-domain
+             a code rule downgrading "official" MCP claims without vendor-domain
              evidence removed five correct answers (Shopify, Sentry, Notion, QuickBooks,
              WhatsApp Business). The cause was not diagnosed and the rule was not tuned after
              seeing scores. 13 of the 28 pass-2 misses are abstentions (agent said unknown).
